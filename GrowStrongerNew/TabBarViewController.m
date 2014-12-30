@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "TabBarViewController.h"
 
