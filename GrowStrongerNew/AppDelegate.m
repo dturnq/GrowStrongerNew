@@ -20,6 +20,8 @@
     // Override point for customization after application launch.
     [FBLoginView class];
     
+    [Parse enableLocalDatastore];
+    
 #if TARGET_OS_EMBEDDED
     [Parse setApplicationId:@"z9I9OwkOY5OWPrmK7hxx3xrP0jyT8L4cEdxaMF9e"
                   clientKey:@"sidQ5E7lcGUIx43dcSj0sswBLVB0xYHbxYifrnSJ"];

@@ -64,7 +64,7 @@
 */
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == self.exerciseNameTextField) {
+    if (textField == self.nameTextField) {
         [textField resignFirstResponder];
     }
     return YES;

@@ -28,6 +28,14 @@
     return self;
 }
 
+// THIS IS ONLY NEEDED UNTIL 8.1 IS RELEASED
+-(UIViewController *)viewControllerForUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender
+{
+    return [self.selectedViewController viewControllerForUnwindSegueAction:action fromViewController:fromViewController withSender:sender];
+}
+///////////////
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -11,6 +11,6 @@
 
 @interface ExerciseListViewController : PFQueryTableViewController
 
-
+-(IBAction)unwindToExerciseList:(UIStoryboardSegue *)unwindSegue;
 
 @end

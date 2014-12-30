@@ -29,6 +29,11 @@
 		49A632261A52999800A1A484 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A632211A52999800A1A484 /* ParseCrashReporting.framework */; };
 		49A632271A52999800A1A484 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A632221A52999800A1A484 /* ParseFacebookUtils.framework */; };
 		49A632281A52999800A1A484 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A632231A52999800A1A484 /* ParseUI.framework */; };
+		49A6322B1A52A27A00A1A484 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A6322A1A52A27A00A1A484 /* Exercise.m */; };
+		49A6322D1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49A6322C1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg */; };
+		49A632301A532F1400A1A484 /* RecordNewWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A6322F1A532F1400A1A484 /* RecordNewWorkoutViewController.m */; };
+		49A632331A532F4500A1A484 /* ActiveWorkoutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A632321A532F4500A1A484 /* ActiveWorkoutTableViewController.m */; };
+		49A6323B1A5331C300A1A484 /* FeedPFQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A6323A1A5331C300A1A484 /* FeedPFQViewController.m */; };
 		49A88DB819BCC5B2008AE306 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A88DB719BCC5B2008AE306 /* Foundation.framework */; };
 		49A88DBA19BCC5B2008AE306 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A88DB919BCC5B2008AE306 /* CoreGraphics.framework */; };
 		49A88DC219BCC5B3008AE306 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49A88DC019BCC5B3008AE306 /* InfoPlist.strings */; };
@@ -80,6 +85,15 @@
 		49A632211A52999800A1A484 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		49A632221A52999800A1A484 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		49A632231A52999800A1A484 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		49A632291A52A27A00A1A484 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		49A6322A1A52A27A00A1A484 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
+		49A6322C1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "man-muscle-body-dumbbell-Fitness.jpg"; sourceTree = "<group>"; };
+		49A6322E1A532F1400A1A484 /* RecordNewWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordNewWorkoutViewController.h; sourceTree = "<group>"; };
+		49A6322F1A532F1400A1A484 /* RecordNewWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordNewWorkoutViewController.m; sourceTree = "<group>"; };
+		49A632311A532F4500A1A484 /* ActiveWorkoutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveWorkoutTableViewController.h; sourceTree = "<group>"; };
+		49A632321A532F4500A1A484 /* ActiveWorkoutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveWorkoutTableViewController.m; sourceTree = "<group>"; };
+		49A632391A5331C300A1A484 /* FeedPFQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPFQViewController.h; sourceTree = "<group>"; };
+		49A6323A1A5331C300A1A484 /* FeedPFQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedPFQViewController.m; sourceTree = "<group>"; };
 		49A88DB419BCC5B2008AE306 /* GrowStrongerNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrowStrongerNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A88DB719BCC5B2008AE306 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49A88DB919BCC5B2008AE306 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -142,6 +156,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49A632341A532F5200A1A484 /* Record Branch */ = {
+			isa = PBXGroup;
+			children = (
+				49A632311A532F4500A1A484 /* ActiveWorkoutTableViewController.h */,
+				49A632321A532F4500A1A484 /* ActiveWorkoutTableViewController.m */,
+				49A6322E1A532F1400A1A484 /* RecordNewWorkoutViewController.h */,
+				49A6322F1A532F1400A1A484 /* RecordNewWorkoutViewController.m */,
+			);
+			name = "Record Branch";
+			sourceTree = "<group>";
+		};
+		49A632351A532F5B00A1A484 /* Object Subclassing */ = {
+			isa = PBXGroup;
+			children = (
+				49A632291A52A27A00A1A484 /* Exercise.h */,
+				49A6322A1A52A27A00A1A484 /* Exercise.m */,
+			);
+			name = "Object Subclassing";
+			sourceTree = "<group>";
+		};
+		49A632361A532F6F00A1A484 /* Exercise Branch */ = {
+			isa = PBXGroup;
+			children = (
+				492DF8701A526170006C6EC5 /* ExerciseListViewController.h */,
+				492DF8711A526170006C6EC5 /* ExerciseListViewController.m */,
+				4931CD8D1A526CF4000DCDE0 /* AddExerciseViewController.h */,
+				4931CD8E1A526CF4000DCDE0 /* AddExerciseViewController.m */,
+			);
+			name = "Exercise Branch";
+			sourceTree = "<group>";
+		};
+		49A632371A532F7C00A1A484 /* Base App */ = {
+			isa = PBXGroup;
+			children = (
+				49A88DC619BCC5B3008AE306 /* AppDelegate.h */,
+				49A88DC719BCC5B3008AE306 /* AppDelegate.m */,
+				4907183A19BCCC910075936F /* TabBarViewController.h */,
+				4907183819BCCBAC0075936F /* TabBarViewController.m */,
+			);
+			name = "Base App";
+			sourceTree = "<group>";
+		};
+		49A632381A53319C00A1A484 /* Feed Branch */ = {
+			isa = PBXGroup;
+			children = (
+				49A632391A5331C300A1A484 /* FeedPFQViewController.h */,
+				49A6323A1A5331C300A1A484 /* FeedPFQViewController.m */,
+			);
+			name = "Feed Branch";
+			sourceTree = "<group>";
+		};
 		49A88DAB19BCC5B2008AE306 = {
 			isa = PBXGroup;
 			children = (
@@ -193,15 +258,12 @@
 		49A88DBD19BCC5B3008AE306 /* GrowStrongerNew */ = {
 			isa = PBXGroup;
 			children = (
-				492DF8701A526170006C6EC5 /* ExerciseListViewController.h */,
-				492DF8711A526170006C6EC5 /* ExerciseListViewController.m */,
-				4931CD8D1A526CF4000DCDE0 /* AddExerciseViewController.h */,
-				4931CD8E1A526CF4000DCDE0 /* AddExerciseViewController.m */,
-				49A88DC619BCC5B3008AE306 /* AppDelegate.h */,
-				49A88DC719BCC5B3008AE306 /* AppDelegate.m */,
-				4907183A19BCCC910075936F /* TabBarViewController.h */,
-				4907183819BCCBAC0075936F /* TabBarViewController.m */,
+				49A632381A53319C00A1A484 /* Feed Branch */,
 				49A88DC919BCC5B3008AE306 /* Main.storyboard */,
+				49A632341A532F5200A1A484 /* Record Branch */,
+				49A632351A532F5B00A1A484 /* Object Subclassing */,
+				49A632361A532F6F00A1A484 /* Exercise Branch */,
+				49A632371A532F7C00A1A484 /* Base App */,
 				49A88DCC19BCC5B3008AE306 /* FirstViewController.h */,
 				49A88DCD19BCC5B3008AE306 /* FirstViewController.m */,
 				49A88DCF19BCC5B3008AE306 /* SecondViewController.h */,
@@ -215,6 +277,7 @@
 		49A88DBE19BCC5B3008AE306 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				49A6322C1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg */,
 				49A88DBF19BCC5B3008AE306 /* GrowStrongerNew-Info.plist */,
 				49A88DC019BCC5B3008AE306 /* InfoPlist.strings */,
 				49A88DC319BCC5B3008AE306 /* main.m */,
@@ -320,6 +383,7 @@
 			files = (
 				4922BAA21A5263E300EE8568 /* File in Resources */,
 				49A88DD319BCC5B3008AE306 /* Images.xcassets in Resources */,
+				49A6322D1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg in Resources */,
 				49A88DC219BCC5B3008AE306 /* InfoPlist.strings in Resources */,
 				49A88DCB19BCC5B3008AE306 /* Main.storyboard in Resources */,
 			);
@@ -341,10 +405,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A88DC819BCC5B3008AE306 /* AppDelegate.m in Sources */,
+				49A632331A532F4500A1A484 /* ActiveWorkoutTableViewController.m in Sources */,
 				4907183919BCCBAC0075936F /* TabBarViewController.m in Sources */,
 				49A88DCE19BCC5B3008AE306 /* FirstViewController.m in Sources */,
+				49A632301A532F1400A1A484 /* RecordNewWorkoutViewController.m in Sources */,
 				4931CD8F1A526CF4000DCDE0 /* AddExerciseViewController.m in Sources */,
+				49A6323B1A5331C300A1A484 /* FeedPFQViewController.m in Sources */,
 				49A88DD119BCC5B3008AE306 /* SecondViewController.m in Sources */,
+				49A6322B1A52A27A00A1A484 /* Exercise.m in Sources */,
 				49A88DC419BCC5B3008AE306 /* main.m in Sources */,
 				492DF8721A526170006C6EC5 /* ExerciseListViewController.m in Sources */,
 			);

@@ -10,7 +10,7 @@
 
 @interface AddExerciseViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *exerciseNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *exerciseTypeSegmentControl;
 - (IBAction)exerciseTypeChanged:(UISegmentedControl *)sender;

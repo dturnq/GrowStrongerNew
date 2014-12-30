@@ -7,6 +7,8 @@
 //
 
 #import "ExerciseListViewController.h"
+#import "Exercise.h"
+#import "AddExerciseViewController.h"
 
 
 @interface ExerciseListViewController ()
@@ -17,6 +19,18 @@
 
 -(IBAction)unwindToExerciseList:(UIStoryboardSegue *)unwindSegue
 {
+    PFUser *user = [PFUser currentUser];
+    
+    // If the user clicked "Save", then save
+    if ([unwindSegue.identifier  isEqual: @"SaveNewExercise"]) {
+        AddExerciseViewController* addExerciseViewController = unwindSegue.sourceViewController;
+        Exercise *exercise = [Exercise object];
+        exercise.name = addExerciseViewController.nameTextField.text;
+        exercise.user = user;
+        exercise.exerciseType = addExerciseViewController.exerciseType;
+        [exercise saveEventually];
+    }
+    
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -104,28 +118,25 @@
     // This method is called every time objects are loaded from Parse via the PFQuery
 }
 
-/*
+
  // Override to customize what kind of query to perform on the class. The default is to query for
  // all objects ordered by createdAt descending.
  - (PFQuery *)queryForTable {
- PFQuery *query = [PFQuery queryWithClassName:self.className];
- 
- // If Pull To Refresh is enabled, query against the network by default.
- if (self.pullToRefreshEnabled) {
- query.cachePolicy = kPFCachePolicyNetworkOnly;
+     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+     // If Pull To Refresh is enabled, query against the network by default.
+     //if (self.pullToRefreshEnabled) {
+            //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+     //}
+     
+     // If no objects are loaded in memory, we look to the cache first to fill the table
+     // and then subsequently do a query against the network.
+     //if (self.objects.count == 0) {
+            //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+     //}
+     [query orderByAscending:@"name"];
+     return query;
  }
- 
- // If no objects are loaded in memory, we look to the cache first to fill the table
- // and then subsequently do a query against the network.
- if (self.objects.count == 0) {
- query.cachePolicy = kPFCachePolicyCacheThenNetwork;
- }
- 
- [query orderByDescending:@"createdAt"];
- 
- return query;
- }
- */
+
 
 /*
  // Override to customize the look of a cell representing an object. The default is to display
