@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Workout.h"
 
-@interface ActiveWorkoutTableViewController : UITableViewController
+@interface ActiveWorkoutTableViewController : UITableViewController <UIActionSheetDelegate>
+
+@property (strong, nonatomic) Workout *activeWorkout;
 
 @end

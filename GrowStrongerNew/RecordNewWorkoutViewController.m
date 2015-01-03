@@ -7,6 +7,8 @@
 //
 
 #import "RecordNewWorkoutViewController.h"
+#import "ActiveWorkoutTableViewController.h"
+#import "Workout.h"
 
 @interface RecordNewWorkoutViewController ()
 
@@ -20,8 +22,17 @@
     
     // If the user clicked "Save", then save
     if ([unwindSegue.identifier  isEqual: @"CancelWorkout"]) {
-        NSLog(@"Workout Cancelled");
-        // We will eventually need to unpin and delete all objects related to the workout
+        
+        // Unpin and delete all incomplete workouts
+        PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
+        [query fromLocalDatastore];
+        [query whereKey:@"active" equalTo:@"Active"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            for (Workout *workout in objects)
+            {
+                [workout deleteInBackground];
+            }
+        }];
     }
     
 }
@@ -38,14 +49,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier  isEqual: @"StartNewWorkout"]) {
+        
+        // Prep values
+        PFUser *user = [PFUser currentUser];
+        NSDate *now = [NSDate date];
+        
+        // Fill in the values
+        Workout *activeWorkout = [Workout object];
+        activeWorkout.user = user;
+        activeWorkout.beganAt = now;
+        activeWorkout.active = @"Active";
+        
+        // Pin the workout
+        [activeWorkout pinInBackground];
+        
+        // Send the workout to the destination view controller
+        ActiveWorkoutTableViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.activeWorkout = activeWorkout;
+    }
 }
-*/
+
 
 @end

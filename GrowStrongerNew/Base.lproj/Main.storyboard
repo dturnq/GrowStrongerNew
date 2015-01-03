@@ -233,7 +233,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8Lx-ns-rdx" kind="push" id="sTf-zU-WTi"/>
+                                    <segue destination="8Lx-ns-rdx" kind="push" identifier="StartNewWorkout" id="sTf-zU-WTi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -269,11 +269,14 @@
                     <navigationItem key="navigationItem" title="Record" id="e9A-qK-O4g">
                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="cYC-Aw-t0h">
                             <connections>
-                                <segue destination="lEL-8v-NLn" kind="unwind" unwindAction="unwindToRecordStandby:" id="2MS-ND-D7r"/>
+                                <action selector="cancelWorkout:" destination="8Lx-ns-rdx" id="j5i-qR-9rG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="6BD-5z-mjn"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="lEL-8v-NLn" kind="unwind" identifier="CancelWorkout" unwindAction="unwindToRecordStandby:" id="5B6-lm-MFy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CM-Va-QNq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lEL-8v-NLn" userLabel="Exit" sceneMemberID="exit"/>

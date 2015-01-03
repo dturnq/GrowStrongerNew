@@ -1,14 +1,25 @@
 Mandatory functionality during launch
-- Log in via Facebook
-- Add exercises
-- Start workouts
+- Make the login screen look like the other screens
+- Ask for confirmation before cancelling workout
+- When a workout is cancelled, delete the workout
+- Automatically go to the current workout page if there is a current workout
+- Edit exercises
+
 - Save workouts
 - View workouts
 - Medals for records
 
 Additional that we need quickly
+- Log in without Faceook
 - Search for and add friends
 - View friend feed
 
 Even lower priority
 - Post to Twitter
+
+
+
+COMPLETED
+- Log in via Facebook
+- Add exercises
+- Start workouts
