@@ -23,6 +23,10 @@
 		4931CD8F1A526CF4000DCDE0 /* AddExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4931CD8E1A526CF4000DCDE0 /* AddExerciseViewController.m */; };
 		4931CD951A527E02000DCDE0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4931CD941A527E02000DCDE0 /* libsqlite3.dylib */; };
 		4931CDA11A5281C6000DCDE0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4931CDA01A5281C5000DCDE0 /* FacebookSDK.framework */; };
+		4969A9891A5D0D2300723C22 /* CompletedExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A9881A5D0D2300723C22 /* CompletedExerciseTableViewCell.m */; };
+		4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98B1A5E567600723C22 /* AddSetViewController.m */; };
+		4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */; };
+		49743EFA1A5BB66F00BE6C48 /* AddExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49743EF91A5BB66F00BE6C48 /* AddExerciseTableViewCell.m */; };
 		49A6321E1A5298FE00A1A484 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A6321D1A5298FE00A1A484 /* UIKit.framework */; };
 		49A632241A52999800A1A484 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A6321F1A52999800A1A484 /* Bolts.framework */; };
 		49A632251A52999800A1A484 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A632201A52999800A1A484 /* Parse.framework */; };
@@ -41,13 +45,13 @@
 		49A88DC419BCC5B3008AE306 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A88DC319BCC5B3008AE306 /* main.m */; };
 		49A88DC819BCC5B3008AE306 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A88DC719BCC5B3008AE306 /* AppDelegate.m */; };
 		49A88DCB19BCC5B3008AE306 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A88DC919BCC5B3008AE306 /* Main.storyboard */; };
-		49A88DCE19BCC5B3008AE306 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A88DCD19BCC5B3008AE306 /* FirstViewController.m */; };
-		49A88DD119BCC5B3008AE306 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A88DD019BCC5B3008AE306 /* SecondViewController.m */; };
 		49A88DD319BCC5B3008AE306 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A88DD219BCC5B3008AE306 /* Images.xcassets */; };
 		49A88DDA19BCC5B3008AE306 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A88DD919BCC5B3008AE306 /* XCTest.framework */; };
 		49A88DDB19BCC5B3008AE306 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A88DB719BCC5B2008AE306 /* Foundation.framework */; };
 		49A88DE419BCC5B3008AE306 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49A88DE219BCC5B3008AE306 /* InfoPlist.strings */; };
 		49A88DE619BCC5B3008AE306 /* GrowStrongerNewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A88DE519BCC5B3008AE306 /* GrowStrongerNewTests.m */; };
+		49C0F62A1A57954700A79121 /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0F6291A57954700A79121 /* Set.m */; };
+		49C0F62D1A5795BE00A79121 /* CompletedExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0F62C1A5795BE00A79121 /* CompletedExercise.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,14 @@
 		4931CD8E1A526CF4000DCDE0 /* AddExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExerciseViewController.m; sourceTree = "<group>"; };
 		4931CD941A527E02000DCDE0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4931CDA01A5281C5000DCDE0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		4969A9871A5D0D2300723C22 /* CompletedExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedExerciseTableViewCell.h; sourceTree = "<group>"; };
+		4969A9881A5D0D2300723C22 /* CompletedExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedExerciseTableViewCell.m; sourceTree = "<group>"; };
+		4969A98A1A5E567600723C22 /* AddSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSetViewController.h; sourceTree = "<group>"; };
+		4969A98B1A5E567600723C22 /* AddSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSetViewController.m; sourceTree = "<group>"; };
+		4969A98E1A5E619B00723C22 /* SelectExerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectExerciseViewController.h; sourceTree = "<group>"; };
+		4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectExerciseViewController.m; sourceTree = "<group>"; };
+		49743EF81A5BB66F00BE6C48 /* AddExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddExerciseTableViewCell.h; sourceTree = "<group>"; };
+		49743EF91A5BB66F00BE6C48 /* AddExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExerciseTableViewCell.m; sourceTree = "<group>"; };
 		49A6321D1A5298FE00A1A484 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49A6321F1A52999800A1A484 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		49A632201A52999800A1A484 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -107,16 +119,16 @@
 		49A88DC619BCC5B3008AE306 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		49A88DC719BCC5B3008AE306 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		49A88DCA19BCC5B3008AE306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		49A88DCC19BCC5B3008AE306 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		49A88DCD19BCC5B3008AE306 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		49A88DCF19BCC5B3008AE306 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		49A88DD019BCC5B3008AE306 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		49A88DD219BCC5B3008AE306 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		49A88DD819BCC5B3008AE306 /* GrowStrongerNewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrowStrongerNewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A88DD919BCC5B3008AE306 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		49A88DE119BCC5B3008AE306 /* GrowStrongerNewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrowStrongerNewTests-Info.plist"; sourceTree = "<group>"; };
 		49A88DE319BCC5B3008AE306 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49A88DE519BCC5B3008AE306 /* GrowStrongerNewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowStrongerNewTests.m; sourceTree = "<group>"; };
+		49C0F6281A57954700A79121 /* Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
+		49C0F6291A57954700A79121 /* Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
+		49C0F62B1A5795BE00A79121 /* CompletedExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedExercise.h; sourceTree = "<group>"; };
+		49C0F62C1A5795BE00A79121 /* CompletedExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedExercise.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +171,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4969A98D1A5E568100723C22 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				49743EF81A5BB66F00BE6C48 /* AddExerciseTableViewCell.h */,
+				49743EF91A5BB66F00BE6C48 /* AddExerciseTableViewCell.m */,
+				4969A9871A5D0D2300723C22 /* CompletedExerciseTableViewCell.h */,
+				4969A9881A5D0D2300723C22 /* CompletedExerciseTableViewCell.m */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		49A632341A532F5200A1A484 /* Record Branch */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +189,11 @@
 				49A632321A532F4500A1A484 /* ActiveWorkoutTableViewController.m */,
 				49A6322E1A532F1400A1A484 /* RecordNewWorkoutViewController.h */,
 				49A6322F1A532F1400A1A484 /* RecordNewWorkoutViewController.m */,
+				4969A98A1A5E567600723C22 /* AddSetViewController.h */,
+				4969A98B1A5E567600723C22 /* AddSetViewController.m */,
+				4969A98E1A5E619B00723C22 /* SelectExerciseViewController.h */,
+				4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */,
+				4969A98D1A5E568100723C22 /* New Group */,
 			);
 			name = "Record Branch";
 			sourceTree = "<group>";
@@ -177,6 +205,10 @@
 				49A6322A1A52A27A00A1A484 /* Exercise.m */,
 				49A6323C1A53340100A1A484 /* Workout.h */,
 				49A6323D1A53340100A1A484 /* Workout.m */,
+				49C0F6281A57954700A79121 /* Set.h */,
+				49C0F6291A57954700A79121 /* Set.m */,
+				49C0F62B1A5795BE00A79121 /* CompletedExercise.h */,
+				49C0F62C1A5795BE00A79121 /* CompletedExercise.m */,
 			);
 			name = "Object Subclassing";
 			sourceTree = "<group>";
@@ -269,10 +301,6 @@
 				49A632351A532F5B00A1A484 /* Object Subclassing */,
 				49A632361A532F6F00A1A484 /* Exercise Branch */,
 				49A632371A532F7C00A1A484 /* Base App */,
-				49A88DCC19BCC5B3008AE306 /* FirstViewController.h */,
-				49A88DCD19BCC5B3008AE306 /* FirstViewController.m */,
-				49A88DCF19BCC5B3008AE306 /* SecondViewController.h */,
-				49A88DD019BCC5B3008AE306 /* SecondViewController.m */,
 				49A88DD219BCC5B3008AE306 /* Images.xcassets */,
 				49A88DBE19BCC5B3008AE306 /* Supporting Files */,
 			);
@@ -412,14 +440,18 @@
 				49A88DC819BCC5B3008AE306 /* AppDelegate.m in Sources */,
 				49A632331A532F4500A1A484 /* ActiveWorkoutTableViewController.m in Sources */,
 				4907183919BCCBAC0075936F /* TabBarViewController.m in Sources */,
-				49A88DCE19BCC5B3008AE306 /* FirstViewController.m in Sources */,
+				49743EFA1A5BB66F00BE6C48 /* AddExerciseTableViewCell.m in Sources */,
 				49A632301A532F1400A1A484 /* RecordNewWorkoutViewController.m in Sources */,
+				4969A9891A5D0D2300723C22 /* CompletedExerciseTableViewCell.m in Sources */,
+				49C0F62D1A5795BE00A79121 /* CompletedExercise.m in Sources */,
 				4931CD8F1A526CF4000DCDE0 /* AddExerciseViewController.m in Sources */,
 				49A6323B1A5331C300A1A484 /* FeedPFQViewController.m in Sources */,
-				49A88DD119BCC5B3008AE306 /* SecondViewController.m in Sources */,
+				4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */,
 				49A6322B1A52A27A00A1A484 /* Exercise.m in Sources */,
+				49C0F62A1A57954700A79121 /* Set.m in Sources */,
 				49A88DC419BCC5B3008AE306 /* main.m in Sources */,
 				492DF8721A526170006C6EC5 /* ExerciseListViewController.m in Sources */,
+				4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */,
 				49A6323E1A53340100A1A484 /* Workout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

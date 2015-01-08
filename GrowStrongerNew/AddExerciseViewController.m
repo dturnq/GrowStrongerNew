@@ -41,10 +41,12 @@
     switch (self.exerciseTypeSegmentControl.selectedSegmentIndex) {
         case 0:
             self.exerciseType = @"Weightlifting";
+            self.descriptionLabel.text = @"An exercise that uses weights as resistance";
             break;
             
         case 1:
             self.exerciseType = @"Calisthenics";
+            self.descriptionLabel.text = @"An exercise that uses only your bodyweight as resistance";
             break;
             
         default:

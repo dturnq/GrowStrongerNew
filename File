@@ -4,10 +4,13 @@ Mandatory functionality during launch
 - When a workout is cancelled, delete the workout
 - Automatically go to the current workout page if there is a current workout
 - Edit exercises
+- Add visual feedback when an exercise is saved
 
 - Save workouts
 - View workouts
 - Medals for records
+- Add exercises to a workout
+- Add sets / reps to a workout
 
 Additional that we need quickly
 - Log in without Faceook
@@ -23,3 +26,21 @@ COMPLETED
 - Log in via Facebook
 - Add exercises
 - Start workouts
+- Explain calisthenics
+
+
+/// ORIGINAL COMMENTS
+Mandatory functionality during launch
+- Log in via Facebook
+- Add exercises
+- Start workouts
+- Save workouts
+- View workouts
+- Medals for records
+
+Additional that we need quickly
+- Search for and add friends
+- View friend feed
+
+Even lower priority
+- Post to Twitter

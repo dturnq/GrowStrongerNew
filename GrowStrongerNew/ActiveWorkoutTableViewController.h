@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Workout.h"
+#import "CompletedExercise.h"
+#import "Set.h"
 
 @interface ActiveWorkoutTableViewController : UITableViewController <UIActionSheetDelegate>
 
 @property (strong, nonatomic) Workout *activeWorkout;
+@property (strong, nonatomic) NSArray *completedExerciseArray;
+@property (strong, nonatomic) Set *set;
 
 @end
