@@ -37,6 +37,7 @@
 {
     self = [super initWithClassName:@"Exercise"];
     self = [super initWithCoder:aDecoder];
+    NSLog(@"BLAH BLAH it loaded");
     if (self) {
         // The className to query on
         self.parseClassName = @"Exercise";
@@ -121,6 +122,7 @@
 
  // Override to customize what kind of query to perform on the class. The default is to query for
  // all objects ordered by createdAt descending.
+/*
  - (PFQuery *)queryForTable {
      PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
      // If Pull To Refresh is enabled, query against the network by default.
@@ -136,7 +138,7 @@
      [query orderByAscending:@"name"];
      return query;
  }
-
+*/
 
 /*
  // Override to customize the look of a cell representing an object. The default is to display

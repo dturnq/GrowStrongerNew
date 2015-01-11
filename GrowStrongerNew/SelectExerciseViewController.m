@@ -8,9 +8,10 @@
 
 #import "SelectExerciseViewController.h"
 #import "Exercise.h"
-#import "CompletedExercise.h"
 
 @interface SelectExerciseViewController ()
+
+-(Exercise*)exerciseFromPFObject:(PFObject *)pFObject;
 
 @end
 
@@ -207,14 +208,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
-    PFUser *user = [PFUser currentUser];
-    self.selectedExercise = [self objectAtIndexPath:indexPath];
-    
+    self.selectedExercise = [self.objects objectAtIndex:indexPath.row];
+    NSLog(@"Select view: self.selectedexercise: %@", self.selectedExercise);
     [self performSegueWithIdentifier:@"SelectExercise" sender:self];
     
     
 }
 
+-(Exercise *)exerciseFromPFObject:(PFObject *)pFObject
+{
+    Exercise *exercise = [Exercise object];
+    
+    exercise.user = [pFObject objectForKey:@"user"];
+    exercise.name = [pFObject objectForKey:@"name"];
+    exercise.exerciseType = [pFObject objectForKey:@"exerciseType"];
+    exercise.objectId = [pFObject objectForKey:@"objectID"];
+    
+    return exercise;
+
+}
 
 #pragma mark - Navigation
 /*

@@ -247,11 +247,12 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="name" destination="Zgp-Og-moe" id="WB9-1u-NaS"/>
                                     <outlet property="set1" destination="9S8-EN-5JV" id="JaV-DP-AL1"/>
                                     <outlet property="set2" destination="J2W-m7-xtq" id="TTp-R5-94r"/>
                                     <outlet property="set3" destination="7w0-Jj-Jcz" id="1mu-18-GKV"/>
                                     <outlet property="set4" destination="PGI-dH-byE" id="35q-ZN-KMH"/>
-                                    <segue destination="Dxc-cS-GhD" kind="custom" identifier="SegueToAddSet" id="Dee-io-Nis"/>
+                                    <segue destination="0BO-6l-GBz" kind="modal" identifier="SegueToAddSet" id="Dee-io-Nis"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddExerciseToWorkout" rowHeight="72" id="NyO-dD-yIZ" customClass="AddExerciseTableViewCell">
@@ -307,7 +308,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8BE-rC-F6L">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8BE-rC-F6L">
                                 <rect key="frame" x="30" y="93" width="120" height="84"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
@@ -315,7 +316,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-cK-3RQ">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-cK-3RQ">
                                 <rect key="frame" x="170" y="93" width="120" height="84"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <inset key="contentEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -347,7 +348,7 @@
                                 </state>
                                 <connections>
                                     <action selector="saveSet:" destination="Dxc-cS-GhD" eventType="touchUpInside" id="k9F-V3-0Xa"/>
-                                    <segue destination="3xq-fO-rWg" kind="unwind" unwindAction="unwindToActiveWorkout:" id="9lN-nt-cEK"/>
+                                    <segue destination="3xq-fO-rWg" kind="unwind" identifier="SaveSet" unwindAction="unwindToActiveWorkout:" id="cKC-pW-fal"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MUQ-TL-zYl">
@@ -358,6 +359,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Vjw-l1-Bln">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KTN-nQ-rYs">
+                            <connections>
+                                <segue destination="3xq-fO-rWg" kind="unwind" identifier="CancelSet" unwindAction="unwindToActiveWorkout:" id="mFH-02-zhe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nextReps" destination="ZqT-V1-zm2" id="uLK-1m-vTH"/>
                         <outlet property="nextWeight" destination="MUQ-TL-zYl" id="I39-YC-Ktp"/>
@@ -368,7 +376,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6XW-4H-UQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3xq-fO-rWg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2092" y="-1672"/>
+            <point key="canvasLocation" x="2624" y="-1672"/>
         </scene>
         <!--My Exercises-->
         <scene sceneID="1Ie-vM-ukQ">
@@ -462,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obc-GO-bXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="-1832.5"/>
+            <point key="canvasLocation" x="2992" y="-1832.5"/>
         </scene>
         <!--Select exercise-->
         <scene sceneID="QOd-aD-681">
@@ -480,6 +488,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="tTt-pX-oDZ" kind="unwind" identifier="SelectExercise" unwindAction="unwindToActiveWorkout:" id="JML-22-cCa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -490,13 +501,10 @@
                     <navigationItem key="navigationItem" title="Select exercise" id="E2f-dD-TpY">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LQy-Rv-Hwp">
                             <connections>
-                                <segue destination="tTt-pX-oDZ" kind="unwind" identifier="SelectExercise" unwindAction="unwindToActiveWorkout:" id="68W-3h-tM9"/>
+                                <segue destination="tTt-pX-oDZ" kind="unwind" unwindAction="unwindToActiveWorkout:" id="vPW-gz-gcy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="tTt-pX-oDZ" kind="unwind" unwindAction="unwindToActiveWorkout:" id="bpj-h9-uc3"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghZ-90-Mqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tTt-pX-oDZ" userLabel="Exit" sceneMemberID="exit"/>
@@ -520,6 +528,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcr-ci-0V0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2445" y="-1009"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ctj-fN-wxw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0BO-6l-GBz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KFj-VU-Qfe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dxc-cS-GhD" kind="relationship" relationship="rootViewController" id="lax-0G-nu3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OhY-lS-j6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2092" y="-1672"/>
         </scene>
     </scenes>
     <resources>

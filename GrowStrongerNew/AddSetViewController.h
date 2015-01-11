@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CompletedExercise.h"
 
 @interface AddSetViewController : UIViewController
+@property (weak, nonatomic) CompletedExercise *completedExercise;
 @property (weak, nonatomic) IBOutlet UIButton *weight;
 @property (weak, nonatomic) IBOutlet UIButton *reps;
 @property (weak, nonatomic) IBOutlet UITextField *nextWeight;

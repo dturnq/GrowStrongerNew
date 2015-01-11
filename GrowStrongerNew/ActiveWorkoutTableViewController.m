@@ -9,6 +9,8 @@
 #import "ActiveWorkoutTableViewController.h"
 #import "AddExerciseTableViewCell.h"
 #import "SelectExerciseViewController.h"
+#import "AddSetViewController.h"
+#import "CompletedExerciseTableViewCell.h"
 
 
 @interface ActiveWorkoutTableViewController ()
@@ -23,20 +25,23 @@
 {
     
     if ([unwindSegue.identifier isEqual: @"SelectExercise"]) {
+        NSLog(@"Unwind SELECT called");
         SelectExerciseViewController* selectExerciseViewController = unwindSegue.sourceViewController;
         PFUser *user = [PFUser currentUser];
         CompletedExercise *completedExercise = [CompletedExercise object];
         completedExercise.user = user;
         completedExercise.workout = self.activeWorkout;
         completedExercise.exercise = selectExerciseViewController.selectedExercise;
-        
+        NSLog(@"Compelted exercise PRE-SAVE: %@", completedExercise);
+        NSLog(@"Compelted exercise JUST EXERCISE, PRE-SAVE: %@", completedExercise.exercise);
         [completedExercise pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            NSLog(@"Object pinned");
             [self reloadWorkoutData];
         }];
     
-    }
+    } 
     
-    PFUser *user = [PFUser currentUser];
+    //PFUser *user = [PFUser currentUser];
     
     // If the user clicked "Save", then save
     // Adjust this code to work save the set in the cache
@@ -75,7 +80,7 @@
 
 -(void)reloadWorkoutData
 {
-    NSLog(@"Reloading table");
+    NSLog(@"Running custom ReloadWorkoutData method");
     // Get the CompletedExercises in this workout
     PFQuery *query = [CompletedExercise query];
     [query fromLocalDatastore];
@@ -84,6 +89,7 @@
         self.completedExerciseArray = objects;
         [self.tableView reloadData];
         NSLog(@"Finished reloading table");
+        NSLog(@"Completed exercise array: %@",self.completedExerciseArray);
     }];
 }
 
@@ -114,16 +120,16 @@
     
     
     
-    if (indexPath.row + 1 != (self.completedExerciseArray.count + 1))
+    if (indexPath.row + 1 != (self.completedExerciseArray.count + 1)) // Add one to indexPath because it starts at 0; add one to count because we want the "extra" row
     {
         // This is where we put any code related to the actual workout cells
         NSLog(@"Running the completed exercise cell code");
         static NSString *reuseIdentifier = @"WorkoutExercise";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+        CompletedExerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
         
         // THIS MAY BE THE MISSING PIECE
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+            cell = [[CompletedExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
         }
         
         // Configure the cell...
@@ -145,15 +151,16 @@
             cell = [[AddExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
         }
         
-        // Configure the cell...
-        [self configureCell:cell atIndexPath:indexPath];
         return cell;
-     
-    
     }
-    
+}
 
-    
+
+- (void)configureCell:(CompletedExerciseTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    // We will eventually use this to configure the cell
+    NSLog(@"Configure the cell");
+    cell.name.text = [[[self.completedExerciseArray objectAtIndex:indexPath.row] exercise] name];
     
     
 }
@@ -169,17 +176,11 @@
     
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    // We will eventually use this to configure the cell
-    
-    
-}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row + 1 != (self.completedExerciseArray.count + 1)) {
-        // Open the competed exercise view
+        // Open the completed exercise view
     } else {
         // Go to the add exercise view
     }
@@ -208,6 +209,7 @@
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ // TO DO THIS, I'LL NEED A VARIABLE THAT STORES THE CELL #
 }
 */
 
@@ -246,7 +248,12 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
+    if ([segue.identifier isEqual: @"SegueToAddSet"]) {
+        // Send the CompletedExercise over
+#warning Incomplete implementation - must pull CExercise and pass it to set view controller
+        AddSetViewController *destinationViewController = segue.destinationViewController;
+        //destinationViewController.completedExercise =
+    }
     
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

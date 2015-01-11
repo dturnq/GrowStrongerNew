@@ -185,10 +185,10 @@
 		49A632341A532F5200A1A484 /* Record Branch */ = {
 			isa = PBXGroup;
 			children = (
-				49A632311A532F4500A1A484 /* ActiveWorkoutTableViewController.h */,
-				49A632321A532F4500A1A484 /* ActiveWorkoutTableViewController.m */,
 				49A6322E1A532F1400A1A484 /* RecordNewWorkoutViewController.h */,
 				49A6322F1A532F1400A1A484 /* RecordNewWorkoutViewController.m */,
+				49A632311A532F4500A1A484 /* ActiveWorkoutTableViewController.h */,
+				49A632321A532F4500A1A484 /* ActiveWorkoutTableViewController.m */,
 				4969A98A1A5E567600723C22 /* AddSetViewController.h */,
 				4969A98B1A5E567600723C22 /* AddSetViewController.m */,
 				4969A98E1A5E619B00723C22 /* SelectExerciseViewController.h */,

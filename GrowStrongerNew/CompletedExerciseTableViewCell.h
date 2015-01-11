@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CompletedExerciseTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *set1;
 @property (weak, nonatomic) IBOutlet UILabel *set2;
 @property (weak, nonatomic) IBOutlet UILabel *set3;
