@@ -27,6 +27,12 @@
 		4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98B1A5E567600723C22 /* AddSetViewController.m */; };
 		4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */; };
 		49743EFA1A5BB66F00BE6C48 /* AddExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49743EF91A5BB66F00BE6C48 /* AddExerciseTableViewCell.m */; };
+		49A0D1781A62532000D92402 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D1771A62532000D92402 /* PushNoAnimationSegue.m */; };
+		49A0D17B1A62E28700D92402 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D17A1A62E28700D92402 /* TestViewController.m */; };
+		49A0D1881A63214A00D92402 /* HorizontalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D1801A63214A00D92402 /* HorizontalPickerView.m */; };
+		49A0D1891A63214A00D92402 /* HPCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D1821A63214A00D92402 /* HPCollectionVC.m */; };
+		49A0D18A1A63214A00D92402 /* HPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D1841A63214A00D92402 /* HPCollectionViewCell.m */; };
+		49A0D18B1A63214A00D92402 /* HPCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D1861A63214A00D92402 /* HPCollectionViewFlowLayout.m */; };
 		49A6321E1A5298FE00A1A484 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A6321D1A5298FE00A1A484 /* UIKit.framework */; };
 		49A632241A52999800A1A484 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A6321F1A52999800A1A484 /* Bolts.framework */; };
 		49A632251A52999800A1A484 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A632201A52999800A1A484 /* Parse.framework */; };
@@ -50,6 +56,11 @@
 		49A88DDB19BCC5B3008AE306 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A88DB719BCC5B2008AE306 /* Foundation.framework */; };
 		49A88DE419BCC5B3008AE306 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49A88DE219BCC5B3008AE306 /* InfoPlist.strings */; };
 		49A88DE619BCC5B3008AE306 /* GrowStrongerNewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A88DE519BCC5B3008AE306 /* GrowStrongerNewTests.m */; };
+		49C0E7F61A6D8B620072FC0C /* Stopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0E7F51A6D8B620072FC0C /* Stopwatch.m */; };
+		49C0E7FA1A71EA2F0072FC0C /* MKInfoPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0E7F81A71EA2F0072FC0C /* MKInfoPanel.m */; };
+		49C0E7FB1A71EA2F0072FC0C /* MKInfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C0E7F91A71EA2F0072FC0C /* MKInfoPanel.xib */; };
+		49C0E7FF1A71EF4D0072FC0C /* SaveWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0E7FE1A71EF4D0072FC0C /* SaveWorkoutViewController.m */; };
+		49C0E8011A71F8530072FC0C /* Features in Resources */ = {isa = PBXBuildFile; fileRef = 49C0E8001A71F8530072FC0C /* Features */; };
 		49C0F62A1A57954700A79121 /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0F6291A57954700A79121 /* Set.m */; };
 		49C0F62D1A5795BE00A79121 /* CompletedExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0F62C1A5795BE00A79121 /* CompletedExercise.m */; };
 /* End PBXBuildFile section */
@@ -92,6 +103,20 @@
 		4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectExerciseViewController.m; sourceTree = "<group>"; };
 		49743EF81A5BB66F00BE6C48 /* AddExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddExerciseTableViewCell.h; sourceTree = "<group>"; };
 		49743EF91A5BB66F00BE6C48 /* AddExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExerciseTableViewCell.m; sourceTree = "<group>"; };
+		49A0D1761A62532000D92402 /* PushNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNoAnimationSegue.h; sourceTree = "<group>"; };
+		49A0D1771A62532000D92402 /* PushNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNoAnimationSegue.m; sourceTree = "<group>"; };
+		49A0D1791A62E28700D92402 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		49A0D17A1A62E28700D92402 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		49A0D17E1A63214A00D92402 /* HorizontalPickerView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HorizontalPickerView-Prefix.pch"; sourceTree = "<group>"; };
+		49A0D17F1A63214A00D92402 /* HorizontalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalPickerView.h; sourceTree = "<group>"; };
+		49A0D1801A63214A00D92402 /* HorizontalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalPickerView.m; sourceTree = "<group>"; };
+		49A0D1811A63214A00D92402 /* HPCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPCollectionVC.h; sourceTree = "<group>"; };
+		49A0D1821A63214A00D92402 /* HPCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPCollectionVC.m; sourceTree = "<group>"; };
+		49A0D1831A63214A00D92402 /* HPCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPCollectionViewCell.h; sourceTree = "<group>"; };
+		49A0D1841A63214A00D92402 /* HPCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPCollectionViewCell.m; sourceTree = "<group>"; };
+		49A0D1851A63214A00D92402 /* HPCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		49A0D1861A63214A00D92402 /* HPCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		49A0D1871A63214A00D92402 /* HPickerDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPickerDefinitions.h; sourceTree = "<group>"; };
 		49A6321D1A5298FE00A1A484 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49A6321F1A52999800A1A484 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		49A632201A52999800A1A484 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -125,6 +150,14 @@
 		49A88DE119BCC5B3008AE306 /* GrowStrongerNewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrowStrongerNewTests-Info.plist"; sourceTree = "<group>"; };
 		49A88DE319BCC5B3008AE306 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49A88DE519BCC5B3008AE306 /* GrowStrongerNewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowStrongerNewTests.m; sourceTree = "<group>"; };
+		49C0E7F41A6D8B620072FC0C /* Stopwatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stopwatch.h; sourceTree = "<group>"; };
+		49C0E7F51A6D8B620072FC0C /* Stopwatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stopwatch.m; sourceTree = "<group>"; };
+		49C0E7F71A71EA2F0072FC0C /* MKInfoPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKInfoPanel.h; sourceTree = "<group>"; };
+		49C0E7F81A71EA2F0072FC0C /* MKInfoPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKInfoPanel.m; sourceTree = "<group>"; };
+		49C0E7F91A71EA2F0072FC0C /* MKInfoPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKInfoPanel.xib; sourceTree = "<group>"; };
+		49C0E7FD1A71EF4D0072FC0C /* SaveWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveWorkoutViewController.h; sourceTree = "<group>"; };
+		49C0E7FE1A71EF4D0072FC0C /* SaveWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveWorkoutViewController.m; sourceTree = "<group>"; };
+		49C0E8001A71F8530072FC0C /* Features */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Features; sourceTree = "<group>"; };
 		49C0F6281A57954700A79121 /* Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
 		49C0F6291A57954700A79121 /* Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
 		49C0F62B1A5795BE00A79121 /* CompletedExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedExercise.h; sourceTree = "<group>"; };
@@ -171,7 +204,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4969A98D1A5E568100723C22 /* New Group */ = {
+		4969A98D1A5E568100723C22 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				49743EF81A5BB66F00BE6C48 /* AddExerciseTableViewCell.h */,
@@ -179,7 +212,24 @@
 				4969A9871A5D0D2300723C22 /* CompletedExerciseTableViewCell.h */,
 				4969A9881A5D0D2300723C22 /* CompletedExerciseTableViewCell.m */,
 			);
-			name = "New Group";
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		49A0D17D1A63214A00D92402 /* HorizontalPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				49A0D17E1A63214A00D92402 /* HorizontalPickerView-Prefix.pch */,
+				49A0D17F1A63214A00D92402 /* HorizontalPickerView.h */,
+				49A0D1801A63214A00D92402 /* HorizontalPickerView.m */,
+				49A0D1811A63214A00D92402 /* HPCollectionVC.h */,
+				49A0D1821A63214A00D92402 /* HPCollectionVC.m */,
+				49A0D1831A63214A00D92402 /* HPCollectionViewCell.h */,
+				49A0D1841A63214A00D92402 /* HPCollectionViewCell.m */,
+				49A0D1851A63214A00D92402 /* HPCollectionViewFlowLayout.h */,
+				49A0D1861A63214A00D92402 /* HPCollectionViewFlowLayout.m */,
+				49A0D1871A63214A00D92402 /* HPickerDefinitions.h */,
+			);
+			path = HorizontalPickerView;
 			sourceTree = "<group>";
 		};
 		49A632341A532F5200A1A484 /* Record Branch */ = {
@@ -189,11 +239,15 @@
 				49A6322F1A532F1400A1A484 /* RecordNewWorkoutViewController.m */,
 				49A632311A532F4500A1A484 /* ActiveWorkoutTableViewController.h */,
 				49A632321A532F4500A1A484 /* ActiveWorkoutTableViewController.m */,
-				4969A98A1A5E567600723C22 /* AddSetViewController.h */,
-				4969A98B1A5E567600723C22 /* AddSetViewController.m */,
 				4969A98E1A5E619B00723C22 /* SelectExerciseViewController.h */,
 				4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */,
-				4969A98D1A5E568100723C22 /* New Group */,
+				4969A98A1A5E567600723C22 /* AddSetViewController.h */,
+				4969A98B1A5E567600723C22 /* AddSetViewController.m */,
+				49C0E7FD1A71EF4D0072FC0C /* SaveWorkoutViewController.h */,
+				49C0E7FE1A71EF4D0072FC0C /* SaveWorkoutViewController.m */,
+				49C0E7F41A6D8B620072FC0C /* Stopwatch.h */,
+				49C0E7F51A6D8B620072FC0C /* Stopwatch.m */,
+				4969A98D1A5E568100723C22 /* Cells */,
 			);
 			name = "Record Branch";
 			sourceTree = "<group>";
@@ -231,6 +285,8 @@
 				49A88DC719BCC5B3008AE306 /* AppDelegate.m */,
 				4907183A19BCCC910075936F /* TabBarViewController.h */,
 				4907183819BCCBAC0075936F /* TabBarViewController.m */,
+				49A0D1761A62532000D92402 /* PushNoAnimationSegue.h */,
+				49A0D1771A62532000D92402 /* PushNoAnimationSegue.m */,
 			);
 			name = "Base App";
 			sourceTree = "<group>";
@@ -248,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				4922BAA11A5263E300EE8568 /* File */,
+				49C0E8001A71F8530072FC0C /* Features */,
 				49A88DBD19BCC5B3008AE306 /* GrowStrongerNew */,
 				49A88DDF19BCC5B3008AE306 /* GrowStrongerNewTests */,
 				49A88DB619BCC5B2008AE306 /* Frameworks */,
@@ -296,12 +353,16 @@
 			isa = PBXGroup;
 			children = (
 				49A88DC919BCC5B3008AE306 /* Main.storyboard */,
+				49A0D1791A62E28700D92402 /* TestViewController.h */,
+				49A0D17A1A62E28700D92402 /* TestViewController.m */,
 				49A632381A53319C00A1A484 /* Feed Branch */,
 				49A632341A532F5200A1A484 /* Record Branch */,
 				49A632351A532F5B00A1A484 /* Object Subclassing */,
 				49A632361A532F6F00A1A484 /* Exercise Branch */,
 				49A632371A532F7C00A1A484 /* Base App */,
 				49A88DD219BCC5B3008AE306 /* Images.xcassets */,
+				49C0E7FC1A71EA380072FC0C /* MKInfoPanel */,
+				49A0D17D1A63214A00D92402 /* HorizontalPickerView */,
 				49A88DBE19BCC5B3008AE306 /* Supporting Files */,
 			);
 			path = GrowStrongerNew;
@@ -335,6 +396,16 @@
 				49A88DE219BCC5B3008AE306 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49C0E7FC1A71EA380072FC0C /* MKInfoPanel */ = {
+			isa = PBXGroup;
+			children = (
+				49C0E7F71A71EA2F0072FC0C /* MKInfoPanel.h */,
+				49C0E7F81A71EA2F0072FC0C /* MKInfoPanel.m */,
+				49C0E7F91A71EA2F0072FC0C /* MKInfoPanel.xib */,
+			);
+			name = MKInfoPanel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,9 +487,11 @@
 			files = (
 				4922BAA21A5263E300EE8568 /* File in Resources */,
 				49A88DD319BCC5B3008AE306 /* Images.xcassets in Resources */,
+				49C0E7FB1A71EA2F0072FC0C /* MKInfoPanel.xib in Resources */,
 				49A6322D1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg in Resources */,
 				49A88DC219BCC5B3008AE306 /* InfoPlist.strings in Resources */,
 				49A88DCB19BCC5B3008AE306 /* Main.storyboard in Resources */,
+				49C0E8011A71F8530072FC0C /* Features in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,16 +515,25 @@
 				4907183919BCCBAC0075936F /* TabBarViewController.m in Sources */,
 				49743EFA1A5BB66F00BE6C48 /* AddExerciseTableViewCell.m in Sources */,
 				49A632301A532F1400A1A484 /* RecordNewWorkoutViewController.m in Sources */,
+				49A0D1881A63214A00D92402 /* HorizontalPickerView.m in Sources */,
 				4969A9891A5D0D2300723C22 /* CompletedExerciseTableViewCell.m in Sources */,
+				49C0E7FF1A71EF4D0072FC0C /* SaveWorkoutViewController.m in Sources */,
+				49A0D17B1A62E28700D92402 /* TestViewController.m in Sources */,
+				49A0D1891A63214A00D92402 /* HPCollectionVC.m in Sources */,
 				49C0F62D1A5795BE00A79121 /* CompletedExercise.m in Sources */,
 				4931CD8F1A526CF4000DCDE0 /* AddExerciseViewController.m in Sources */,
 				49A6323B1A5331C300A1A484 /* FeedPFQViewController.m in Sources */,
+				49C0E7FA1A71EA2F0072FC0C /* MKInfoPanel.m in Sources */,
 				4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */,
+				49A0D1781A62532000D92402 /* PushNoAnimationSegue.m in Sources */,
+				49C0E7F61A6D8B620072FC0C /* Stopwatch.m in Sources */,
 				49A6322B1A52A27A00A1A484 /* Exercise.m in Sources */,
 				49C0F62A1A57954700A79121 /* Set.m in Sources */,
+				49A0D18B1A63214A00D92402 /* HPCollectionViewFlowLayout.m in Sources */,
 				49A88DC419BCC5B3008AE306 /* main.m in Sources */,
 				492DF8721A526170006C6EC5 /* ExerciseListViewController.m in Sources */,
 				4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */,
+				49A0D18A1A63214A00D92402 /* HPCollectionViewCell.m in Sources */,
 				49A6323E1A53340100A1A484 /* Workout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

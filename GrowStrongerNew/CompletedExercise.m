@@ -21,13 +21,15 @@
 
 @dynamic user;
 
+@dynamic position;
+
 @dynamic totalSets;
 @dynamic totalReps;
 @dynamic totalWeight;
 
 @dynamic maxWeight;
-@dynamic maxReps;
-@dynamic maxTotalWeightInASet;
+@dynamic repsInMaxWeight;
+
 
 @dynamic workout;
 @dynamic exercise;

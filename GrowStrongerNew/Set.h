@@ -21,11 +21,7 @@
 @property (retain) NSNumber *reps;
 @property (retain) NSNumber *weight;
 @property (retain) NSNumber *totalWeight;
-
-
-@property (retain) NSDate *beganAt;
-@property (retain) NSDate *completedAt;
-
+@property (retain) NSDate *timeStamp;
 
 @property (retain) Workout *workout;
 @property (retain) CompletedExercise *completedExercise;

@@ -1,25 +1,32 @@
+TODAY:
+- Make save work
+- Allow deep-dive into a saved workout
+
+
 Mandatory functionality during launch
 - Make the login screen look like the other screens
-- Ask for confirmation before cancelling workout
-- When a workout is cancelled, delete the workout
-- Automatically go to the current workout page if there is a current workout
+- When saving a workout, make it auto-enter "Early morning workout", "Morning workout", "Lunch workout", ""Afternoon workout", "Evening workout", "Night workout"
+
 - Edit exercises
+- Reorder exercises in a workout Mailbox-style
+- Edit or delete by swiping the CE to obtain edit / delete options
 - Add visual feedback when an exercise is saved
 
 - Save workouts
 - View workouts
 - Medals for records
-- Add exercises to a workout
-- Add sets / reps to a workout
+
+- Add timer to the primary recording page
 
 Additional that we need quickly
 - Log in without Faceook
 - Search for and add friends
 - View friend feed
+- Add some kind of note when there's no internet / "I give up" notification"'
 
 Even lower priority
 - Post to Twitter
-
+- Cache exercises so that you can add them when you're offline'
 
 
 COMPLETED
@@ -27,7 +34,13 @@ COMPLETED
 - Add exercises
 - Start workouts
 - Explain calisthenics
-
+- Ask for confirmation before cancelling workout
+- When a workout is cancelled, delete the workout
+- Add exercises to a workout
+- Add sets / reps to a workout
+- Automatically go to the current workout page if there is a current workout
+- Timer
+- Timer needs to persist between sessions (esp. the total workout timer)
 
 /// ORIGINAL COMMENTS
 Mandatory functionality during launch

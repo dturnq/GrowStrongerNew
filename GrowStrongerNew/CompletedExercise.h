@@ -16,14 +16,14 @@
 
 @property (retain) PFUser *user;
 
+@property (retain) NSNumber *position;
+
 @property (retain) NSNumber *totalSets;
 @property (retain) NSNumber *totalReps;
 @property (retain) NSNumber *totalWeight;
 
 @property (retain) NSNumber *maxWeight;
-@property (retain) NSNumber *maxReps;
-@property (retain) NSNumber *maxTotalWeightInASet;
-
+@property (retain) NSNumber *repsInMaxWeight;
 
 @property (retain) Workout *workout;
 @property (retain) Exercise *exercise;

@@ -11,4 +11,9 @@
 
 @interface FeedPFQViewController : PFQueryTableViewController
 
+
+-(void)saveWorkouts;
+
+
+
 @end

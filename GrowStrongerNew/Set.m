@@ -24,10 +24,7 @@
 @dynamic reps;
 @dynamic weight;
 @dynamic totalWeight;
-
-
-@dynamic beganAt;
-@dynamic completedAt;
+@dynamic timeStamp;
 
 
 @dynamic workout;

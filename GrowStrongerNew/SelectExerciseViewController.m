@@ -98,6 +98,7 @@
 
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
+    [PFObject pinAllInBackground:self.objects];
     
     // This method is called every time objects are loaded from Parse via the PFQuery
 }
@@ -209,7 +210,6 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
     self.selectedExercise = [self.objects objectAtIndex:indexPath.row];
-    NSLog(@"Select view: self.selectedexercise: %@", self.selectedExercise);
     [self performSegueWithIdentifier:@"SelectExercise" sender:self];
     
     

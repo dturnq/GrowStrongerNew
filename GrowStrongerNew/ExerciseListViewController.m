@@ -115,6 +115,7 @@
 
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
+    [PFObject pinAllInBackground:self.objects];
     
     // This method is called every time objects are loaded from Parse via the PFQuery
 }

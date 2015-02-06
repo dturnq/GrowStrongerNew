@@ -7,8 +7,16 @@
 //
 
 #import "FeedPFQViewController.h"
+#import "Workout.h"
+#import "CompletedExercise.h"
+#import "Set.h"
+#import "MKInfoPanel.h"
 
 @interface FeedPFQViewController ()
+
+@property BOOL isSavingSets;
+@property BOOL isSavingCEs;
+@property BOOL isSavingWorkouts;
 
 @end
 
@@ -19,6 +27,8 @@
     
     // If the user clicked "Save", then save
     if ([unwindSegue.identifier  isEqual: @"UnwindToFeed"]) {
+        // Save the workout
+        
     }
     
 }
@@ -54,6 +64,8 @@
 }
 
 
+
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
@@ -64,6 +76,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
 }
 
 - (void)viewDidUnload {
@@ -78,6 +91,16 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    //[self saveWorkouts];
+    
+    /*
+    [MKInfoPanel showPanelInView:self.view
+                            type:MKInfoPanelTypeError
+                           title:@"Device offline"
+                        subtitle:@"Workouts will be synced as soon as a network connection becomes available."
+                       hideAfter:4];
+     */
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -91,6 +114,131 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Save Workouts
+
+
+-(void)saveWorkouts {
+    /*
+    
+    NSLog(@"Called saving method");
+    self.isSavingSets = YES;
+    self.isSavingCEs = YES;
+    self.isSavingWorkouts = YES;
+    
+    PFQuery *querySets = [Set query];
+    [querySets fromLocalDatastore];
+    [querySets whereKey:@"active" equalTo:@"Unsaved"];
+    [querySets orderByAscending:@"beganAt"];
+    [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        
+        if (!error) {
+            NSLog(@"Found sets to save: %@", objects);
+            [PFObject saveAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
+                NSLog(@"Saved sets: %@", objects);
+                self.isSavingSets = NO;
+            }];
+        } else {
+            self.isSavingSets = NO;
+        }
+    }];
+    
+    PFQuery *queryCEs = [CompletedExercise query];
+    [queryCEs fromLocalDatastore];
+    [queryCEs whereKey:@"active" equalTo:@"Unsaved"];
+    [queryCEs orderByAscending:@"beganAt"];
+    [queryCEs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"Found CEs to save: %@", objects);
+            [PFObject saveAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
+                NSLog(@"Saved CEs: %@", objects);
+                self.isSavingCEs = NO;
+            }];
+        } else {
+            self.isSavingCEs = NO;
+        }
+    }];
+    
+    PFQuery *queryWorkouts = [Workout query];
+    [queryWorkouts fromLocalDatastore];
+    [queryWorkouts whereKey:@"active" equalTo:@"Unsaved"];
+    [queryWorkouts orderByAscending:@"beganAt"];
+    [queryWorkouts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"Found wokrouts to save: %@", objects);
+            [PFObject saveAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
+                NSLog(@"Saved workouts: %@", objects);
+                for (Workout *workout in objects) {
+                    workout.active = @"Saved";
+                    [workout pin];
+                    [workout saveInBackground];
+                }
+                NSLog(@"Workouts de-activated: %@",objects);
+                self.isSavingWorkouts = NO;
+            }];
+        } else {
+            self.isSavingWorkouts = YES;
+        }
+    }];
+    */
+    /*
+    PFQuery *query = [Workout query];
+    [query fromLocalDatastore];
+    [query whereKey:@"active" equalTo:@"Unsaved"];
+    [query orderByDescending:@"beganAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        for (Workout *workout in objects) {
+            PFQuery *querySets = [Set query];
+            [querySets fromLocalDatastore];
+            [querySets whereKey:@"workout" equalTo:workout];
+            [querySets findObjectsInBackgroundWithBlock:^(NSArray *setArray, NSError *error) {
+                
+                if (!error) {
+                    [PFObject saveAllInBackground:setArray block:^(BOOL succeeded, NSError *error) {
+                        
+                        if (!error) {
+                            PFQuery *queryCEs = [CompletedExercise query];
+                            [queryCEs fromLocalDatastore];
+                            [queryCEs whereKey:@"workout" equalTo:workout];
+                            [queryCEs findObjectsInBackgroundWithBlock:^(NSArray *cEArray, NSError *error) {
+                                
+                                if (!error) {
+                                    [PFObject saveAllInBackground:cEArray block:^(BOOL succeeded, NSError *error) {
+                                        
+                                        if (!error) {
+                                            [workout saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                                workout.active = @"Saved";
+                                                [workout pin];
+                                                [workout saveInBackground];
+                                            }];
+                                        } else {
+                                            NSLog(@"Error: %@", error);
+                                        }
+                                        
+                                    }];
+                                } else {
+                                    NSLog(@"Error: %@", error);
+                                }
+                                
+                            }];
+                        } else {
+                            NSLog(@"Error: %@", error);
+                        }
+                        
+                    }];
+                } else {
+                    NSLog(@"Error: %@", error);
+                }
+                
+            }];
+            
+        }
+    }];
+     */
+    
 }
 
 
