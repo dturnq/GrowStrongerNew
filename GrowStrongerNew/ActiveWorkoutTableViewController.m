@@ -71,7 +71,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"Active Workout: %@", self.activeWorkout);
+    //NSLog(@"Active Workout: %@", self.activeWorkout);
 }
 
 #pragma mark - Background Methods

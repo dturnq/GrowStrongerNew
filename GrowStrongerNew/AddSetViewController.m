@@ -47,21 +47,21 @@
     // Update the buttons & picker with the last set
     PFQuery *query = [Set query];
     
-    NSLog(@"Part 2: set page query CE: %@", self.completedExercise);
-    NSLog(@"Part 2: set page query E: %@", self.completedExercise.exercise.name);
+    //NSLog(@"Part 2: set page query CE: %@", self.completedExercise);
+    //NSLog(@"Part 2: set page query E: %@", self.completedExercise.exercise.name);
     
     [query whereKey:@"completedExercise" equalTo:self.completedExercise];
     [query fromLocalDatastore];
     [query addAscendingOrder:@"timeStamp"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Objects: %@", objects);
+        //NSLog(@"Objects: %@", objects);
         if (objects.count == 0) {
             [self.weight setTitle:@"25" forState:UIControlStateNormal];
             [self.reps setTitle:@"12" forState:UIControlStateNormal];
             [self.horizontalPickerView selectRow:25 animated:YES];
         } else {
             Set *lastSet = [objects lastObject];
-            NSLog(@"Last Object created at: %@", lastSet.createdAt);
+            //NSLog(@"Last Object created at: %@", lastSet.createdAt);
             [self.weight setTitle:[lastSet.weight stringValue] forState:UIControlStateNormal];
             [self.reps setTitle:[lastSet.reps stringValue] forState:UIControlStateNormal];
             [self.horizontalPickerView selectRow:[lastSet.weight intValue] animated:YES];
@@ -97,7 +97,7 @@
     int heightLab = 18;
     
     long setCount = [setArray count];
-    NSLog(@"setCount: %ld", setCount);
+    //NSLog(@"setCount: %ld", setCount);
     
     
     
@@ -126,9 +126,9 @@
     UILabel *label[setCount];
     NSMutableString *text[setCount];
     
-    NSLog(@"Starting loop through setcount");
+    //NSLog(@"Starting loop through setcount");
     for (int i=0; (i < setCount) & (i < 9); i++) {
-        NSLog(@"Interating through loop: i = %u", i);
+        //NSLog(@"Interating through loop: i = %u", i);
         if (i == 0) {yLab = yLab + 2;};
         
         yLab = yLab + 20;
@@ -349,8 +349,8 @@
         
         Stopwatch *stopwatch = [[Stopwatch alloc] init];
         [stopwatch setSetStartTime:now];
-        NSLog(@"Part 3: Saved set CE: %@", newSet.completedExercise);
-        NSLog(@"Part 3: Saved set E: %@", newSet.exercise.name);
+        //NSLog(@"Part 3: Saved set CE: %@", newSet.completedExercise);
+        //NSLog(@"Part 3: Saved set E: %@", newSet.exercise.name);
     }
     
     

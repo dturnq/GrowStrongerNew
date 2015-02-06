@@ -23,6 +23,7 @@
 		4931CD8F1A526CF4000DCDE0 /* AddExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4931CD8E1A526CF4000DCDE0 /* AddExerciseViewController.m */; };
 		4931CD951A527E02000DCDE0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4931CD941A527E02000DCDE0 /* libsqlite3.dylib */; };
 		4931CDA11A5281C6000DCDE0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4931CDA01A5281C5000DCDE0 /* FacebookSDK.framework */; };
+		493ABEC71A847C2400F5583B /* Growth in Resources */ = {isa = PBXBuildFile; fileRef = 493ABEC61A847C2400F5583B /* Growth */; };
 		4969A9891A5D0D2300723C22 /* CompletedExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A9881A5D0D2300723C22 /* CompletedExerciseTableViewCell.m */; };
 		4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98B1A5E567600723C22 /* AddSetViewController.m */; };
 		4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */; };
@@ -95,6 +96,7 @@
 		4931CD8E1A526CF4000DCDE0 /* AddExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExerciseViewController.m; sourceTree = "<group>"; };
 		4931CD941A527E02000DCDE0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4931CDA01A5281C5000DCDE0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		493ABEC61A847C2400F5583B /* Growth */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Growth; sourceTree = "<group>"; };
 		4969A9871A5D0D2300723C22 /* CompletedExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedExerciseTableViewCell.h; sourceTree = "<group>"; };
 		4969A9881A5D0D2300723C22 /* CompletedExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedExerciseTableViewCell.m; sourceTree = "<group>"; };
 		4969A98A1A5E567600723C22 /* AddSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSetViewController.h; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				4922BAA11A5263E300EE8568 /* File */,
+				493ABEC61A847C2400F5583B /* Growth */,
 				49C0E8001A71F8530072FC0C /* Features */,
 				49A88DBD19BCC5B3008AE306 /* GrowStrongerNew */,
 				49A88DDF19BCC5B3008AE306 /* GrowStrongerNewTests */,
@@ -486,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4922BAA21A5263E300EE8568 /* File in Resources */,
+				493ABEC71A847C2400F5583B /* Growth in Resources */,
 				49A88DD319BCC5B3008AE306 /* Images.xcassets in Resources */,
 				49C0E7FB1A71EA2F0072FC0C /* MKInfoPanel.xib in Resources */,
 				49A6322D1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg in Resources */,

@@ -60,7 +60,7 @@
 
         }];
     } else if ([unwindSegue.identifier isEqual:@"SaveWorkout"]) {
-        NSLog(@"SAVING WORKOUT");
+        NSLog(@"Perform segue to Save Workout // nameing modal view");
         
         // Jump to the feed view
         self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];

@@ -14,6 +14,7 @@
 
 @interface FeedPFQViewController ()
 
+@property BOOL isSaving;
 @property BOOL isSavingSets;
 @property BOOL isSavingCEs;
 @property BOOL isSavingWorkouts;
@@ -92,7 +93,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    //[self saveWorkouts];
+    NSLog(@"View Did Appear was called");
+    
+    if (!self.isSaving) {
+        [self saveWorkouts];
+    }
+    
     
     /*
     [MKInfoPanel showPanelInView:self.view
@@ -118,8 +124,30 @@
 
 #pragma mark - Save Workouts
 
+-(void)saveWorkout:(Workout *)activeWorkout {
+    
+}
 
 -(void)saveWorkouts {
+    self.isSaving = YES;
+    
+    
+    
+    dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0);
+    
+
+    //dispatch_queue_create("My Queue", NULL);
+    dispatch_async(myQueue, ^{
+        // Perform long running process
+        
+        
+        
+        // Return to main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+        });
+    });
+    
     /*
     
     NSLog(@"Called saving method");
@@ -132,8 +160,8 @@
     [querySets whereKey:@"active" equalTo:@"Unsaved"];
     [querySets orderByAscending:@"beganAt"];
     [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        
+     
+     
         if (!error) {
             NSLog(@"Found sets to save: %@", objects);
             [PFObject saveAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
@@ -356,6 +384,9 @@
  return YES;
  }
  */
+
+
+
 
 #pragma mark - UITableViewDelegate
 

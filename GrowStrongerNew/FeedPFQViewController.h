@@ -8,11 +8,14 @@
 
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import "Workout.h"
 
 @interface FeedPFQViewController : PFQueryTableViewController
 
 
 -(void)saveWorkouts;
+
+-(void)saveWorkout:(Workout *)activeWorkout;
 
 
 
