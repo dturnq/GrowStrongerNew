@@ -25,6 +25,10 @@
 @property (retain) NSNumber *maxWeight;
 @property (retain) NSNumber *repsInMaxWeight;
 
+@property (retain) NSString *active;
+
+@property BOOL pr;
+
 @property (retain) Workout *workout;
 @property (retain) Exercise *exercise;
 

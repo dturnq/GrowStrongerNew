@@ -38,6 +38,11 @@
         completedExercise.user = user;
         completedExercise.workout = self.activeWorkout;
         completedExercise.exercise = selectExerciseViewController.selectedExercise;
+        completedExercise.maxWeight = [NSNumber numberWithInt:0];
+        completedExercise.totalWeight = [NSNumber numberWithInt:0];
+        completedExercise.totalSets = [NSNumber numberWithInt:0];
+        completedExercise.totalReps = [NSNumber numberWithInt:0];
+        completedExercise.active = @"Active";
         completedExercise.position = self.activeWorkout.totalCompletedExercises;
         [completedExercise pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [self reloadWorkoutData];

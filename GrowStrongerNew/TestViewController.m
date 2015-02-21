@@ -111,4 +111,25 @@
     }];
     
 }
+
+- (IBAction)testOrder:(id)sender {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"OrderTest"];
+    [query orderByAscending:@"A"];
+    [query orderByAscending:@"B"];
+    NSArray *array = [query findObjects];
+    NSLog(@"query result: %@", array);
+}
+
+- (IBAction)testSaveEventually:(id)sender {
+    
+    PFObject *object = [PFObject objectWithClassName:@"SaveEventuallyTest"];
+    object[@"myVar"] = @"Test";
+    [object pin];
+    [object saveEventually];
+    object[@"myVar"] = @"UpdatedValue";
+    object[@"newVar"] = @"Test2";
+    [object pin];
+    [object saveEventually];
+}
 @end

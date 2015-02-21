@@ -147,6 +147,8 @@
             [self performSegueWithIdentifier:@"ContinueWorkout" sender:self];
         }
     }];
+    
+    
      
 }
 
@@ -175,6 +177,10 @@
         activeWorkout.beganAt = now;
         activeWorkout.active = @"Active";
         activeWorkout.totalCompletedExercises = [NSNumber numberWithInt:0];
+        activeWorkout.totalSets = [NSNumber numberWithInt:0];
+        activeWorkout.totalReps = [NSNumber numberWithInt:0];
+        activeWorkout.totalWeight = [NSNumber numberWithInt:0];
+
         
         // Pin the workout
         [activeWorkout pinInBackground];

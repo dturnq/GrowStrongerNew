@@ -25,7 +25,10 @@
 @dynamic weight;
 @dynamic totalWeight;
 @dynamic timeStamp;
-@dynamic bestSet;
+
+@dynamic active;
+@dynamic pr;
+
 
 @dynamic workout;
 @dynamic completedExercise;

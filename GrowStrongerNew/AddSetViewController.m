@@ -345,6 +345,7 @@
         newSet.completedExercise = self.completedExercise;
         newSet.exercise = self.completedExercise.exercise;
         newSet.timeStamp = now;
+        newSet.active = @"Active";
         [newSet pinInBackground];
         
         Stopwatch *stopwatch = [[Stopwatch alloc] init];

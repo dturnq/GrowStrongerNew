@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <scenes>
-        <!--Exercise List View Controller-->
+        <!--Exercises-->
         <scene sceneID="3QF-hE-KTU">
             <objects>
                 <tableViewController id="JCN-5A-YLp" customClass="ExerciseListViewController" sceneMemberID="viewController">
@@ -27,7 +27,7 @@
                             <outlet property="delegate" destination="JCN-5A-YLp" id="uVl-J5-ZT6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="cSb-r8-5EP">
+                    <navigationItem key="navigationItem" title="Exercises" id="cSb-r8-5EP">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="09Q-nw-Qxz">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="VRZ-7q-y7U">
                                 <rect key="frame" x="282" y="11" width="22" height="22"/>
@@ -68,10 +68,96 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Feed" id="pjD-G7-wKO"/>
+                    <connections>
+                        <segue destination="Lam-ak-sqW" kind="push" identifier="ViewWorkoutDetails" id="3ov-ev-xF9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dV8-h8-erW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1149" y="441"/>
+            <point key="canvasLocation" x="1170" y="441"/>
+        </scene>
+        <!--Workout Summary-->
+        <scene sceneID="00X-gQ-nyS">
+            <objects>
+                <tableViewController id="Lam-ak-sqW" customClass="WorkoutDetailsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="149" sectionHeaderHeight="22" sectionFooterHeight="22" id="zN1-sR-xTn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutDetailHeaderCell" rowHeight="150" id="Fip-GQ-VGx" customClass="WorkoutDetailHeaderTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fip-GQ-VGx" id="X5Y-IE-i7D">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPH-Cv-1ge">
+                                            <rect key="frame" x="17" y="16" width="112" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sets: X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-SP-Pgu">
+                                            <rect key="frame" x="17" y="52" width="55" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reps: X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLd-2C-GPz">
+                                            <rect key="frame" x="17" y="81" width="60" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total weight: X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsh-t8-pta">
+                                            <rect key="frame" x="97" y="52" width="112" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# PRs: X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdA-VM-ZlL">
+                                            <rect key="frame" x="97" y="81" width="66" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="prCountLabel" destination="EdA-VM-ZlL" id="HAZ-WH-dmZ"/>
+                                    <outlet property="repsLabel" destination="LLd-2C-GPz" id="yEI-Bs-sbL"/>
+                                    <outlet property="setsLabel" destination="Gpw-SP-Pgu" id="eKi-Fv-DQg"/>
+                                    <outlet property="totalWeightLabel" destination="wsh-t8-pta" id="bV5-UV-Z3p"/>
+                                    <outlet property="workoutNameLabel" destination="WPH-Cv-1ge" id="uyA-Jl-Ivn"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutDetailCECell" rowHeight="75" id="lV6-7F-ISp" customClass="WorkoutDetailCETableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lV6-7F-ISp" id="Tii-5e-g5c">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exercise name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLE-WP-Gvz">
+                                            <rect key="frame" x="17" y="16" width="113" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ceNameLabel" destination="NLE-WP-Gvz" id="Cyf-q7-Km3"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Lam-ak-sqW" id="H29-xr-KYw"/>
+                            <outlet property="delegate" destination="Lam-ak-sqW" id="b3S-rn-0As"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Workout Summary" id="wNw-mt-PHB"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBa-SC-pef" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1585" y="441"/>
         </scene>
         <!--Add Exercise View Controller-->
         <scene sceneID="FQP-cc-s9Z">
@@ -600,6 +686,24 @@
                                 </state>
                                 <connections>
                                     <action selector="saveObjectTestAction:" destination="ZBB-fC-cTN" eventType="touchUpInside" id="ck4-Lu-gt9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vo-kP-6zq">
+                                <rect key="frame" x="137" y="400" width="69" height="30"/>
+                                <state key="normal" title="Test order">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testOrder:" destination="ZBB-fC-cTN" eventType="touchUpInside" id="73m-lI-MvD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBO-RQ-JPM">
+                                <rect key="frame" x="99" y="455" width="135" height="30"/>
+                                <state key="normal" title="Test Saveeventually">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testSaveEventually:" destination="ZBB-fC-cTN" eventType="touchUpInside" id="g4X-UL-RFV"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -28,6 +28,9 @@
 		4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98B1A5E567600723C22 /* AddSetViewController.m */; };
 		4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */; };
 		49743EFA1A5BB66F00BE6C48 /* AddExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49743EF91A5BB66F00BE6C48 /* AddExerciseTableViewCell.m */; };
+		497F38EE1A8B14790064C0E7 /* WorkoutDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497F38ED1A8B14790064C0E7 /* WorkoutDetailsTableViewController.m */; };
+		497F38F11A8B277B0064C0E7 /* WorkoutDetailHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 497F38F01A8B277B0064C0E7 /* WorkoutDetailHeaderTableViewCell.m */; };
+		497F38F41A8B31DC0064C0E7 /* WorkoutDetailCETableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 497F38F31A8B31DC0064C0E7 /* WorkoutDetailCETableViewCell.m */; };
 		49A0D1781A62532000D92402 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D1771A62532000D92402 /* PushNoAnimationSegue.m */; };
 		49A0D17B1A62E28700D92402 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D17A1A62E28700D92402 /* TestViewController.m */; };
 		49A0D1881A63214A00D92402 /* HorizontalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A0D1801A63214A00D92402 /* HorizontalPickerView.m */; };
@@ -89,6 +92,7 @@
 		4907183819BCCBAC0075936F /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		4907183A19BCCC910075936F /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		4907183B19BCCE660075936F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		491634591A984F630087E688 /* GlobalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalHeader.h; sourceTree = "<group>"; };
 		4922BAA11A5263E300EE8568 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		492DF8701A526170006C6EC5 /* ExerciseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListViewController.h; sourceTree = "<group>"; };
 		492DF8711A526170006C6EC5 /* ExerciseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListViewController.m; sourceTree = "<group>"; };
@@ -105,6 +109,12 @@
 		4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectExerciseViewController.m; sourceTree = "<group>"; };
 		49743EF81A5BB66F00BE6C48 /* AddExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddExerciseTableViewCell.h; sourceTree = "<group>"; };
 		49743EF91A5BB66F00BE6C48 /* AddExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExerciseTableViewCell.m; sourceTree = "<group>"; };
+		497F38EC1A8B14790064C0E7 /* WorkoutDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailsTableViewController.h; sourceTree = "<group>"; };
+		497F38ED1A8B14790064C0E7 /* WorkoutDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailsTableViewController.m; sourceTree = "<group>"; };
+		497F38EF1A8B277B0064C0E7 /* WorkoutDetailHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailHeaderTableViewCell.h; sourceTree = "<group>"; };
+		497F38F01A8B277B0064C0E7 /* WorkoutDetailHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailHeaderTableViewCell.m; sourceTree = "<group>"; };
+		497F38F21A8B31DC0064C0E7 /* WorkoutDetailCETableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailCETableViewCell.h; sourceTree = "<group>"; };
+		497F38F31A8B31DC0064C0E7 /* WorkoutDetailCETableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailCETableViewCell.m; sourceTree = "<group>"; };
 		49A0D1761A62532000D92402 /* PushNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNoAnimationSegue.h; sourceTree = "<group>"; };
 		49A0D1771A62532000D92402 /* PushNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNoAnimationSegue.m; sourceTree = "<group>"; };
 		49A0D1791A62E28700D92402 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -285,6 +295,7 @@
 			children = (
 				49A88DC619BCC5B3008AE306 /* AppDelegate.h */,
 				49A88DC719BCC5B3008AE306 /* AppDelegate.m */,
+				491634591A984F630087E688 /* GlobalHeader.h */,
 				4907183A19BCCC910075936F /* TabBarViewController.h */,
 				4907183819BCCBAC0075936F /* TabBarViewController.m */,
 				49A0D1761A62532000D92402 /* PushNoAnimationSegue.h */,
@@ -298,6 +309,12 @@
 			children = (
 				49A632391A5331C300A1A484 /* FeedPFQViewController.h */,
 				49A6323A1A5331C300A1A484 /* FeedPFQViewController.m */,
+				497F38EC1A8B14790064C0E7 /* WorkoutDetailsTableViewController.h */,
+				497F38ED1A8B14790064C0E7 /* WorkoutDetailsTableViewController.m */,
+				497F38EF1A8B277B0064C0E7 /* WorkoutDetailHeaderTableViewCell.h */,
+				497F38F01A8B277B0064C0E7 /* WorkoutDetailHeaderTableViewCell.m */,
+				497F38F21A8B31DC0064C0E7 /* WorkoutDetailCETableViewCell.h */,
+				497F38F31A8B31DC0064C0E7 /* WorkoutDetailCETableViewCell.m */,
 			);
 			name = "Feed Branch";
 			sourceTree = "<group>";
@@ -520,11 +537,14 @@
 				49743EFA1A5BB66F00BE6C48 /* AddExerciseTableViewCell.m in Sources */,
 				49A632301A532F1400A1A484 /* RecordNewWorkoutViewController.m in Sources */,
 				49A0D1881A63214A00D92402 /* HorizontalPickerView.m in Sources */,
+				497F38F41A8B31DC0064C0E7 /* WorkoutDetailCETableViewCell.m in Sources */,
 				4969A9891A5D0D2300723C22 /* CompletedExerciseTableViewCell.m in Sources */,
 				49C0E7FF1A71EF4D0072FC0C /* SaveWorkoutViewController.m in Sources */,
+				497F38EE1A8B14790064C0E7 /* WorkoutDetailsTableViewController.m in Sources */,
 				49A0D17B1A62E28700D92402 /* TestViewController.m in Sources */,
 				49A0D1891A63214A00D92402 /* HPCollectionVC.m in Sources */,
 				49C0F62D1A5795BE00A79121 /* CompletedExercise.m in Sources */,
+				497F38F11A8B277B0064C0E7 /* WorkoutDetailHeaderTableViewCell.m in Sources */,
 				4931CD8F1A526CF4000DCDE0 /* AddExerciseViewController.m in Sources */,
 				49A6323B1A5331C300A1A484 /* FeedPFQViewController.m in Sources */,
 				49C0E7FA1A71EA2F0072FC0C /* MKInfoPanel.m in Sources */,

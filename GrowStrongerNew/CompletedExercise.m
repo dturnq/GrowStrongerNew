@@ -30,6 +30,9 @@
 @dynamic maxWeight;
 @dynamic repsInMaxWeight;
 
+@dynamic active;
+
+@dynamic pr;
 
 @dynamic workout;
 @dynamic exercise;

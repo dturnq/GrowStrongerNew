@@ -17,6 +17,17 @@
 
 -(void)saveWorkout:(Workout *)activeWorkout;
 
+-(void)saveWorkouts2;
+
+-(void)processSetsInWorkout:(Workout *)workout;
+
+-(void)prCheck:(Workout *)workout;
+
+-(NSString *)calcPRsInWorkout:(Workout *)workout;
+
+-(void)finalSave:(Workout *)workout;
+
+@property (strong, nonatomic) Workout *selectedWorkout;
 
 
 @end

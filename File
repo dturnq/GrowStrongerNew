@@ -1,6 +1,10 @@
+Bugs
+
+
+
+
 TODAY:
-- Make save work
-- Allow deep-dive into a saved workout
+- Make the save function also update the workout/CE stats
 
 
 Mandatory functionality during launch
@@ -12,9 +16,9 @@ Mandatory functionality during launch
 - Edit or delete by swiping the CE to obtain edit / delete options
 - Add visual feedback when an exercise is saved
 
-- Save workouts
-- View workouts
-- Medals for records
+- view workout details
+- Visually attractive summaries at workout, etc level
+
 
 - Add timer to the primary recording page
 
@@ -41,6 +45,9 @@ COMPLETED
 - Automatically go to the current workout page if there is a current workout
 - Timer
 - Timer needs to persist between sessions (esp. the total workout timer)
+- Save workouts
+- View workouts
+- Medals for records
 
 /// ORIGINAL COMMENTS
 Mandatory functionality during launch

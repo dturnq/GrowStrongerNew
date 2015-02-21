@@ -22,7 +22,9 @@
 @property (retain) NSNumber *weight;
 @property (retain) NSNumber *totalWeight;
 @property (retain) NSDate *timeStamp;
-@property BOOL bestSet;
+
+@property (retain) NSString *active;
+@property BOOL pr;
 
 @property (retain) Workout *workout;
 @property (retain) CompletedExercise *completedExercise;

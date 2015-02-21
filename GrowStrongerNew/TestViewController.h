@@ -15,6 +15,8 @@
 - (IBAction)removeTestObject:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *saveObjectTest;
 - (IBAction)saveObjectTestAction:(id)sender;
+- (IBAction)testOrder:(id)sender;
+- (IBAction)testSaveEventually:(id)sender;
 
 @property (strong, nonatomic) PFObject *testObject;
 @end

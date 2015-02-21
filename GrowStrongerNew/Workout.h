@@ -21,7 +21,6 @@
 @property (retain) NSNumber *totalReps;
 @property (retain) NSNumber *totalWeight;
 @property (retain) NSNumber *totalCompletedExercises;
-@property (retain) NSNumber *medalCountCore;
-@property (retain) NSNumber *medalCountTotal;
+@property (retain) NSNumber *prCount;
 
 @end

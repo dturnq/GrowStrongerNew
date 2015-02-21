@@ -28,7 +28,6 @@
 @dynamic totalReps;
 @dynamic totalWeight;
 @dynamic totalCompletedExercises;
-@dynamic medalCountCore;
-@dynamic medalCountTotal;
+@dynamic prCount;
 
 @end
