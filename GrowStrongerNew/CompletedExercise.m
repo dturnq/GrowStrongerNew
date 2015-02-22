@@ -34,6 +34,8 @@
 
 @dynamic pr;
 
+@dynamic timestamp;
+
 @dynamic workout;
 @dynamic exercise;
 

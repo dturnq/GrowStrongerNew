@@ -18,6 +18,12 @@
 		4907183719BCC7B50075936F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4907183619BCC7B50075936F /* SystemConfiguration.framework */; };
 		4907183919BCCBAC0075936F /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4907183819BCCBAC0075936F /* TabBarViewController.m */; };
 		4907183C19BCCE660075936F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4907183B19BCCE660075936F /* Social.framework */; };
+		4916345D1A994E600087E688 /* RedRectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4916345B1A994E5F0087E688 /* RedRectangle.png */; };
+		4916345E1A994E600087E688 /* RedRectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4916345C1A994E5F0087E688 /* RedRectangle@2x.png */; };
+		491634631A9951960087E688 /* StartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4916345F1A9951960087E688 /* StartIcon.png */; };
+		491634641A9951960087E688 /* StartIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 491634601A9951960087E688 /* StartIcon@2x.png */; };
+		491634691A9952930087E688 /* YellowRectangleForButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 491634671A9952930087E688 /* YellowRectangleForButton.png */; };
+		4916346A1A9952930087E688 /* YellowRectangleForButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 491634681A9952930087E688 /* YellowRectangleForButton@2x.png */; };
 		4922BAA21A5263E300EE8568 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 4922BAA11A5263E300EE8568 /* File */; };
 		492DF8721A526170006C6EC5 /* ExerciseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492DF8711A526170006C6EC5 /* ExerciseListViewController.m */; };
 		4931CD8F1A526CF4000DCDE0 /* AddExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4931CD8E1A526CF4000DCDE0 /* AddExerciseViewController.m */; };
@@ -93,6 +99,13 @@
 		4907183A19BCCC910075936F /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		4907183B19BCCE660075936F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		491634591A984F630087E688 /* GlobalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalHeader.h; sourceTree = "<group>"; };
+		4916345A1A99037E0087E688 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		4916345B1A994E5F0087E688 /* RedRectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedRectangle.png; sourceTree = "<group>"; };
+		4916345C1A994E5F0087E688 /* RedRectangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RedRectangle@2x.png"; sourceTree = "<group>"; };
+		4916345F1A9951960087E688 /* StartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartIcon.png; sourceTree = "<group>"; };
+		491634601A9951960087E688 /* StartIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StartIcon@2x.png"; sourceTree = "<group>"; };
+		491634671A9952930087E688 /* YellowRectangleForButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowRectangleForButton.png; sourceTree = "<group>"; };
+		491634681A9952930087E688 /* YellowRectangleForButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "YellowRectangleForButton@2x.png"; sourceTree = "<group>"; };
 		4922BAA11A5263E300EE8568 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		492DF8701A526170006C6EC5 /* ExerciseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListViewController.h; sourceTree = "<group>"; };
 		492DF8711A526170006C6EC5 /* ExerciseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListViewController.m; sourceTree = "<group>"; };
@@ -373,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				49A88DC919BCC5B3008AE306 /* Main.storyboard */,
+				4916345A1A99037E0087E688 /* Constants.h */,
 				49A0D1791A62E28700D92402 /* TestViewController.h */,
 				49A0D17A1A62E28700D92402 /* TestViewController.m */,
 				49A632381A53319C00A1A484 /* Feed Branch */,
@@ -391,6 +405,12 @@
 		49A88DBE19BCC5B3008AE306 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				491634671A9952930087E688 /* YellowRectangleForButton.png */,
+				491634681A9952930087E688 /* YellowRectangleForButton@2x.png */,
+				4916345F1A9951960087E688 /* StartIcon.png */,
+				491634601A9951960087E688 /* StartIcon@2x.png */,
+				4916345B1A994E5F0087E688 /* RedRectangle.png */,
+				4916345C1A994E5F0087E688 /* RedRectangle@2x.png */,
 				49A6322C1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg */,
 				49A88DBF19BCC5B3008AE306 /* GrowStrongerNew-Info.plist */,
 				49A88DC019BCC5B3008AE306 /* InfoPlist.strings */,
@@ -476,6 +496,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "David Turnquist";
 				TargetAttributes = {
+					49A88DB319BCC5B2008AE306 = {
+						DevelopmentTeam = H7DRE4GTQD;
+					};
 					49A88DD719BCC5B3008AE306 = {
 						TestTargetID = 49A88DB319BCC5B2008AE306;
 					};
@@ -505,9 +528,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4916345D1A994E600087E688 /* RedRectangle.png in Resources */,
 				4922BAA21A5263E300EE8568 /* File in Resources */,
+				491634691A9952930087E688 /* YellowRectangleForButton.png in Resources */,
 				493ABEC71A847C2400F5583B /* Growth in Resources */,
 				49A88DD319BCC5B3008AE306 /* Images.xcassets in Resources */,
+				491634641A9951960087E688 /* StartIcon@2x.png in Resources */,
+				4916346A1A9952930087E688 /* YellowRectangleForButton@2x.png in Resources */,
+				491634631A9951960087E688 /* StartIcon.png in Resources */,
+				4916345E1A994E600087E688 /* RedRectangle@2x.png in Resources */,
 				49C0E7FB1A71EA2F0072FC0C /* MKInfoPanel.xib in Resources */,
 				49A6322D1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg in Resources */,
 				49A88DC219BCC5B3008AE306 /* InfoPlist.strings in Resources */,
@@ -640,7 +669,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -672,7 +701,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -683,6 +712,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dturnq/Documents/FacebookSDK,
@@ -702,6 +732,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dturnq/Documents/FacebookSDK,

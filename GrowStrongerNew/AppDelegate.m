@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    NSLog(@"Did begin launching with options");
     // Override point for customization after application launch.
     [FBLoginView class];
     
@@ -53,9 +55,11 @@
     [testObject saveInBackground];
     
     // Nav Color
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:27/255.0 green:106/255.0 blue:165/255.0 alpha:1.0]];
-    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1.0]];
-    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:251/255.0 green:199/255.0 blue:35/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setBarTintColor:NavColor]; // ];
+    [[UITabBar appearance] setTintColor:TabTextColor]; //[UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1.0]];
+    [[UITabBar appearance] setBarTintColor:TabColor]; //[UIColor colorWithRed:251/255.0 green:199/255.0 blue:35/255.0 alpha:1.0]];
+    
+    NSLog(@"Ran Didfinishlaunchingwithoptions in appdelegate");
     
     return YES;
 }
@@ -73,6 +77,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+    
 }
 
 
