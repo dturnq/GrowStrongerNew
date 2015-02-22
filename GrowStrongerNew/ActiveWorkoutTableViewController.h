@@ -16,8 +16,5 @@
 @property (strong, nonatomic) Workout *activeWorkout;
 @property (strong, nonatomic) NSArray *completedExerciseArray;
 @property (strong, nonatomic) Set *set;
-@property (weak, nonatomic) IBOutlet UIView *timerView;
-@property (weak, nonatomic) IBOutlet UILabel *setTimerLabel;
-@property (weak, nonatomic) IBOutlet UILabel *workoutTimerLabel;
 
 @end

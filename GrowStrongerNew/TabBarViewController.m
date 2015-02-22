@@ -21,7 +21,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    NSLog(@"Tabbar initwithnibname");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -39,14 +38,12 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"Tabbar viewdidload");
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"Tabbar viewdidappear");
+
     // Check whether logged in; log in if necessary
     PFUser *currentuser = [PFUser currentUser];
     if (currentuser) {
@@ -70,7 +67,6 @@
 
 - (void)didReceiveMemoryWarning
 {
-    NSLog(@"Tabbar didreceivememorywarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

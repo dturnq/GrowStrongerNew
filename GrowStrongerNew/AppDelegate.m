@@ -18,8 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    NSLog(@"Did begin launching with options");
     // Override point for customization after application launch.
     [FBLoginView class];
     
@@ -36,37 +34,28 @@
 #endif
     
     
-    NSLog(@"Set the application keys");
-    NSLog(@"Blah blah2");
     // Parse Analytics
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    NSLog(@"PFanalytics...");
     
     // Parse Facebook Integration
     [PFFacebookUtils initializeFacebook];
-    NSLog(@"Facebook ready to go");
     
     // Parse ACL
     //[PFUser enableAutomaticUser];
     PFACL *defaultACL = [PFACL ACL];
-    NSLog(@"PFACL starting...");
     
     // Optionally enable public read access while disabling public write access.
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-    NSLog(@"And PFACL ready to go");
     
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"FRAG"] = @"bar";
     [testObject saveInBackground];
-    NSLog(@"Test object saved");
     
     // Nav Color
-    [[UINavigationBar appearance] setBarTintColor:NavColor]; // ];
-    [[UITabBar appearance] setTintColor:TabTextColor]; //[UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1.0]];
-    [[UITabBar appearance] setBarTintColor:TabColor]; //[UIColor colorWithRed:251/255.0 green:199/255.0 blue:35/255.0 alpha:1.0]];
-    
-    NSLog(@"Ran Didfinishlaunchingwithoptions in appdelegate");
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:27/255.0 green:106/255.0 blue:165/255.0 alpha:1.0]];
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1.0]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:251/255.0 green:199/255.0 blue:35/255.0 alpha:1.0]];
     
     return YES;
 }
@@ -76,17 +65,14 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    NSLog(@"Facebook SSO");
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
                         withSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    NSLog(@"app did become active");
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
-    
 }
 
 

@@ -37,7 +37,7 @@
 {
     self = [super initWithClassName:@"Exercise"];
     self = [super initWithCoder:aDecoder];
-    NSLog(@"ExerciseListView ran initwithcoder");
+    NSLog(@"BLAH BLAH it loaded");
     if (self) {
         // The className to query on
         self.parseClassName = @"Exercise";
@@ -54,14 +54,12 @@
         // The number of objects to show per page
         self.objectsPerPage = 25;
     }
-    NSLog(@"Exerciselistview finished initwithcoder");
     return self;
 }
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    NSLog(@"Exerciselistview Ran Didreceivememorywarning");
     
     // Release any cached data, images, etc that aren't in use.
 }
@@ -71,7 +69,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"ExerciseListView ran itdidload");
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -87,7 +85,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"ExerciseListView ran viewwillappear");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -96,7 +93,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    NSLog(@"ExerciseListView ran viewdidappear");
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -113,7 +109,7 @@
 
 - (void)objectsWillLoad {
     [super objectsWillLoad];
-    NSLog(@"Exerciselistview Ran objectswillload");
+    
     // This method is called before a PFQuery is fired to get more objects
 }
 
