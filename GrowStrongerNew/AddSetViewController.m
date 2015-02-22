@@ -153,7 +153,7 @@
                 
             }
 
-            
+            NSLog(@"Done with for loop");
         }
     }];
     
@@ -398,6 +398,8 @@
     
     if ([segue.identifier isEqual:@"SaveSet"]) {
 #warning This could potentially be optimized by moving this code into the unwind method in the destination view controller. Then the view can close immediately.
+        NSLog(@"Starting segue to save set");
+        
         // Set up the number formatter FML
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -408,7 +410,7 @@
         // Timestamp
         NSDate *now = [NSDate date];
         
-        
+        NSLog(@"Creating the set");
         Set *newSet = [Set object];
         newSet.weight = [f numberFromString:self.weight.titleLabel.text];
         newSet.reps = [f numberFromString:self.reps.titleLabel.text];
@@ -421,6 +423,7 @@
         newSet.active = @"Active";
         [newSet pinInBackground];
         
+        NSLog(@"Set pinned");
         Stopwatch *stopwatch = [[Stopwatch alloc] init];
         [stopwatch setSetStartTime:now];
         //NSLog(@"Part 3: Saved set CE: %@", newSet.completedExercise);
