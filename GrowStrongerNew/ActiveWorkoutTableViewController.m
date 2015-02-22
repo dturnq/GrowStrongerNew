@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 David Turnquist. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ActiveWorkoutTableViewController.h"
 #import "AddExerciseTableViewCell.h"
 #import "SelectExerciseViewController.h"
@@ -19,9 +20,11 @@
 @interface ActiveWorkoutTableViewController ()
 
 -(void)reloadWorkoutData;
+-(void)updateStopwatchDisplay;
 @property (weak, nonatomic) CompletedExercise *selectedCompletedExercise;
 @property (weak, nonatomic) NSIndexPath *selectedIndexPath;
-
+@property (nonatomic, strong) Stopwatch *stopwatch;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -79,13 +82,45 @@
     //NSLog(@"Active Workout: %@", self.activeWorkout);
 }
 
+-(void)awakeFromNib
+{
+    NSLog(@"Awake from Nib");
+    self.stopwatch = [[Stopwatch alloc] init];
+    [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
+    
+    
+}
+
 #pragma mark - Background Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"View did load");
     
+    NSLog(@"About to do PFQuery");
+    PFQuery *queryForTime = [Set query];
+    NSLog(@"PFquery created; going to use self.activeworkout: %@", self.activeWorkout);
+    [queryForTime fromLocalDatastore];
+    [queryForTime whereKey:@"workout" equalTo:self.activeWorkout];
+    [queryForTime orderByDescending:@"timestamp"];
+    NSLog(@"PFQuery set up - looking for self.activeworkout: %@", self.activeWorkout);
+    
+    
+    
+    [queryForTime getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        NSLog(@"Query succeeded");
+        //NSLog(@"Last set completed: %@", object);
+        //NSLog(@"Timestamp: %@", [object objectForKey:@"timeStamp"]);
+        if (object == nil) {
+            [self.stopwatch setSetStartTime:self.activeWorkout.beganAt];
+        } else {
+            [self.stopwatch setSetStartTime:[object objectForKey:@"timeStamp"]];
+        }
+        
+    }];
     // Prep the stopwatch
+    /*
     Stopwatch *stopwatch = [[Stopwatch alloc] init];
-    [stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
+    [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
     
     
     PFQuery *queryForTime = [Set query];
@@ -106,7 +141,9 @@
         }
         
     }];
+     */
     
+    self.timerView.backgroundColor = NavColor;
     
     //[self reloadWorkoutData];
     
@@ -149,12 +186,22 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    NSLog(@"View will appear called");
+    [self updateStopwatchDisplay];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:self
+                                                selector:@selector(updateStopwatchDisplay)
+                                                userInfo:nil
+                                                 repeats:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 // My own reload method
 
@@ -168,6 +215,82 @@
         self.completedExerciseArray = objects;
         [self.tableView reloadData];
     }];
+}
+
+-(void)updateStopwatchDisplay
+{
+    // Timer for the workout
+    NSDate *now = [NSDate date];
+    NSTimeInterval secondsElapsed = [now timeIntervalSinceDate:[self.stopwatch workoutStartTime]];
+    int hours = trunc(secondsElapsed/3600);
+    int minutes = trunc(secondsElapsed/60 - hours*60);
+    int seconds = trunc(secondsElapsed - (minutes * 60) - hours*3600);
+    NSString *secondsString = nil;
+    if (seconds < 10) {
+        secondsString = [NSString stringWithFormat:@"0%i", seconds];
+    }
+    else
+    {
+        secondsString = [NSString stringWithFormat:@"%i", seconds];
+    }
+    
+    NSString *minutesString = nil;
+    if (minutes < 10) {
+        minutesString = [NSString stringWithFormat:@"0%i", minutes];
+    }
+    else
+    {
+        minutesString = [NSString stringWithFormat:@"%i", minutes];
+    }
+    
+    
+    // Timer for the set (ei rest timer)
+    NSTimeInterval secondsElapsedSet = [now timeIntervalSinceDate:[self.stopwatch setStartTime]];
+    int hoursSet = trunc(secondsElapsedSet/3600);
+    int minutesSet = trunc(secondsElapsedSet/60 - hoursSet*60);
+    int secondsSet = trunc(secondsElapsedSet - minutesSet*60 - hoursSet*3600);
+    NSString *secondsStringSet = nil;
+    if (secondsSet < 10) {
+        secondsStringSet = [NSString stringWithFormat:@"0%i", secondsSet];
+    }
+    else
+    {
+        secondsStringSet = [NSString stringWithFormat:@"%i", secondsSet];
+    }
+    
+    NSString *minutesStringSet = nil;
+    if (minutesSet < 10) {
+        minutesStringSet = [NSString stringWithFormat:@"0%i", minutesSet];
+    }
+    else
+    {
+        minutesStringSet = [NSString stringWithFormat:@"%i", minutesSet];
+    }
+    
+    // Debugging
+    // NSLog(@"%@", [NSString stringWithFormat:@"%i:%@:%@", hours, minutesString, secondsString]);
+    // NSLog(@"%@", [NSString stringWithFormat:@"%i:%@:%@", hoursSet, minutesStringSet, secondsStringSet]);
+    
+    
+    if (1)
+    {
+        
+        self.workoutTimerLabel.text = [NSString stringWithFormat:@"%i:%@:%@", hours, minutesString, secondsString];
+    }
+    else
+    {
+        self.workoutTimerLabel.text = [NSString stringWithFormat:@"%@:%@", minutesString, secondsString];
+    }
+    
+    if (1)
+    {
+        self.setTimerLabel.text = [NSString stringWithFormat:@"%i:%@:%@", hoursSet, minutesStringSet, secondsStringSet];
+    }
+    else
+    {
+        self.setTimerLabel.text = [NSString stringWithFormat:@"%@:%@", minutesStringSet, secondsStringSet];
+    }
+    
 }
 
 #pragma mark - Table view data source
@@ -223,6 +346,10 @@
             cell = [[AddExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
         }
         
+        cell.TextLabel.layer.borderColor = ButtonBorderColor.CGColor; // [UIColor darkGrayColor].CGColor;
+        cell.TextLabel.layer.borderWidth = 1.0;
+        cell.TextLabel.layer.cornerRadius = 4.0;
+        
         return cell;
     }
 }
@@ -246,6 +373,7 @@
     [query addAscendingOrder:@"timeStamp"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
+        /*
         if (objects.count == 0) {
 
             cell.set1.text = @"Tap to record your first set";
@@ -253,7 +381,8 @@
             cell.set3.text = @"";
             cell.set4.text = @"";
         } else {
-
+         */
+        
             NSArray *setLabels = [[NSArray alloc] initWithObjects: cell.set1, cell.set2, cell.set3, cell.set4, nil];
             
             NSUInteger i = 1;
@@ -264,12 +393,15 @@
                     NSString *labelText3 = [labelText2 stringByAppendingString:[[[objects objectAtIndex:(i-1)] reps] stringValue]];
                     setLabel.text =  labelText3;
                 } else {
-                    setLabel.text =  @"";
+                    setLabel.text =  @"/";
                 }
+                setLabel.layer.borderColor = SetBorderColor.CGColor; // [UIColor darkGrayColor].CGColor;
+                setLabel.layer.borderWidth = 1.0;
+                setLabel.layer.cornerRadius = 4.0;
                 i++;
             }
             
-        }
+        //}
     }];
     
     

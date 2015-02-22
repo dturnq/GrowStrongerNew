@@ -45,15 +45,16 @@
     
     
     // Update the buttons & picker with the last set
-    PFQuery *query = [Set query];
+    PFQuery *queryLastSet = [Set query];
     
     //NSLog(@"Part 2: set page query CE: %@", self.completedExercise);
     //NSLog(@"Part 2: set page query E: %@", self.completedExercise.exercise.name);
     
-    [query whereKey:@"completedExercise" equalTo:self.completedExercise];
-    [query fromLocalDatastore];
-    [query addAscendingOrder:@"timeStamp"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [queryLastSet whereKey:@"exercise" equalTo:self.completedExercise.exercise];
+    [queryLastSet fromLocalDatastore];
+    [queryLastSet addDescendingOrder:@"timeStamp"];
+    queryLastSet.limit = 1;
+    [queryLastSet findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         //NSLog(@"Objects: %@", objects);
         if (objects.count == 0) {
             [self.weight setTitle:@"25" forState:UIControlStateNormal];
@@ -66,23 +67,95 @@
             [self.reps setTitle:[lastSet.reps stringValue] forState:UIControlStateNormal];
             [self.horizontalPickerView selectRow:[lastSet.weight intValue] animated:YES];
             
+        }
             
-            // CREATE THE VIEW AT THE BOTTOM
-            [self displayPreviousSet:0 setArray:objects];
-            for (int setNum=0; setNum<=objects.count; setNum++) {
+    }];
+    
+    PFQuery *queryCEs = [CompletedExercise query];
+    [queryCEs fromLocalDatastore];
+    queryCEs.limit = 4;
+    [queryCEs whereKey:@"exercise" equalTo:self.completedExercise.exercise];
+    [queryCEs orderByDescending:@"timeStamp"];
+    [queryCEs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Object count: %lu", (unsigned long)objects.count);
+        NSArray *setLabels1 = [[NSArray alloc] initWithObjects: self.dayC1, self.dateC1, self.timeC1, self.setC1R1, self.setC1R2, self.setC1R3, self.setC1R4, nil];
+        NSArray *setLabels2 = [[NSArray alloc] initWithObjects: self.dayC2, self.dateC2, self.timeC2, self.setC2R1, self.setC2R2, self.setC2R3, self.setC2R4, nil];
+        NSArray *setLabels3 = [[NSArray alloc] initWithObjects: self.dayC3, self.dateC3, self.timeC3, self.setC3R1, self.setC3R2, self.setC3R3, self.setC3R4, nil];
+        NSArray *setLabels4 = [[NSArray alloc] initWithObjects: self.dayC4, self.dateC4, self.timeC4, self.setC4R1, self.setC4R2, self.setC4R3, self.setC4R4, nil];
+        
+        NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+        [dayFormatter setDateFormat:@"EEE"];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MMM d"];
+        
+        NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+        [timeFormatter setDateFormat:@"h':'ma"];
+        
+        for (int i = 1; i <= 4; i++) {
+            NSMutableArray *arrayTemp = [[NSMutableArray alloc] init];
+            if (i == 1) {arrayTemp = [setLabels1 mutableCopy];}
+            if (i == 2) {arrayTemp = [setLabels2 mutableCopy];}
+            if (i == 3) {arrayTemp = [setLabels3 mutableCopy];}
+            if (i == 4) {arrayTemp = [setLabels4 mutableCopy];}
+
+            NSArray *labelArray = [[NSArray alloc] initWithArray:arrayTemp];
+            
+            
+            if (objects.count >= i) {
+                NSLog(@"Looping through the CEs... CE#%d", i);
+                CompletedExercise *ce = [objects objectAtIndex:i-1];
+                UILabel *dayLabel = [labelArray objectAtIndex:0];
+                UILabel *dateLabel = [labelArray objectAtIndex:1];
+                UILabel *timeLabel = [labelArray objectAtIndex:2];
                 
+                NSLog(@"About to set the daylabels, etc");
+                
+                NSString *formattedDay = [dayFormatter stringFromDate:ce.workout.beganAt];
+                NSString *formattedDate = [dateFormatter stringFromDate:ce.workout.beganAt];
+                NSString *formattedTime = [timeFormatter stringFromDate:ce.workout.beganAt];
+                
+                NSLog(@"formattedDateString: %@", formattedDay);
+                // Output for locale en_US: "formattedDateString: Jan 2, 2001".
+
+                
+                
+                
+                dayLabel.text = formattedDay;
+                dateLabel.text = formattedDate;
+                timeLabel.text = [formattedTime lowercaseString];
+                
+                NSLog(@"And then going to query for sets");
+                PFQuery *querySets = [Set query];
+                [querySets fromLocalDatastore];
+                [querySets whereKey:@"completedExercise" equalTo:ce];
+                [querySets orderByDescending:@"timeStamp"];
+                [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    NSLog(@"sets found");
+                    for (int j=1; j<=4; j++) {
+                        UILabel *label = [labelArray objectAtIndex:j+2];
+                        if (objects.count >= j) {
+                            Set *set = [objects objectAtIndex:j-1];
+                            label.text = [NSString stringWithFormat:@"%d / %d",set.weight.intValue, set.reps.intValue];
+                            label.layer.borderColor = SetBorderColor.CGColor;
+                            label.layer.borderWidth = 1.0;
+                            label.layer.cornerRadius = 4.0;
+                        } else {
+                            label.text = @"";
+                        }
+                    }
+                }];
+            } else {
+                NSLog(@"No CE for #%d", i);
+                for (UILabel *label in labelArray) {
+                    label.text = @"";
+                }
                 
             }
-            
-            
-            
+
             
         }
     }];
-    
-    //[self.reps setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    
-    // Create the sets on the bottom
     
     
 }
