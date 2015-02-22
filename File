@@ -1,10 +1,10 @@
 Bugs
-
+- The first set often won't show up in the active workout screen. 
 
 
 
 TODAY:
-- Make the save function also update the workout/CE stats
+
 
 
 Mandatory functionality during launch
@@ -21,11 +21,14 @@ Mandatory functionality during launch
 
 
 - Add timer to the primary recording page
+- Search for and add friends
+- View friend feed
+
+
 
 Additional that we need quickly
 - Log in without Faceook
-- Search for and add friends
-- View friend feed
+
 - Add some kind of note when there's no internet / "I give up" notification"'
 
 Even lower priority

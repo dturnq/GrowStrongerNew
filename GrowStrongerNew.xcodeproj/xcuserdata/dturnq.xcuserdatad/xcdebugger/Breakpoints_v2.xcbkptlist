@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GrowStrongerNew/ActiveWorkoutTableViewController.m"
-            timestampString = "446234533.312301"
+            timestampString = "446274935.735347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "-reloadWorkoutData"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "-updateStopwatchDisplay"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GrowStrongerNew/ActiveWorkoutTableViewController.m"
-            timestampString = "446234533.312301"
+            timestampString = "446274935.735347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "@implementation ActiveWorkoutTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -86,61 +86,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GrowStrongerNew/AddSetViewController.h"
-            timestampString = "443387801.031559"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "@interface AddSetViewController"
-            landmarkType = "2">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AddSetViewController navExtensionView]"
-                  moduleName = "GrowStrongerNew"
-                  urlString = "file:///Users/dturnq/Dropbox/devenv/GrowStrongerNew/GrowStrongerNew/AddSetViewController.h"
-                  timestampString = "446329009.690559"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AddSetViewController setNavExtensionView:]"
-                  moduleName = "GrowStrongerNew"
-                  urlString = "file:///Users/dturnq/Dropbox/devenv/GrowStrongerNew/GrowStrongerNew/AddSetViewController.h"
-                  timestampString = "446329009.691271"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GrowStrongerNew/ActiveWorkoutTableViewController.m"
-            timestampString = "446234533.312301"
+            timestampString = "446274935.735347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -152,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GrowStrongerNew/ActiveWorkoutTableViewController.m"
-            timestampString = "446234533.312301"
+            timestampString = "446274935.735347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-unwindToActiveWorkout:"
             landmarkType = "5">
             <Locations>
