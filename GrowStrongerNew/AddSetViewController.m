@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.navExtensionView.backgroundColor = NavColor;
     
     //[HorizontalPickerView class];
     
@@ -75,13 +75,13 @@
     [queryCEs fromLocalDatastore];
     queryCEs.limit = 4;
     [queryCEs whereKey:@"exercise" equalTo:self.completedExercise.exercise];
-    [queryCEs orderByDescending:@"timeStamp"];
+    [queryCEs orderByDescending:@"timestamp"];
     [queryCEs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Object count: %lu", (unsigned long)objects.count);
-        NSArray *setLabels1 = [[NSArray alloc] initWithObjects: self.dayC1, self.dateC1, self.timeC1, self.setC1R1, self.setC1R2, self.setC1R3, self.setC1R4, nil];
-        NSArray *setLabels2 = [[NSArray alloc] initWithObjects: self.dayC2, self.dateC2, self.timeC2, self.setC2R1, self.setC2R2, self.setC2R3, self.setC2R4, nil];
-        NSArray *setLabels3 = [[NSArray alloc] initWithObjects: self.dayC3, self.dateC3, self.timeC3, self.setC3R1, self.setC3R2, self.setC3R3, self.setC3R4, nil];
-        NSArray *setLabels4 = [[NSArray alloc] initWithObjects: self.dayC4, self.dateC4, self.timeC4, self.setC4R1, self.setC4R2, self.setC4R3, self.setC4R4, nil];
+        NSArray *setLabels1 = [[NSArray alloc] initWithObjects: self.dayC1, self.dateC1, self.timeC1, self.setC1R1, self.setC1R2, self.setC1R3, self.setC1R4, self.setC1R5, nil];
+        NSArray *setLabels2 = [[NSArray alloc] initWithObjects: self.dayC2, self.dateC2, self.timeC2, self.setC2R1, self.setC2R2, self.setC2R3, self.setC2R4, self.setC2R5, nil];
+        NSArray *setLabels3 = [[NSArray alloc] initWithObjects: self.dayC3, self.dateC3, self.timeC3, self.setC3R1, self.setC3R2, self.setC3R3, self.setC3R4, self.setC3R5, nil];
+        NSArray *setLabels4 = [[NSArray alloc] initWithObjects: self.dayC4, self.dateC4, self.timeC4, self.setC4R1, self.setC4R2, self.setC4R3, self.setC4R4, self.setC4R5, nil];
         
         NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
         [dayFormatter setDateFormat:@"EEE"];
@@ -132,7 +132,7 @@
                 [querySets orderByDescending:@"timeStamp"];
                 [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                     NSLog(@"sets found");
-                    for (int j=1; j<=4; j++) {
+                    for (int j=1; j<=5; j++) {
                         UILabel *label = [labelArray objectAtIndex:j+2];
                         if (objects.count >= j) {
                             Set *set = [objects objectAtIndex:j-1];
