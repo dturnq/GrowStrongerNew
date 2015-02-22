@@ -182,7 +182,6 @@
                            
                        } else {
                            // No workouts to save :)
-                           NSLog(@"No workouts to save :)");
                        }
 
                        dispatch_async(dispatch_get_main_queue(),
