@@ -36,8 +36,8 @@
 #endif
     
     NSLog(@"Set the application keys");
-    NSLog(@"Blah blah2");
 
+    NSLog(@"Blah blah2");
     // Parse Analytics
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
