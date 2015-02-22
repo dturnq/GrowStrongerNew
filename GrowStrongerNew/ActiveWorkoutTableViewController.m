@@ -47,23 +47,11 @@
         completedExercise.totalReps = [NSNumber numberWithInt:0];
         completedExercise.active = @"Active";
         completedExercise.position = self.activeWorkout.totalCompletedExercises;
-        completedExercise.timestamp = self.activeWorkout.beganAt;
         [completedExercise pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [self reloadWorkoutData];
         }];
         self.activeWorkout.totalCompletedExercises = [NSNumber numberWithInt:[self.activeWorkout.totalCompletedExercises intValue] + 1];
         [self.activeWorkout pin];
-        
-        PFQuery *querySets = [Set query];
-        NSLog(@"Going to find sets for this exercise: %@", completedExercise.exercise);
-        [querySets whereKey:@"exercise" equalTo:completedExercise.exercise];
-        [querySets includeKey:@"completedExercise"];
-        [querySets includeKey:@"workout"];
-        querySets.limit = 50;
-        [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            NSLog(@"Found sets from the workout: %lu", (unsigned long)objects.count);
-            [PFObject pinAllInBackground:objects];
-        }];
     
     } else if ([unwindSegue.identifier isEqual:@"SaveSet"]) {
 
