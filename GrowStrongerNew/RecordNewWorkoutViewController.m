@@ -167,6 +167,7 @@
     
     if ([segue.identifier  isEqual: @"StartNewWorkout"]) {
         
+        
         // Prep values
         PFUser *user = [PFUser currentUser];
         NSDate *now = [NSDate date];

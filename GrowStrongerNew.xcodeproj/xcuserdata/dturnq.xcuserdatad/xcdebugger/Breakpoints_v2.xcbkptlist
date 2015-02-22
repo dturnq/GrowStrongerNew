@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GrowStrongerNew/ActiveWorkoutTableViewController.m"
-            timestampString = "446338280.17557"
+            timestampString = "446339584.20574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-updateStopwatchDisplay"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GrowStrongerNew/ActiveWorkoutTableViewController.m"
-            timestampString = "446338280.17557"
+            timestampString = "446339584.20574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "@implementation ActiveWorkoutTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GrowStrongerNew/ActiveWorkoutTableViewController.m"
-            timestampString = "446338280.17557"
+            timestampString = "446339584.20574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

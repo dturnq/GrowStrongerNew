@@ -22,7 +22,7 @@
 -(void)reloadWorkoutData;
 -(void)updateStopwatchDisplay;
 @property (weak, nonatomic) CompletedExercise *selectedCompletedExercise;
-@property (weak, nonatomic) NSIndexPath *selectedIndexPath;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic, strong) Stopwatch *stopwatch;
 @property (nonatomic, strong) NSTimer *timer;
 
@@ -66,9 +66,13 @@
         }];
     
     } else if ([unwindSegue.identifier isEqual:@"SaveSet"]) {
+        NSLog(@"Set save segue completed - back to the active workout view");
 
+        NSLog(@"Selected index path: %@", self.selectedIndexPath);
         NSArray *rowsToReload = [NSArray arrayWithObject:self.selectedIndexPath];
+        NSLog(@"Array: %@", rowsToReload);
         [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationAutomatic];
+        NSLog(@"Should have reloaded the applicable cell");
     }
     
     //PFUser *user = [PFUser currentUser];
@@ -438,6 +442,7 @@
         // Open the completed exercise view
         self.selectedCompletedExercise = [self.completedExerciseArray objectAtIndex:indexPath.row];
         self.selectedIndexPath = indexPath;
+        NSLog(@"About to segue - selected index path: %@", self.selectedIndexPath);
 
         [self performSegueWithIdentifier:@"SegueToAddSet" sender:self];
         
