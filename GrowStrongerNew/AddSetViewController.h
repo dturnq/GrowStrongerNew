@@ -43,20 +43,24 @@
 @property (weak, nonatomic) IBOutlet UILabel *setC1R2;
 @property (weak, nonatomic) IBOutlet UILabel *setC1R3;
 @property (weak, nonatomic) IBOutlet UILabel *setC1R4;
+@property (weak, nonatomic) IBOutlet UILabel *setC1R5;
 
 @property (weak, nonatomic) IBOutlet UILabel *setC2R1;
 @property (weak, nonatomic) IBOutlet UILabel *setC2R2;
 @property (weak, nonatomic) IBOutlet UILabel *setC2R3;
 @property (weak, nonatomic) IBOutlet UILabel *setC2R4;
+@property (weak, nonatomic) IBOutlet UILabel *setC2R5;
 
 @property (weak, nonatomic) IBOutlet UILabel *setC3R1;
 @property (weak, nonatomic) IBOutlet UILabel *setC3R2;
 @property (weak, nonatomic) IBOutlet UILabel *setC3R3;
 @property (weak, nonatomic) IBOutlet UILabel *setC3R4;
+@property (weak, nonatomic) IBOutlet UILabel *setC3R5;
 
 @property (weak, nonatomic) IBOutlet UILabel *setC4R1;
 @property (weak, nonatomic) IBOutlet UILabel *setC4R2;
 @property (weak, nonatomic) IBOutlet UILabel *setC4R3;
 @property (weak, nonatomic) IBOutlet UILabel *setC4R4;
+@property (weak, nonatomic) IBOutlet UILabel *setC4R5;
 
 @end

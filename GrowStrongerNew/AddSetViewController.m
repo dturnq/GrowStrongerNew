@@ -78,10 +78,10 @@
     [queryCEs orderByDescending:@"timeStamp"];
     [queryCEs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Object count: %lu", (unsigned long)objects.count);
-        NSArray *setLabels1 = [[NSArray alloc] initWithObjects: self.dayC1, self.dateC1, self.timeC1, self.setC1R1, self.setC1R2, self.setC1R3, self.setC1R4, nil];
-        NSArray *setLabels2 = [[NSArray alloc] initWithObjects: self.dayC2, self.dateC2, self.timeC2, self.setC2R1, self.setC2R2, self.setC2R3, self.setC2R4, nil];
-        NSArray *setLabels3 = [[NSArray alloc] initWithObjects: self.dayC3, self.dateC3, self.timeC3, self.setC3R1, self.setC3R2, self.setC3R3, self.setC3R4, nil];
-        NSArray *setLabels4 = [[NSArray alloc] initWithObjects: self.dayC4, self.dateC4, self.timeC4, self.setC4R1, self.setC4R2, self.setC4R3, self.setC4R4, nil];
+        NSArray *setLabels1 = [[NSArray alloc] initWithObjects: self.dayC1, self.dateC1, self.timeC1, self.setC1R1, self.setC1R2, self.setC1R3, self.setC1R4, self.setC1R5, nil];
+        NSArray *setLabels2 = [[NSArray alloc] initWithObjects: self.dayC2, self.dateC2, self.timeC2, self.setC2R1, self.setC2R2, self.setC2R3, self.setC2R4, self.setC2R5, nil];
+        NSArray *setLabels3 = [[NSArray alloc] initWithObjects: self.dayC3, self.dateC3, self.timeC3, self.setC3R1, self.setC3R2, self.setC3R3, self.setC3R4, self.setC3R5, nil];
+        NSArray *setLabels4 = [[NSArray alloc] initWithObjects: self.dayC4, self.dateC4, self.timeC4, self.setC4R1, self.setC4R2, self.setC4R3, self.setC4R4, self.setC4R5, nil];
         
         NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
         [dayFormatter setDateFormat:@"EEE"];
@@ -129,10 +129,10 @@
                 PFQuery *querySets = [Set query];
                 [querySets fromLocalDatastore];
                 [querySets whereKey:@"completedExercise" equalTo:ce];
-                [querySets orderByDescending:@"timeStamp"];
+                [querySets orderByDescending:@"timestamp"];
                 [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                     NSLog(@"sets found");
-                    for (int j=1; j<=4; j++) {
+                    for (int j=1; j<=5; j++) {
                         UILabel *label = [labelArray objectAtIndex:j+2];
                         if (objects.count >= j) {
                             Set *set = [objects objectAtIndex:j-1];
@@ -398,6 +398,7 @@
     
     if ([segue.identifier isEqual:@"SaveSet"]) {
 #warning This could potentially be optimized by moving this code into the unwind method in the destination view controller. Then the view can close immediately.
+        NSLog(@"Attemping to save the set");
         // Set up the number formatter FML
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -408,7 +409,7 @@
         // Timestamp
         NSDate *now = [NSDate date];
         
-        
+        NSLog(@"Creating the set");
         Set *newSet = [Set object];
         newSet.weight = [f numberFromString:self.weight.titleLabel.text];
         newSet.reps = [f numberFromString:self.reps.titleLabel.text];
@@ -420,9 +421,12 @@
         newSet.timeStamp = now;
         newSet.active = @"Active";
         [newSet pinInBackground];
+        NSLog(@"Set pinned");
+        
         
         Stopwatch *stopwatch = [[Stopwatch alloc] init];
         [stopwatch setSetStartTime:now];
+        NSLog(@"Time since last set reset");
         //NSLog(@"Part 3: Saved set CE: %@", newSet.completedExercise);
         //NSLog(@"Part 3: Saved set E: %@", newSet.exercise.name);
     }

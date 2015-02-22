@@ -32,6 +32,8 @@
 
 @dynamic active;
 
+@dynamic timestamp;
+
 @dynamic pr;
 
 @dynamic workout;

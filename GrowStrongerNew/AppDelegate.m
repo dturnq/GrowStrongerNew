@@ -18,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSLog(@"Applicaiton did begin launching");
     // Override point for customization after application launch.
     [FBLoginView class];
     
@@ -38,7 +39,9 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     // Parse Facebook Integration
+    NSLog(@"Begin attempt to initialize facebook");
     [PFFacebookUtils initializeFacebook];
+    NSLog(@"Facebook initialized");
     
     // Parse ACL
     //[PFUser enableAutomaticUser];

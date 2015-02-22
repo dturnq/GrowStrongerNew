@@ -27,6 +27,8 @@
 
 @property (retain) NSString *active;
 
+@property (retain) NSDate *timestamp;
+
 @property BOOL pr;
 
 @property (retain) Workout *workout;
