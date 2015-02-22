@@ -73,6 +73,8 @@
 		49C0E8011A71F8530072FC0C /* Features in Resources */ = {isa = PBXBuildFile; fileRef = 49C0E8001A71F8530072FC0C /* Features */; };
 		49C0F62A1A57954700A79121 /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0F6291A57954700A79121 /* Set.m */; };
 		49C0F62D1A5795BE00A79121 /* CompletedExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0F62C1A5795BE00A79121 /* CompletedExercise.m */; };
+		49E038DB1A99CFF6001CD477 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E038D91A99CFF6001CD477 /* AppIcon.png */; };
+		49E038DC1A99CFF6001CD477 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E038DA1A99CFF6001CD477 /* AppIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +189,8 @@
 		49C0F6291A57954700A79121 /* Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
 		49C0F62B1A5795BE00A79121 /* CompletedExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedExercise.h; sourceTree = "<group>"; };
 		49C0F62C1A5795BE00A79121 /* CompletedExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedExercise.m; sourceTree = "<group>"; };
+		49E038D91A99CFF6001CD477 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		49E038DA1A99CFF6001CD477 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +409,8 @@
 		49A88DBE19BCC5B3008AE306 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				49E038D91A99CFF6001CD477 /* AppIcon.png */,
+				49E038DA1A99CFF6001CD477 /* AppIcon@2x.png */,
 				491634671A9952930087E688 /* YellowRectangleForButton.png */,
 				491634681A9952930087E688 /* YellowRectangleForButton@2x.png */,
 				4916345F1A9951960087E688 /* StartIcon.png */,
@@ -533,6 +539,8 @@
 				491634691A9952930087E688 /* YellowRectangleForButton.png in Resources */,
 				493ABEC71A847C2400F5583B /* Growth in Resources */,
 				49A88DD319BCC5B3008AE306 /* Images.xcassets in Resources */,
+				49E038DC1A99CFF6001CD477 /* AppIcon@2x.png in Resources */,
+				49E038DB1A99CFF6001CD477 /* AppIcon.png in Resources */,
 				491634641A9951960087E688 /* StartIcon@2x.png in Resources */,
 				4916346A1A9952930087E688 /* YellowRectangleForButton@2x.png in Resources */,
 				491634631A9951960087E688 /* StartIcon.png in Resources */,
@@ -713,6 +721,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dturnq/Documents/FacebookSDK,
@@ -721,8 +730,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrowStrongerNew/GrowStrongerNew-Prefix.pch";
 				INFOPLIST_FILE = "GrowStrongerNew/GrowStrongerNew-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -733,6 +743,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dturnq/Documents/FacebookSDK,
@@ -741,8 +752,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrowStrongerNew/GrowStrongerNew-Prefix.pch";
 				INFOPLIST_FILE = "GrowStrongerNew/GrowStrongerNew-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
