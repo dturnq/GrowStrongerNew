@@ -33,6 +33,12 @@
 		495A0D991A9A9CA6002355B5 /* VerticalGreyLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0D971A9A9CA6002355B5 /* VerticalGreyLine.png */; };
 		495A0D9A1A9A9CA6002355B5 /* VerticalGreyLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0D981A9A9CA6002355B5 /* VerticalGreyLine@2x.png */; };
 		495A0D9D1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 495A0D9C1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.m */; };
+		495A0DA01A9AB195002355B5 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0D9E1A9AB195002355B5 /* Star.png */; };
+		495A0DA11A9AB195002355B5 /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0D9F1A9AB195002355B5 /* Star@2x.png */; };
+		495A0DA41A9AB478002355B5 /* Weight.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0DA21A9AB478002355B5 /* Weight.png */; };
+		495A0DA51A9AB478002355B5 /* Weight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0DA31A9AB478002355B5 /* Weight@2x.png */; };
+		495A0DB01A9AC8ED002355B5 /* Clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0DAE1A9AC8ED002355B5 /* Clock.png */; };
+		495A0DB11A9AC8ED002355B5 /* Clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0DAF1A9AC8ED002355B5 /* Clock@2x.png */; };
 		4969A9891A5D0D2300723C22 /* CompletedExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A9881A5D0D2300723C22 /* CompletedExerciseTableViewCell.m */; };
 		4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98B1A5E567600723C22 /* AddSetViewController.m */; };
 		4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4969A98F1A5E619B00723C22 /* SelectExerciseViewController.m */; };
@@ -121,6 +127,12 @@
 		495A0D981A9A9CA6002355B5 /* VerticalGreyLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VerticalGreyLine@2x.png"; sourceTree = "<group>"; };
 		495A0D9B1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSummaryTableViewCell.h; sourceTree = "<group>"; };
 		495A0D9C1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSummaryTableViewCell.m; sourceTree = "<group>"; };
+		495A0D9E1A9AB195002355B5 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
+		495A0D9F1A9AB195002355B5 /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
+		495A0DA21A9AB478002355B5 /* Weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Weight.png; sourceTree = "<group>"; };
+		495A0DA31A9AB478002355B5 /* Weight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Weight@2x.png"; sourceTree = "<group>"; };
+		495A0DAE1A9AC8ED002355B5 /* Clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock.png; sourceTree = "<group>"; };
+		495A0DAF1A9AC8ED002355B5 /* Clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clock@2x.png"; sourceTree = "<group>"; };
 		4969A9871A5D0D2300723C22 /* CompletedExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedExerciseTableViewCell.h; sourceTree = "<group>"; };
 		4969A9881A5D0D2300723C22 /* CompletedExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedExerciseTableViewCell.m; sourceTree = "<group>"; };
 		4969A98A1A5E567600723C22 /* AddSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSetViewController.h; sourceTree = "<group>"; };
@@ -414,6 +426,12 @@
 		49A88DBE19BCC5B3008AE306 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				495A0DAE1A9AC8ED002355B5 /* Clock.png */,
+				495A0DAF1A9AC8ED002355B5 /* Clock@2x.png */,
+				495A0DA21A9AB478002355B5 /* Weight.png */,
+				495A0DA31A9AB478002355B5 /* Weight@2x.png */,
+				495A0D9E1A9AB195002355B5 /* Star.png */,
+				495A0D9F1A9AB195002355B5 /* Star@2x.png */,
 				495A0D971A9A9CA6002355B5 /* VerticalGreyLine.png */,
 				495A0D981A9A9CA6002355B5 /* VerticalGreyLine@2x.png */,
 				491634671A9952930087E688 /* YellowRectangleForButton.png */,
@@ -537,12 +555,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4916345D1A994E600087E688 /* RedRectangle.png in Resources */,
+				495A0DB01A9AC8ED002355B5 /* Clock.png in Resources */,
 				4922BAA21A5263E300EE8568 /* File in Resources */,
 				491634691A9952930087E688 /* YellowRectangleForButton.png in Resources */,
 				493ABEC71A847C2400F5583B /* Growth in Resources */,
 				495A0D991A9A9CA6002355B5 /* VerticalGreyLine.png in Resources */,
 				49A88DD319BCC5B3008AE306 /* Images.xcassets in Resources */,
+				495A0DA51A9AB478002355B5 /* Weight@2x.png in Resources */,
+				495A0DA11A9AB195002355B5 /* Star@2x.png in Resources */,
+				495A0DA41A9AB478002355B5 /* Weight.png in Resources */,
 				491634641A9951960087E688 /* StartIcon@2x.png in Resources */,
+				495A0DB11A9AC8ED002355B5 /* Clock@2x.png in Resources */,
 				4916346A1A9952930087E688 /* YellowRectangleForButton@2x.png in Resources */,
 				491634631A9951960087E688 /* StartIcon.png in Resources */,
 				4916345E1A994E600087E688 /* RedRectangle@2x.png in Resources */,
@@ -550,6 +573,7 @@
 				49A6322D1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg in Resources */,
 				49A88DC219BCC5B3008AE306 /* InfoPlist.strings in Resources */,
 				495A0D9A1A9A9CA6002355B5 /* VerticalGreyLine@2x.png in Resources */,
+				495A0DA01A9AB195002355B5 /* Star.png in Resources */,
 				49A88DCB19BCC5B3008AE306 /* Main.storyboard in Resources */,
 				49C0E8011A71F8530072FC0C /* Features in Resources */,
 			);

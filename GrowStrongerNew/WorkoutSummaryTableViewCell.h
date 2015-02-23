@@ -12,4 +12,15 @@
 
 @interface WorkoutSummaryTableViewCell : PFTableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *prLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *exercisesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *setsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *repsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lbsLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+
 @end

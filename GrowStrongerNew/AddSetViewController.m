@@ -77,7 +77,7 @@
     [queryCEs fromLocalDatastore];
     queryCEs.limit = 4;
     [queryCEs whereKey:@"exercise" equalTo:self.completedExercise.exercise];
-    [queryCEs orderByDescending:@"timeStamp"];
+    [queryCEs orderByDescending:@"timestamp"];
     [queryCEs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Object count: %lu", (unsigned long)objects.count);
         NSArray *setLabels1 = [[NSArray alloc] initWithObjects: self.dayC1, self.dateC1, self.timeC1, self.setC1R1, self.setC1R2, self.setC1R3, self.setC1R4, self.setC1R5, nil];
@@ -92,7 +92,7 @@
         [dateFormatter setDateFormat:@"MMM d"];
         
         NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-        [timeFormatter setDateFormat:@"h':'ma"];
+        [timeFormatter setDateFormat:@"h':'mma"];
         
         for (int i = 1; i <= 4; i++) {
             NSMutableArray *arrayTemp = [[NSMutableArray alloc] init];

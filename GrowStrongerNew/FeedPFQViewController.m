@@ -767,9 +767,42 @@
         cell = [[WorkoutSummaryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
  
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEEE', 'MMM d', 'y' @ 'ha"];
+    NSString *formattedDate = [dateFormatter stringFromDate:[object valueForKey:@"beganAt"]];
+    
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"EEEE', 'MMM d', 'y' @ 'ha"];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    unsigned int unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *timeBreakdown = [calendar components:unitFlags fromDate:[object valueForKey:@"beganAt"] toDate:[object valueForKey:@"completedAt"] options:0];
+    
+    NSString *formattedTime = [NSString stringWithFormat:@"%ld:%02ld", (long)[timeBreakdown hour], (long)[timeBreakdown minute]];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSString *prText = [NSString stringWithFormat:@"%@ PRs", [numberFormatter stringFromNumber:[object valueForKey:@"prCount"]]];
+    NSString *exercisesText = [NSString stringWithFormat:@"%@ exercises", [numberFormatter stringFromNumber:[object valueForKey:@"totalCompletedExercises"]]];
+    NSString *setsText = [NSString stringWithFormat:@"%@ sets", [numberFormatter stringFromNumber:[object valueForKey:@"totalSets"]]];
+    NSString *repsText = [NSString stringWithFormat:@"%@ reps", [numberFormatter stringFromNumber:[object valueForKey:@"totalReps"]]];
+    NSString *lbsText = [NSString stringWithFormat:@"%@ lbs", [numberFormatter stringFromNumber:[object valueForKey:@"totalWeight"]]];
+    
+    
  // Configure the cell
- cell.textLabel.text = [object objectForKey:self.textKey];
+    cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
+    cell.profileImage.clipsToBounds = YES;
+    cell.nameLabel.text = [object valueForKey:@"name"];
+    cell.dateLabel.text = formattedDate;
+    cell.prLabel.text = prText;
+    cell.timeLabel.text = formattedTime;
+    cell.exercisesLabel.text = exercisesText;
+    cell.setsLabel.text = setsText;
+    cell.repsLabel.text = repsText;
+    cell.lbsLabel.text = lbsText;
  //cell.imageView.file = [object objectForKey:self.imageKey];
+    
  
  return cell;
  }

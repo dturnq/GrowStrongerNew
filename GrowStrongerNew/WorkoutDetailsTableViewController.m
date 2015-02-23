@@ -9,6 +9,8 @@
 #import "WorkoutDetailsTableViewController.h"
 #import "WorkoutDetailHeaderTableViewCell.h"
 #import "WorkoutDetailCETableViewCell.h"
+#import "WorkoutSummaryTableViewCell.h"
+#import "CompletedExerciseTableViewCell.h"
 
 @interface WorkoutDetailsTableViewController ()
 
@@ -96,7 +98,7 @@
     return (self.objects.count + 1);
 }
 
-
+/*
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return 150;
@@ -104,6 +106,7 @@
         return 75;
     }
 }
+*/
 
  // Override to customize the look of a cell representing an object. The default is to display
  // a UITableViewCellStyleDefault style cell with the label being the textKey in the object,
@@ -112,16 +115,53 @@
      
      
      if (indexPath.row == 0) {
-         static NSString *CellIdentifier = @"WorkoutDetailHeaderCell";
+         static NSString *CellIdentifier = @"WorkoutSummaryCell";
          
-         WorkoutDetailHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-         
+         WorkoutSummaryTableViewCell *cell = (WorkoutSummaryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
          if (cell == nil) {
-             cell = [[WorkoutDetailHeaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+             cell = [[WorkoutSummaryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
          }
          
+         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+         [dateFormatter setDateFormat:@"EEEE', 'MMM d', 'y' @ 'ha"];
+         NSString *formattedDate = [dateFormatter stringFromDate:self.selectedWorkout.beganAt];
+         
+         NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+         [timeFormatter setDateFormat:@"EEEE', 'MMM d', 'y' @ 'ha"];
+         
+         NSCalendar *calendar = [NSCalendar currentCalendar];
+         unsigned int unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute;
+         NSDateComponents *timeBreakdown = [calendar components:unitFlags fromDate:self.selectedWorkout.beganAt toDate:self.selectedWorkout.completedAt options:0];
+         
+         NSString *formattedTime = [NSString stringWithFormat:@"%ld:%02ld", (long)[timeBreakdown hour], (long)[timeBreakdown minute]];
+         
+         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+         [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+         
+         NSString *prText = [NSString stringWithFormat:@"%@ PRs", [numberFormatter stringFromNumber:self.selectedWorkout.prCount]];
+         NSString *exercisesText = [NSString stringWithFormat:@"%@ exercises", [numberFormatter stringFromNumber:self.selectedWorkout.totalCompletedExercises]];
+         NSString *setsText = [NSString stringWithFormat:@"%@ sets", [numberFormatter stringFromNumber:self.selectedWorkout.totalSets]];
+         NSString *repsText = [NSString stringWithFormat:@"%@ reps", [numberFormatter stringFromNumber:self.selectedWorkout.totalReps]];
+         NSString *lbsText = [NSString stringWithFormat:@"%@ lbs", [numberFormatter stringFromNumber:self.selectedWorkout.totalWeight]];
+         
+         
+         // Configure the cell
+         cell.backgroundColor = NavColor;
+         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
+         cell.profileImage.clipsToBounds = YES;
+         cell.nameLabel.text = self.selectedWorkout.name;
+         cell.dateLabel.text = formattedDate;
+         cell.prLabel.text = prText;
+         cell.timeLabel.text = formattedTime;
+         cell.exercisesLabel.text = exercisesText;
+         cell.setsLabel.text = setsText;
+         cell.repsLabel.text = repsText;
+         cell.lbsLabel.text = lbsText;
+         //cell.imageView.file = [object objectForKey:self.imageKey];
+         
          //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-         cell.workoutNameLabel.text = self.selectedWorkout.name;
+         //cell.nameLabel.text = self.selectedWorkout.name;
          //cell.setsLabel.text = [self.selectedWorkout.totalSets stringValue];
          //cell.repsLabel.text = [self.selectedWorkout.totalReps stringValue];
          //cell.totalWeightLabel.text = [self.selectedWorkout.totalWeight stringValue];
@@ -131,20 +171,61 @@
          
      } else {
       
-         static NSString *CellIdentifier = @"WorkoutDetailCECell";
+         static NSString *CellIdentifier = @"WorkoutExercise";
          
-         WorkoutDetailCETableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+         CompletedExerciseTableViewCell *cell = (CompletedExerciseTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
          
          if (cell == nil) {
-             cell = [[WorkoutDetailCETableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+             cell = [[CompletedExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
          }
          
          //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-         cell.ceNameLabel.text = [[object objectForKey:@"exercise"] objectForKey:@"name"];
-         //cell.setsLabel.text = [[[object objectForKey:@"exercise"] objectForKey:@"totalSets"] stringValue];
-         //cell.repsLabel.text = [[[object objectForKey:@"exercise"] objectForKey:@"totalReps"] stringValue];
-         //cell.totalWeightLabel.text = [[[object objectForKey:@"exercise"] objectForKey:@"totalWeight"] stringValue];
-         //cell.prCountLabel.text = [[object objectForKey:@"exercise"] objectForKey:@"pr"] ? @"YES" : @"NO";
+         //cell.ceNameLabel.text = [[object objectForKey:@"exercise"] objectForKey:@"name"];
+         
+         
+         // Get the specific exercise
+         CompletedExercise *completedExercise = object;
+         
+         // Set the exercise name
+         cell.name.text = [[completedExercise exercise] name];
+         
+         
+         PFQuery *query = [Set query];
+         [query fromLocalDatastore];
+         [query whereKey:@"completedExercise" equalTo:completedExercise];
+         [query addAscendingOrder:@"timeStamp"];
+         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+             
+             /*
+              if (objects.count == 0) {
+              
+              cell.set1.text = @"Tap to record your first set";
+              cell.set2.text = @"";
+              cell.set3.text = @"";
+              cell.set4.text = @"";
+              } else {
+              */
+             
+             NSArray *setLabels = [[NSArray alloc] initWithObjects: cell.set1, cell.set2, cell.set3, cell.set4, nil];
+             
+             NSUInteger i = 1;
+             for (UILabel *setLabel in setLabels) {
+                 if ((int*)i <= (int*)objects.count) {
+                     NSString *labelText = [[[objects objectAtIndex:(i-1)] weight] stringValue];
+                     NSString *labelText2 = [labelText stringByAppendingString:@"/"];
+                     NSString *labelText3 = [labelText2 stringByAppendingString:[[[objects objectAtIndex:(i-1)] reps] stringValue]];
+                     setLabel.text =  labelText3;
+                 } else {
+                     setLabel.text =  @"/";
+                 }
+                 setLabel.layer.borderColor = SetBorderColor.CGColor; // [UIColor darkGrayColor].CGColor;
+                 setLabel.layer.borderWidth = 1.0;
+                 setLabel.layer.cornerRadius = 4.0;
+                 i++;
+             }
+             
+             //}
+         }];
          
          return cell;
      }

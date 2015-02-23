@@ -362,9 +362,6 @@
 
 - (void)configureCell:(CompletedExerciseTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    // We will eventually use this to configure the cell
-
-    
     // Get the specific exercise
     CompletedExercise *completedExercise = [self.completedExerciseArray objectAtIndex:indexPath.row];
     
