@@ -43,6 +43,8 @@
     self.title = self.completedExercise.exercise.name;
     self.selectedPickerButton = self.weight;
     
+    self.horizontalPickerView.backgroundColor = NavColor;
+    
     
     // Update the buttons & picker with the last set
     PFQuery *queryLastSet = [Set query];

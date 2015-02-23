@@ -21,7 +21,7 @@
 
 -(void)reloadWorkoutData;
 -(void)updateStopwatchDisplay;
-@property (weak, nonatomic) CompletedExercise *selectedCompletedExercise;
+@property (strong, nonatomic) CompletedExercise *selectedCompletedExercise;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic, strong) Stopwatch *stopwatch;
 @property (nonatomic, strong) NSTimer *timer;
@@ -103,7 +103,7 @@
     NSLog(@"Awake from Nib");
     self.stopwatch = [[Stopwatch alloc] init];
     [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
-    
+    NSLog(@"Setting workout start time: %@", self.activeWorkout.beganAt);
     
 }
 
@@ -128,36 +128,14 @@
         //NSLog(@"Timestamp: %@", [object objectForKey:@"timeStamp"]);
         if (object == nil) {
             [self.stopwatch setSetStartTime:self.activeWorkout.beganAt];
+            [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
         } else {
             [self.stopwatch setSetStartTime:[object objectForKey:@"timeStamp"]];
+            [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
         }
         
     }];
-    // Prep the stopwatch
-    /*
-    Stopwatch *stopwatch = [[Stopwatch alloc] init];
-    [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
     
-    
-    PFQuery *queryForTime = [Set query];
-    [queryForTime fromLocalDatastore];
-    [queryForTime whereKey:@"workout" equalTo:self.activeWorkout];
-    [queryForTime orderByDescending:@"timestamp"];
-    
-    
-
-    
-    [queryForTime getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        //NSLog(@"Last set completed: %@", object);
-        //NSLog(@"Timestamp: %@", [object objectForKey:@"timeStamp"]);
-        if (object == nil) {
-            [stopwatch setSetStartTime:self.activeWorkout.beganAt];
-        } else {
-            [stopwatch setSetStartTime:[object objectForKey:@"timeStamp"]];
-        }
-        
-    }];
-     */
     
     self.timerView.backgroundColor = NavColor;
     
@@ -205,7 +183,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     NSLog(@"View will appear called");
     [self updateStopwatchDisplay];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01
                                                   target:self
                                                 selector:@selector(updateStopwatchDisplay)
                                                 userInfo:nil
@@ -241,6 +219,7 @@
     int hours = trunc(secondsElapsed/3600);
     int minutes = trunc(secondsElapsed/60 - hours*60);
     int seconds = trunc(secondsElapsed - (minutes * 60) - hours*3600);
+    
     NSString *secondsString = nil;
     if (seconds < 10) {
         secondsString = [NSString stringWithFormat:@"0%i", seconds];
@@ -252,7 +231,7 @@
     
     NSString *minutesString = nil;
     if (minutes < 10) {
-        minutesString = [NSString stringWithFormat:@"0%i", minutes];
+        minutesString = [NSString stringWithFormat:@"%i", minutes];
     }
     else
     {
@@ -265,6 +244,16 @@
     int hoursSet = trunc(secondsElapsedSet/3600);
     int minutesSet = trunc(secondsElapsedSet/60 - hoursSet*60);
     int secondsSet = trunc(secondsElapsedSet - minutesSet*60 - hoursSet*3600);
+    int millisecondsSet = trunc(secondsElapsedSet*100 - secondsSet*100 - minutesSet*6000 - hoursSet*360000);
+    NSString *millisecondsStringSet = nil;
+    if (millisecondsSet < 10) {
+        millisecondsStringSet = [NSString stringWithFormat:@"0%i", millisecondsSet];
+    }
+    else
+    {
+        millisecondsStringSet = [NSString stringWithFormat:@"%i", millisecondsSet];
+    }
+    
     NSString *secondsStringSet = nil;
     if (secondsSet < 10) {
         secondsStringSet = [NSString stringWithFormat:@"0%i", secondsSet];
@@ -276,7 +265,7 @@
     
     NSString *minutesStringSet = nil;
     if (minutesSet < 10) {
-        minutesStringSet = [NSString stringWithFormat:@"0%i", minutesSet];
+        minutesStringSet = [NSString stringWithFormat:@"%i", minutesSet];
     }
     else
     {
@@ -291,20 +280,20 @@
     if (1)
     {
         
-        self.workoutTimerLabel.text = [NSString stringWithFormat:@"%i:%@:%@", hours, minutesString, secondsString];
+        self.workoutTimerLabel.text = [NSString stringWithFormat:@"%i hr %@ mins", hours, minutesString];
     }
     else
     {
-        self.workoutTimerLabel.text = [NSString stringWithFormat:@"%@:%@", minutesString, secondsString];
+        self.workoutTimerLabel.text = [NSString stringWithFormat:@"%@ mins", minutesString];
     }
     
     if (1)
     {
-        self.setTimerLabel.text = [NSString stringWithFormat:@"%i:%@:%@", hoursSet, minutesStringSet, secondsStringSet];
+        self.setTimerLabel.text = [NSString stringWithFormat:@"%@:%@.%@", minutesStringSet, secondsStringSet, millisecondsStringSet];
     }
     else
     {
-        self.setTimerLabel.text = [NSString stringWithFormat:@"%@:%@", minutesStringSet, secondsStringSet];
+        self.setTimerLabel.text = [NSString stringWithFormat:@"%@.%@", secondsStringSet, millisecondsStringSet];
     }
     
 }

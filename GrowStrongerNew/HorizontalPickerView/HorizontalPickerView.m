@@ -73,7 +73,7 @@ typedef NS_ENUM(NSUInteger, AdjustEdgeInset) {
 {
     _isInitialized = TRUE;
     
-    self.backgroundColor = _style == HPStyle_iOS7 ? [UIColor clearColor] : [UIColor blackColor];
+    self.backgroundColor = _style == HPStyle_iOS7 ? NavColor : [UIColor blackColor];
     
     CGRect gradientRect = CGRectInset(self.bounds, kTopFrameXOffset, kTopFrameYOffset);
     

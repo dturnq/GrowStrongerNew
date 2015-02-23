@@ -17,6 +17,7 @@
 #define TabTextColor UIColorFromRGB(0x4A4A4A)
 #define ButtonBorderColor UIColorFromRGB(0xB2322F)
 #define SetBorderColor UIColorFromRGB(0x4A4A4A)
+#define Body_SelectedTextColor UIColorFromRGB(0xB2322F)
 //[UIColor colorWithRed:27/255.0 green:106/255.0 blue:165/255.0 alpha:1.0]
 
 #endif
