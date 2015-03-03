@@ -14,6 +14,7 @@
 
 @property (retain) PFUser *user;
 @property (retain) NSString *name;
+@property (retain) NSString *nameLowercase;
 @property (retain) NSString *exerciseType;
 @property (retain) NSNumber *prWeight;
 @property (retain) NSNumber *prReps;

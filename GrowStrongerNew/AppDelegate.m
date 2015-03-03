@@ -11,6 +11,7 @@
 #import <ParseUI/ParseUI.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
 #import "ExerciseListViewController.h"
 #import "GlobalHeader.h"
 
@@ -19,10 +20,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"Applicaiton did begin launching");
+    NSLog(@"Parse version: %@", PARSE_VERSION);
     // Override point for customization after application launch.
-    [FBLoginView class];
+    //[FBLoginView class];
+    
+    
     
     [Parse enableLocalDatastore];
+    
+    //[ParseCrashReporting enable];
     
 #if TARGET_OS_EMBEDDED
     [Parse setApplicationId:@"z9I9OwkOY5OWPrmK7hxx3xrP0jyT8L4cEdxaMF9e"
@@ -35,13 +41,15 @@
 #endif
     
     
-    // Parse Analytics
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     
     // Parse Facebook Integration
     NSLog(@"Begin attempt to initialize facebook");
     [PFFacebookUtils initializeFacebook];
     NSLog(@"Facebook initialized");
+    
+    // Parse Analytics
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     // Parse ACL
     //[PFUser enableAutomaticUser];
@@ -68,6 +76,7 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    NSLog(@"Fbook SSO");
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
                         withSession:[PFFacebookUtils session]];
@@ -75,6 +84,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSLog(@"Didbecomeactive");
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
@@ -94,12 +104,15 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    NSLog(@"App entered foreground");
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSLog(@"WillTerminate");
+    [[PFFacebookUtils session] close];
 }
 
 @end

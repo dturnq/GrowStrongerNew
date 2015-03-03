@@ -21,6 +21,7 @@
 
 @dynamic user;
 @dynamic name;
+@dynamic nameLowercase;
 @dynamic exerciseType;
 @dynamic prWeight;
 @dynamic prReps;

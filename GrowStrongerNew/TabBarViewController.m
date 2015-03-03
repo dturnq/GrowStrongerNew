@@ -44,6 +44,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
 
+    NSLog(@"Tab bar viewdidappear called");
     // Check whether logged in; log in if necessary
     PFUser *currentuser = [PFUser currentUser];
     if (currentuser) {

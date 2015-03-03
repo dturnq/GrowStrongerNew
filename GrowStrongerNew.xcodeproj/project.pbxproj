@@ -30,6 +30,11 @@
 		4931CD951A527E02000DCDE0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4931CD941A527E02000DCDE0 /* libsqlite3.dylib */; };
 		4931CDA11A5281C6000DCDE0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4931CDA01A5281C5000DCDE0 /* FacebookSDK.framework */; };
 		493ABEC71A847C2400F5583B /* Growth in Resources */ = {isa = PBXBuildFile; fileRef = 493ABEC61A847C2400F5583B /* Growth */; };
+		49539F381AA561AA00F19674 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F371AA561AA00F19674 /* User.m */; };
+		49539F411AA561C600F19674 /* ProfileCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F3A1AA561C600F19674 /* ProfileCalendarTableViewCell.m */; };
+		49539F421AA561C600F19674 /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F3C1AA561C600F19674 /* ProfileHeaderTableViewCell.m */; };
+		49539F431AA561C600F19674 /* ProfileStatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F3E1AA561C600F19674 /* ProfileStatsTableViewCell.m */; };
+		49539F441AA561C600F19674 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F401AA561C600F19674 /* ProfileTableViewController.m */; };
 		495A0D991A9A9CA6002355B5 /* VerticalGreyLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0D971A9A9CA6002355B5 /* VerticalGreyLine.png */; };
 		495A0D9A1A9A9CA6002355B5 /* VerticalGreyLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0D981A9A9CA6002355B5 /* VerticalGreyLine@2x.png */; };
 		495A0D9D1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 495A0D9C1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.m */; };
@@ -123,6 +128,16 @@
 		4931CD941A527E02000DCDE0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4931CDA01A5281C5000DCDE0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		493ABEC61A847C2400F5583B /* Growth */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Growth; sourceTree = "<group>"; };
+		49539F361AA561AA00F19674 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		49539F371AA561AA00F19674 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		49539F391AA561C600F19674 /* ProfileCalendarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCalendarTableViewCell.h; sourceTree = "<group>"; };
+		49539F3A1AA561C600F19674 /* ProfileCalendarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCalendarTableViewCell.m; sourceTree = "<group>"; };
+		49539F3B1AA561C600F19674 /* ProfileHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderTableViewCell.h; sourceTree = "<group>"; };
+		49539F3C1AA561C600F19674 /* ProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
+		49539F3D1AA561C600F19674 /* ProfileStatsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileStatsTableViewCell.h; sourceTree = "<group>"; };
+		49539F3E1AA561C600F19674 /* ProfileStatsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileStatsTableViewCell.m; sourceTree = "<group>"; };
+		49539F3F1AA561C600F19674 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
+		49539F401AA561C600F19674 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		495A0D971A9A9CA6002355B5 /* VerticalGreyLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VerticalGreyLine.png; sourceTree = "<group>"; };
 		495A0D981A9A9CA6002355B5 /* VerticalGreyLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VerticalGreyLine@2x.png"; sourceTree = "<group>"; };
 		495A0D9B1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSummaryTableViewCell.h; sourceTree = "<group>"; };
@@ -248,6 +263,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49539F451AA561CE00F19674 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				49539F3F1AA561C600F19674 /* ProfileTableViewController.h */,
+				49539F401AA561C600F19674 /* ProfileTableViewController.m */,
+				49539F3B1AA561C600F19674 /* ProfileHeaderTableViewCell.h */,
+				49539F3C1AA561C600F19674 /* ProfileHeaderTableViewCell.m */,
+				49539F3D1AA561C600F19674 /* ProfileStatsTableViewCell.h */,
+				49539F3E1AA561C600F19674 /* ProfileStatsTableViewCell.m */,
+				49539F391AA561C600F19674 /* ProfileCalendarTableViewCell.h */,
+				49539F3A1AA561C600F19674 /* ProfileCalendarTableViewCell.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		4969A98D1A5E568100723C22 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +329,8 @@
 		49A632351A532F5B00A1A484 /* Object Subclassing */ = {
 			isa = PBXGroup;
 			children = (
+				49539F361AA561AA00F19674 /* User.h */,
+				49539F371AA561AA00F19674 /* User.m */,
 				49A632291A52A27A00A1A484 /* Exercise.h */,
 				49A6322A1A52A27A00A1A484 /* Exercise.m */,
 				49A6323C1A53340100A1A484 /* Workout.h */,
@@ -410,6 +442,7 @@
 				4916345A1A99037E0087E688 /* Constants.h */,
 				49A0D1791A62E28700D92402 /* TestViewController.h */,
 				49A0D17A1A62E28700D92402 /* TestViewController.m */,
+				49539F451AA561CE00F19674 /* Profile */,
 				49A632381A53319C00A1A484 /* Feed Branch */,
 				49A632341A532F5200A1A484 /* Record Branch */,
 				49A632351A532F5B00A1A484 /* Object Subclassing */,
@@ -605,6 +638,7 @@
 				49C0E7FF1A71EF4D0072FC0C /* SaveWorkoutViewController.m in Sources */,
 				497F38EE1A8B14790064C0E7 /* WorkoutDetailsTableViewController.m in Sources */,
 				495A0D9D1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.m in Sources */,
+				49539F441AA561C600F19674 /* ProfileTableViewController.m in Sources */,
 				49A0D17B1A62E28700D92402 /* TestViewController.m in Sources */,
 				49A0D1891A63214A00D92402 /* HPCollectionVC.m in Sources */,
 				49C0F62D1A5795BE00A79121 /* CompletedExercise.m in Sources */,
@@ -614,12 +648,16 @@
 				49C0E7FA1A71EA2F0072FC0C /* MKInfoPanel.m in Sources */,
 				4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */,
 				49A0D1781A62532000D92402 /* PushNoAnimationSegue.m in Sources */,
+				49539F421AA561C600F19674 /* ProfileHeaderTableViewCell.m in Sources */,
+				49539F381AA561AA00F19674 /* User.m in Sources */,
 				49C0E7F61A6D8B620072FC0C /* Stopwatch.m in Sources */,
 				49A6322B1A52A27A00A1A484 /* Exercise.m in Sources */,
+				49539F411AA561C600F19674 /* ProfileCalendarTableViewCell.m in Sources */,
 				49C0F62A1A57954700A79121 /* Set.m in Sources */,
 				49A0D18B1A63214A00D92402 /* HPCollectionViewFlowLayout.m in Sources */,
 				49A88DC419BCC5B3008AE306 /* main.m in Sources */,
 				492DF8721A526170006C6EC5 /* ExerciseListViewController.m in Sources */,
+				49539F431AA561C600F19674 /* ProfileStatsTableViewCell.m in Sources */,
 				4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */,
 				49A0D18A1A63214A00D92402 /* HPCollectionViewCell.m in Sources */,
 				49A6323E1A53340100A1A484 /* Workout.m in Sources */,

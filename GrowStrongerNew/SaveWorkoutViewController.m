@@ -47,6 +47,7 @@
         // BEFORE saving the workout, set all workouts, CEs, sets to "Raw Complete"
         NSLog(@"Beginning save segue to feed");
         self.activeWorkout.name = self.NameTextField.text;
+        self.activeWorkout.nameLowercase = [self.NameTextField.text lowercaseString];
         NSDate *now = [NSDate date];
         self.activeWorkout.completedAt = now;
         self.activeWorkout.active = @"Raw Complete";

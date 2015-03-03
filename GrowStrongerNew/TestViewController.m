@@ -8,6 +8,8 @@
 
 #import "TestViewController.h"
 #import <Parse/Parse.h>
+#import "Exercise.h"
+#import "Workout.h"
 
 
 @interface TestViewController ()
@@ -131,5 +133,27 @@
     object[@"newVar"] = @"Test2";
     [object pin];
     [object saveEventually];
+}
+
+- (IBAction)addSearchableTitle:(id)sender {
+    
+    PFQuery *queryExercises = [Exercise query];
+    queryExercises.limit = 1000;
+    [queryExercises findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (Exercise *exercise in objects) {
+            exercise.nameLowercase = [exercise.name lowercaseString];
+        }
+        [PFObject saveAllInBackground:objects];
+    }];
+    
+    PFQuery *queryWorkouts = [Workout query];
+    queryWorkouts.limit = 1000;
+    [queryWorkouts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (Workout *workout in objects) {
+            workout.nameLowercase = [workout.name lowercaseString];
+        }
+        [PFObject saveAllInBackground:objects];
+    }];
+    
 }
 @end

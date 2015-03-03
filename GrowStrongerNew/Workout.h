@@ -14,6 +14,7 @@
 
 @property (retain) PFUser *user;
 @property (retain) NSString *name;
+@property (retain) NSString *nameLowercase;
 @property (retain) NSDate *beganAt;
 @property (retain) NSDate *completedAt;
 @property (retain) NSString *active;

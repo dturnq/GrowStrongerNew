@@ -26,6 +26,7 @@
         AddExerciseViewController* addExerciseViewController = unwindSegue.sourceViewController;
         Exercise *exercise = [Exercise object];
         exercise.name = addExerciseViewController.nameTextField.text;
+        exercise.name = [addExerciseViewController.nameTextField.text lowercaseString];
         exercise.user = user;
         exercise.exerciseType = addExerciseViewController.exerciseType;
         [exercise saveEventually];
@@ -123,7 +124,6 @@
 
  // Override to customize what kind of query to perform on the class. The default is to query for
  // all objects ordered by createdAt descending.
-/*
  - (PFQuery *)queryForTable {
      PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
      // If Pull To Refresh is enabled, query against the network by default.
@@ -136,10 +136,10 @@
      //if (self.objects.count == 0) {
             //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
      //}
-     [query orderByAscending:@"name"];
+     [query orderByAscending:@"nameLowercase"];
      return query;
  }
-*/
+
 
 /*
  // Override to customize the look of a cell representing an object. The default is to display

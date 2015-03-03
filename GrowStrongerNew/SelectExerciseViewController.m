@@ -118,7 +118,7 @@
     //if (self.objects.count == 0) {
     //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     //}
-    [query orderByAscending:@"name"];
+    [query orderByAscending:@"nameLowercase"];
     return query;
 }
 

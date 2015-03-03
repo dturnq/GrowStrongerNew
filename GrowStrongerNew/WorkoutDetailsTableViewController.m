@@ -98,15 +98,15 @@
     return (self.objects.count + 1);
 }
 
-/*
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        return 150;
+        return 120;
     } else {
         return 75;
     }
 }
-*/
+
 
  // Override to customize the look of a cell representing an object. The default is to display
  // a UITableViewCellStyleDefault style cell with the label being the textKey in the object,

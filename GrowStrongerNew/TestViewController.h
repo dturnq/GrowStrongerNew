@@ -17,6 +17,7 @@
 - (IBAction)saveObjectTestAction:(id)sender;
 - (IBAction)testOrder:(id)sender;
 - (IBAction)testSaveEventually:(id)sender;
+- (IBAction)addSearchableTitle:(id)sender;
 
 @property (strong, nonatomic) PFObject *testObject;
 @end

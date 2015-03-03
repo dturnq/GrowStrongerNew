@@ -161,7 +161,7 @@
                        NSArray *objectsActiveWorkout = [queryWorkouts findObjects];
                        
                        if (objectsActiveWorkout.count > 0) {
-                           //NSLog(@"Found workout to save: %@", [objectsActiveWorkout firstObject]);
+                           NSLog(@"Found workout to save: %@", [objectsActiveWorkout firstObject]);
                            Workout *activeWorkout = [objectsActiveWorkout firstObject];
                            
                            
@@ -183,10 +183,12 @@
                            
                        } else {
                            // No workouts to save :)
+                           NSLog(@"No workouts to save");
                        }
 
                        dispatch_async(dispatch_get_main_queue(),
                                       ^{
+                                          NSLog(@"Back to the main thread :)");
                                           self.isSaving = NO;
                                           [self.tableView reloadData];
                                       });
@@ -250,11 +252,14 @@
                 workout.totalSets = [NSNumber numberWithInt:(workout.totalSets.intValue + 1)];
                 workout.totalReps = workout.totalReps = [NSNumber numberWithInt:(workout.totalReps.intValue + set.reps.intValue)];
                 
+                NSLog(@"About to pin");
                 [completedExercise pin];
                 [workout pin];
                 
                 set.active = @"Fully Pre-processed";
+                set.pr = NO;
                 [set pin];
+                NSLog(@"All pinned");
             }
             
             completedExercise.totalWeight = [NSNumber numberWithInt:(completedExercise.totalWeight.intValue + bestSet.totalWeight.intValue)];
@@ -284,7 +289,7 @@
         
     }
     
-    //NSLog(@"Running PRcheck");
+    NSLog(@"Going to run PRcheck");
     [self prCheck:workout];
     
 }
@@ -297,6 +302,8 @@
      - If None, go to Save all step
      - If some, go to Calc PRs step
      */
+    
+    NSLog(@"Running prcheck");
     
     PFQuery *querySets = [Set query];
     [querySets fromLocalDatastore];
@@ -312,8 +319,10 @@
         NSString *result = [self calcPRsInWorkout:workout];
         //NSLog(@"Results of bestset processing: %@", result);
         if ([result isEqual:@"Success"]) {
-            //NSLog(@"Final save...");
+            NSLog(@"Heading to final save...");
             [self finalSave:workout];
+        } else {
+            NSLog(@"FAILED: calcPRs");
         }
         
     }
@@ -383,7 +392,7 @@
                 if (bestSet.weight.intValue > bestWeight) { bestSet.pr = YES; }
                 if ((bestSet.weight.intValue == bestWeight) & (bestSet.reps.intValue > bestReps)) { bestSet.pr = YES; }
                 if (bestSet.pr) {
-                    //NSLog(@"We have determined it was a PR");
+                    NSLog(@"We have determined it was a PR");
                     completedExercise.pr = YES;
                     workout.prCount = [NSNumber numberWithInt:(workout.prCount.intValue + 1)];
                     completedExercise.exercise.prWeight = bestSet.weight;
@@ -392,7 +401,7 @@
                     [completedExercise pin];
                     [workout pin];
                 } else {
-                    //NSLog(@"it wasn't a PR :(");
+                    NSLog(@"it wasn't a PR :(");
                 }
                 
                 bestSet.active = @"Fully Pre-processed";
@@ -401,7 +410,7 @@
             } else {
                 // This means the connection must be bad, and it wasn't able to pull the current PR. Cancel save.
                 self.isSaving = NO;
-                //NSLog(@"Failed to pull the PR");
+                NSLog(@"Failed to pull the PR");
                 return @"Failed";
             }
             
@@ -409,7 +418,7 @@
             
         } else {
             // This means that the best set was already processed, or that it resided in another CE - no big deal
-            //NSLog(@"No best set found for this workout");
+            NSLog(@"No best set found for this workout");
         }
         
     
@@ -459,38 +468,45 @@
     [queryCEs orderByAscending:@"timestamp"];
     [queryCEs includeKey:@"exercise"];
     NSArray *ceArray = [queryCEs findObjects];
-    for (CompletedExercise *ce in ceArray) {
-        if (ce.pr) {
+    if (ceArray.count > 0) {
+        for (CompletedExercise *ce in ceArray) {
+            if (ce.pr) {
+                NSError *error = nil;
+                [ce.exercise save:&error];
+                if (!error) {
+                    
+                } else {
+                    self.isSaving = NO;
+                    return;
+                }
+            }
+            ce.active = @"Complete";
+            [ce pin];
             NSError *error = nil;
-            [ce.exercise save:&error];
+            [ce save:&error];
             if (!error) {
                 
             } else {
+                ce.active = @"Active";
+                [ce pin];
                 self.isSaving = NO;
                 return;
             }
         }
-        ce.active = @"Complete";
-        [ce pin];
-        NSError *error = nil;
-        [ce save:&error];
-        if (!error) {
-            
-        } else {
-            ce.active = @"Active";
-            [ce pin];
-            self.isSaving = NO;
-            return;
-        }
     }
+    
+    
     workout.active = @"Complete";
     NSError *error = nil;
+    NSLog(@"Attempting to save workout: %@", workout);
     [workout save:&error];
     if (!error) {
         // Nothing to do :)
+        NSLog(@"Workout saved :)");
     } else {
         workout.active = @"Raw Complete";
         [workout pin];
+        NSLog(@"Workout save failed :(");
     }
 
     self.isSaving = NO;
