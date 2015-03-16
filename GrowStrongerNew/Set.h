@@ -21,7 +21,7 @@
 @property (retain) NSNumber *reps;
 @property (retain) NSNumber *weight;
 @property (retain) NSNumber *totalWeight;
-@property (retain) NSDate *timeStamp;
+@property (retain) NSDate *timestamp;
 
 @property (retain) NSString *active;
 @property BOOL pr;

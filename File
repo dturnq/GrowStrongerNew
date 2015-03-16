@@ -1,7 +1,33 @@
 Bugs
+- Workouts not saving
+- Profile images not being saved (seems to be getting stuck on "beginning for loop through sets")
+- Active workout tab suuper slow
 
 
 
+List of things to do
+1. Selecting an exercise is slow (may be fixed)
+2. Adding a set is slow
+3. You cannot currently edit a set
+4. The profile page doesn't have the calendar completed
+5. It does not pull in the Facebook photo
+6. you cannot custom edit the photo
+7. You cannot custom edit your display name
+8. There is the extra modding view in the tab bar
+9. You cannot add followers
+10. Finish the home screen image
+11. Create / import the tab bar images
+12. Create the standard workout phrases
+13. Allow filtering for exercises of a specific type (body part of dumbbell vs. barbell vs. etc)
+14. Send Jeremy and Josiah the app for dad's phone
+15. Upgrade to latest version of the framework
+16. Add ability to delete a completed exercise
+17. Automatically delete exercises that do not have any sets
+18. Prettify the login screen
+19. Create a splash screen
+20. Allow reordering of exercises
+- Instead of stopping after saving a single workout, check for additional workouts
+- When opening exercise list, pull from the local data store. Only pull from the internet if the screen is pulled down, or if it hasn't been checked in > 1 day / week
 
 TODAY:
 
@@ -51,6 +77,8 @@ COMPLETED
 - Save workouts
 - View workouts
 - Medals for records
+- Reload the table view after each workout is saved
+- When the app is first opened, it queries for CEs (if in active workout)
 
 /// ORIGINAL COMMENTS
 Mandatory functionality during launch

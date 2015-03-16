@@ -8,8 +8,11 @@
 
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import "Exercise.h"
 
 @interface ExerciseListViewController : PFQueryTableViewController
+
+@property (strong, nonatomic) Exercise *selectedExercise;
 
 -(IBAction)unwindToExerciseList:(UIStoryboardSegue *)unwindSegue;
 

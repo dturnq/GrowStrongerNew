@@ -29,98 +29,40 @@
     if ([unwindSegue.identifier  isEqual: @"CancelWorkout"]) {
 
         // Unpin and delete all incomplete workouts
-        PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
-        [query fromLocalDatastore];
-        [query whereKey:@"active" equalTo:@"Garbage"];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+                       ^{
+                           PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
+                           [query fromLocalDatastore];
+                           [query whereKey:@"active" equalTo:@"Garbage"];
+                           NSArray *objects = [query findObjects];
 
 
-            for (Workout *workout in objects) {
+                            for (Workout *workout in objects) {
                 
-                PFQuery *querySets = [Set query];
-                [querySets fromLocalDatastore];
-                [querySets whereKey:@"workout" equalTo:workout];
-                [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                    for (Set *set in objects) {
-                        [set unpin];
-                    }
+                                PFQuery *querySets = [Set query];
+                                [querySets fromLocalDatastore];
+                                [querySets whereKey:@"workout" equalTo:workout];
+                                NSArray *objects2 = [querySets findObjects];
+                                [PFObject unpinAll:objects2];
                     
-                    PFQuery *queryCEs = [CompletedExercise query];
-                    [queryCEs fromLocalDatastore];
-                    [queryCEs whereKey:@"workout" equalTo:workout];
-                    [queryCEs findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                        for (CompletedExercise *cE in objects) {
-                            [cE unpin];
-                        }
-                    }];
-                }];
+                                PFQuery *queryCEs = [CompletedExercise query];
+                                [queryCEs fromLocalDatastore];
+                                [queryCEs whereKey:@"workout" equalTo:workout];
+                                NSArray *objects3 = [queryCEs findObjects];
+                                [PFObject unpinAll:objects3];
                 
-                [workout unpin];
-            }
-
-        }];
+                                [workout unpin];
+                            }
+                           dispatch_async(dispatch_get_main_queue(),
+                                          ^{
+                                              
+                                          });
+                       });
     } else if ([unwindSegue.identifier isEqual:@"SaveWorkout"]) {
         NSLog(@"Perform segue to Save Workout // nameing modal view");
         
         // Jump to the feed view
         self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
-        
-        // Save all the workout data that is unsaved. Stuff will be double-saved (but probably without duplicates) if the entire process isn't completed. In future, this could potentially be mitigated by doing a single save-all. I don't now if it would then only save all or none.
-        PFQuery *query = [Workout query];
-        [query fromLocalDatastore];
-        [query whereKey:@"active" equalTo:@"Unsaved"];
-        [query orderByDescending:@"beganAt"];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            /*
-            for (Workout *workout in objects) {
-                PFQuery *querySets = [Set query];
-                [querySets fromLocalDatastore];
-                [querySets whereKey:@"workout" equalTo:workout];
-                [querySets findObjectsInBackgroundWithBlock:^(NSArray *setArray, NSError *error) {
-                    
-                    if (!error) {
-                        [PFObject saveAllInBackground:setArray block:^(BOOL succeeded, NSError *error) {
-                            
-                            if (!error) {
-                                PFQuery *queryCEs = [CompletedExercise query];
-                                [queryCEs fromLocalDatastore];
-                                [queryCEs whereKey:@"workout" equalTo:workout];
-                                [queryCEs findObjectsInBackgroundWithBlock:^(NSArray *cEArray, NSError *error) {
-                                    
-                                    if (!error) {
-                                        [PFObject saveAllInBackground:cEArray block:^(BOOL succeeded, NSError *error) {
-                                            
-                                            if (!error) {
-                                                [workout saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                                    workout.active = @"Saved";
-                                                    [workout pin];
-                                                    [workout saveInBackground];
-                                                }];
-                                            } else {
-                                                NSLog(@"Error: %@", error);
-                                            }
-                                            
-                                        }];
-                                    } else {
-                                        NSLog(@"Error: %@", error);
-                                    }
-                                    
-                                }];
-                            } else {
-                                NSLog(@"Error: %@", error);
-                            }
-                            
-                        }];
-                    } else {
-                        NSLog(@"Error: %@", error);
-                    }
-                    
-                }];
-                
-            }
-             */
-        }];
-        
 
     }
     

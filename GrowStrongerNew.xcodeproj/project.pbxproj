@@ -30,11 +30,20 @@
 		4931CD951A527E02000DCDE0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4931CD941A527E02000DCDE0 /* libsqlite3.dylib */; };
 		4931CDA11A5281C6000DCDE0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4931CDA01A5281C5000DCDE0 /* FacebookSDK.framework */; };
 		493ABEC71A847C2400F5583B /* Growth in Resources */ = {isa = PBXBuildFile; fileRef = 493ABEC61A847C2400F5583B /* Growth */; };
+		494A99241AA686EA008F11CF /* whiteBackground30px.png in Resources */ = {isa = PBXBuildFile; fileRef = 494A99221AA686EA008F11CF /* whiteBackground30px.png */; };
+		494A99251AA686EA008F11CF /* whiteBackground30px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 494A99231AA686EA008F11CF /* whiteBackground30px@2x.png */; };
+		494A99281AA68875008F11CF /* greyVerticalDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = 494A99261AA68875008F11CF /* greyVerticalDivider.png */; };
+		494A99291AA68875008F11CF /* greyVerticalDivider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 494A99271AA68875008F11CF /* greyVerticalDivider@2x.png */; };
 		49539F381AA561AA00F19674 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F371AA561AA00F19674 /* User.m */; };
-		49539F411AA561C600F19674 /* ProfileCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F3A1AA561C600F19674 /* ProfileCalendarTableViewCell.m */; };
-		49539F421AA561C600F19674 /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F3C1AA561C600F19674 /* ProfileHeaderTableViewCell.m */; };
-		49539F431AA561C600F19674 /* ProfileStatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F3E1AA561C600F19674 /* ProfileStatsTableViewCell.m */; };
 		49539F441AA561C600F19674 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F401AA561C600F19674 /* ProfileTableViewController.m */; };
+		49539F471AA58B6000F19674 /* SyncLogic in Resources */ = {isa = PBXBuildFile; fileRef = 49539F461AA58B6000F19674 /* SyncLogic */; };
+		49539F4C1AA6786A00F19674 /* redPixel.png in Resources */ = {isa = PBXBuildFile; fileRef = 49539F481AA6786A00F19674 /* redPixel.png */; };
+		49539F4D1AA6786A00F19674 /* redPixel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49539F491AA6786A00F19674 /* redPixel@2x.png */; };
+		49539F4E1AA6786A00F19674 /* whitePixel.png in Resources */ = {isa = PBXBuildFile; fileRef = 49539F4A1AA6786A00F19674 /* whitePixel.png */; };
+		49539F4F1AA6786A00F19674 /* whitePixel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49539F4B1AA6786A00F19674 /* whitePixel@2x.png */; };
+		49539F521AA67C6600F19674 /* yellowRectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 49539F501AA67C6600F19674 /* yellowRectangle.png */; };
+		49539F531AA67C6600F19674 /* yellowRectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49539F511AA67C6600F19674 /* yellowRectangle@2x.png */; };
+		49539F561AA67EC100F19674 /* CustomSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539F551AA67EC100F19674 /* CustomSegmentControl.m */; };
 		495A0D991A9A9CA6002355B5 /* VerticalGreyLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0D971A9A9CA6002355B5 /* VerticalGreyLine.png */; };
 		495A0D9A1A9A9CA6002355B5 /* VerticalGreyLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 495A0D981A9A9CA6002355B5 /* VerticalGreyLine@2x.png */; };
 		495A0D9D1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 495A0D9C1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.m */; };
@@ -80,6 +89,7 @@
 		49A88DDB19BCC5B3008AE306 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A88DB719BCC5B2008AE306 /* Foundation.framework */; };
 		49A88DE419BCC5B3008AE306 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49A88DE219BCC5B3008AE306 /* InfoPlist.strings */; };
 		49A88DE619BCC5B3008AE306 /* GrowStrongerNewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A88DE519BCC5B3008AE306 /* GrowStrongerNewTests.m */; };
+		49A8CD511AA7DF67006A2ECE /* ProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A8CD501AA7DF67006A2ECE /* ProfileEditViewController.m */; };
 		49C0E7F61A6D8B620072FC0C /* Stopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0E7F51A6D8B620072FC0C /* Stopwatch.m */; };
 		49C0E7FA1A71EA2F0072FC0C /* MKInfoPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0E7F81A71EA2F0072FC0C /* MKInfoPanel.m */; };
 		49C0E7FB1A71EA2F0072FC0C /* MKInfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C0E7F91A71EA2F0072FC0C /* MKInfoPanel.xib */; };
@@ -128,16 +138,23 @@
 		4931CD941A527E02000DCDE0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4931CDA01A5281C5000DCDE0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		493ABEC61A847C2400F5583B /* Growth */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Growth; sourceTree = "<group>"; };
+		494A99221AA686EA008F11CF /* whiteBackground30px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBackground30px.png; sourceTree = "<group>"; };
+		494A99231AA686EA008F11CF /* whiteBackground30px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteBackground30px@2x.png"; sourceTree = "<group>"; };
+		494A99261AA68875008F11CF /* greyVerticalDivider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greyVerticalDivider.png; sourceTree = "<group>"; };
+		494A99271AA68875008F11CF /* greyVerticalDivider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyVerticalDivider@2x.png"; sourceTree = "<group>"; };
 		49539F361AA561AA00F19674 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		49539F371AA561AA00F19674 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		49539F391AA561C600F19674 /* ProfileCalendarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCalendarTableViewCell.h; sourceTree = "<group>"; };
-		49539F3A1AA561C600F19674 /* ProfileCalendarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCalendarTableViewCell.m; sourceTree = "<group>"; };
-		49539F3B1AA561C600F19674 /* ProfileHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderTableViewCell.h; sourceTree = "<group>"; };
-		49539F3C1AA561C600F19674 /* ProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
-		49539F3D1AA561C600F19674 /* ProfileStatsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileStatsTableViewCell.h; sourceTree = "<group>"; };
-		49539F3E1AA561C600F19674 /* ProfileStatsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileStatsTableViewCell.m; sourceTree = "<group>"; };
 		49539F3F1AA561C600F19674 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
 		49539F401AA561C600F19674 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
+		49539F461AA58B6000F19674 /* SyncLogic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SyncLogic; sourceTree = "<group>"; };
+		49539F481AA6786A00F19674 /* redPixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redPixel.png; sourceTree = "<group>"; };
+		49539F491AA6786A00F19674 /* redPixel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redPixel@2x.png"; sourceTree = "<group>"; };
+		49539F4A1AA6786A00F19674 /* whitePixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitePixel.png; sourceTree = "<group>"; };
+		49539F4B1AA6786A00F19674 /* whitePixel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitePixel@2x.png"; sourceTree = "<group>"; };
+		49539F501AA67C6600F19674 /* yellowRectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowRectangle.png; sourceTree = "<group>"; };
+		49539F511AA67C6600F19674 /* yellowRectangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowRectangle@2x.png"; sourceTree = "<group>"; };
+		49539F541AA67EC100F19674 /* CustomSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSegmentControl.h; sourceTree = "<group>"; };
+		49539F551AA67EC100F19674 /* CustomSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSegmentControl.m; sourceTree = "<group>"; };
 		495A0D971A9A9CA6002355B5 /* VerticalGreyLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VerticalGreyLine.png; sourceTree = "<group>"; };
 		495A0D981A9A9CA6002355B5 /* VerticalGreyLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VerticalGreyLine@2x.png"; sourceTree = "<group>"; };
 		495A0D9B1A9AAD8A002355B5 /* WorkoutSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSummaryTableViewCell.h; sourceTree = "<group>"; };
@@ -209,6 +226,8 @@
 		49A88DE119BCC5B3008AE306 /* GrowStrongerNewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrowStrongerNewTests-Info.plist"; sourceTree = "<group>"; };
 		49A88DE319BCC5B3008AE306 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49A88DE519BCC5B3008AE306 /* GrowStrongerNewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowStrongerNewTests.m; sourceTree = "<group>"; };
+		49A8CD4F1AA7DF67006A2ECE /* ProfileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditViewController.h; sourceTree = "<group>"; };
+		49A8CD501AA7DF67006A2ECE /* ProfileEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditViewController.m; sourceTree = "<group>"; };
 		49C0E7F41A6D8B620072FC0C /* Stopwatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stopwatch.h; sourceTree = "<group>"; };
 		49C0E7F51A6D8B620072FC0C /* Stopwatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stopwatch.m; sourceTree = "<group>"; };
 		49C0E7F71A71EA2F0072FC0C /* MKInfoPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKInfoPanel.h; sourceTree = "<group>"; };
@@ -268,12 +287,8 @@
 			children = (
 				49539F3F1AA561C600F19674 /* ProfileTableViewController.h */,
 				49539F401AA561C600F19674 /* ProfileTableViewController.m */,
-				49539F3B1AA561C600F19674 /* ProfileHeaderTableViewCell.h */,
-				49539F3C1AA561C600F19674 /* ProfileHeaderTableViewCell.m */,
-				49539F3D1AA561C600F19674 /* ProfileStatsTableViewCell.h */,
-				49539F3E1AA561C600F19674 /* ProfileStatsTableViewCell.m */,
-				49539F391AA561C600F19674 /* ProfileCalendarTableViewCell.h */,
-				49539F3A1AA561C600F19674 /* ProfileCalendarTableViewCell.m */,
+				49A8CD4F1AA7DF67006A2ECE /* ProfileEditViewController.h */,
+				49A8CD501AA7DF67006A2ECE /* ProfileEditViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -350,6 +365,8 @@
 				492DF8711A526170006C6EC5 /* ExerciseListViewController.m */,
 				4931CD8D1A526CF4000DCDE0 /* AddExerciseViewController.h */,
 				4931CD8E1A526CF4000DCDE0 /* AddExerciseViewController.m */,
+				49539F541AA67EC100F19674 /* CustomSegmentControl.h */,
+				49539F551AA67EC100F19674 /* CustomSegmentControl.m */,
 			);
 			name = "Exercise Branch";
 			sourceTree = "<group>";
@@ -389,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				4922BAA11A5263E300EE8568 /* File */,
+				49539F461AA58B6000F19674 /* SyncLogic */,
 				493ABEC61A847C2400F5583B /* Growth */,
 				49C0E8001A71F8530072FC0C /* Features */,
 				49A88DBD19BCC5B3008AE306 /* GrowStrongerNew */,
@@ -459,6 +477,16 @@
 		49A88DBE19BCC5B3008AE306 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				494A99261AA68875008F11CF /* greyVerticalDivider.png */,
+				494A99271AA68875008F11CF /* greyVerticalDivider@2x.png */,
+				494A99221AA686EA008F11CF /* whiteBackground30px.png */,
+				494A99231AA686EA008F11CF /* whiteBackground30px@2x.png */,
+				49539F501AA67C6600F19674 /* yellowRectangle.png */,
+				49539F511AA67C6600F19674 /* yellowRectangle@2x.png */,
+				49539F481AA6786A00F19674 /* redPixel.png */,
+				49539F491AA6786A00F19674 /* redPixel@2x.png */,
+				49539F4A1AA6786A00F19674 /* whitePixel.png */,
+				49539F4B1AA6786A00F19674 /* whitePixel@2x.png */,
 				495A0DAE1A9AC8ED002355B5 /* Clock.png */,
 				495A0DAF1A9AC8ED002355B5 /* Clock@2x.png */,
 				495A0DA21A9AB478002355B5 /* Weight.png */,
@@ -588,24 +616,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				4916345D1A994E600087E688 /* RedRectangle.png in Resources */,
+				49539F4D1AA6786A00F19674 /* redPixel@2x.png in Resources */,
+				494A99281AA68875008F11CF /* greyVerticalDivider.png in Resources */,
 				495A0DB01A9AC8ED002355B5 /* Clock.png in Resources */,
 				4922BAA21A5263E300EE8568 /* File in Resources */,
 				491634691A9952930087E688 /* YellowRectangleForButton.png in Resources */,
 				493ABEC71A847C2400F5583B /* Growth in Resources */,
+				494A99241AA686EA008F11CF /* whiteBackground30px.png in Resources */,
 				495A0D991A9A9CA6002355B5 /* VerticalGreyLine.png in Resources */,
 				49A88DD319BCC5B3008AE306 /* Images.xcassets in Resources */,
+				494A99291AA68875008F11CF /* greyVerticalDivider@2x.png in Resources */,
 				495A0DA51A9AB478002355B5 /* Weight@2x.png in Resources */,
 				495A0DA11A9AB195002355B5 /* Star@2x.png in Resources */,
 				495A0DA41A9AB478002355B5 /* Weight.png in Resources */,
+				49539F521AA67C6600F19674 /* yellowRectangle.png in Resources */,
+				49539F471AA58B6000F19674 /* SyncLogic in Resources */,
 				491634641A9951960087E688 /* StartIcon@2x.png in Resources */,
 				495A0DB11A9AC8ED002355B5 /* Clock@2x.png in Resources */,
 				4916346A1A9952930087E688 /* YellowRectangleForButton@2x.png in Resources */,
 				491634631A9951960087E688 /* StartIcon.png in Resources */,
+				49539F531AA67C6600F19674 /* yellowRectangle@2x.png in Resources */,
 				4916345E1A994E600087E688 /* RedRectangle@2x.png in Resources */,
+				49539F4F1AA6786A00F19674 /* whitePixel@2x.png in Resources */,
 				49C0E7FB1A71EA2F0072FC0C /* MKInfoPanel.xib in Resources */,
 				49A6322D1A532DD600A1A484 /* man-muscle-body-dumbbell-Fitness.jpg in Resources */,
 				49A88DC219BCC5B3008AE306 /* InfoPlist.strings in Resources */,
+				494A99251AA686EA008F11CF /* whiteBackground30px@2x.png in Resources */,
 				495A0D9A1A9A9CA6002355B5 /* VerticalGreyLine@2x.png in Resources */,
+				49539F4C1AA6786A00F19674 /* redPixel.png in Resources */,
+				49539F4E1AA6786A00F19674 /* whitePixel.png in Resources */,
 				495A0DA01A9AB195002355B5 /* Star.png in Resources */,
 				49A88DCB19BCC5B3008AE306 /* Main.storyboard in Resources */,
 				49C0E8011A71F8530072FC0C /* Features in Resources */,
@@ -627,6 +666,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49539F561AA67EC100F19674 /* CustomSegmentControl.m in Sources */,
 				49A88DC819BCC5B3008AE306 /* AppDelegate.m in Sources */,
 				49A632331A532F4500A1A484 /* ActiveWorkoutTableViewController.m in Sources */,
 				4907183919BCCBAC0075936F /* TabBarViewController.m in Sources */,
@@ -648,16 +688,14 @@
 				49C0E7FA1A71EA2F0072FC0C /* MKInfoPanel.m in Sources */,
 				4969A98C1A5E567600723C22 /* AddSetViewController.m in Sources */,
 				49A0D1781A62532000D92402 /* PushNoAnimationSegue.m in Sources */,
-				49539F421AA561C600F19674 /* ProfileHeaderTableViewCell.m in Sources */,
 				49539F381AA561AA00F19674 /* User.m in Sources */,
 				49C0E7F61A6D8B620072FC0C /* Stopwatch.m in Sources */,
 				49A6322B1A52A27A00A1A484 /* Exercise.m in Sources */,
-				49539F411AA561C600F19674 /* ProfileCalendarTableViewCell.m in Sources */,
+				49A8CD511AA7DF67006A2ECE /* ProfileEditViewController.m in Sources */,
 				49C0F62A1A57954700A79121 /* Set.m in Sources */,
 				49A0D18B1A63214A00D92402 /* HPCollectionViewFlowLayout.m in Sources */,
 				49A88DC419BCC5B3008AE306 /* main.m in Sources */,
 				492DF8721A526170006C6EC5 /* ExerciseListViewController.m in Sources */,
-				49539F431AA561C600F19674 /* ProfileStatsTableViewCell.m in Sources */,
 				4969A9901A5E619B00723C22 /* SelectExerciseViewController.m in Sources */,
 				49A0D18A1A63214A00D92402 /* HPCollectionViewCell.m in Sources */,
 				49A6323E1A53340100A1A484 /* Workout.m in Sources */,

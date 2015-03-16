@@ -24,7 +24,7 @@
 @dynamic reps;
 @dynamic weight;
 @dynamic totalWeight;
-@dynamic timeStamp;
+@dynamic timestamp;
 
 @dynamic active;
 @dynamic pr;

@@ -13,8 +13,8 @@
 
 #define NavColor UIColorFromRGB(0xFBC723)
 #define LinkColor UIColorFromRGB(0x1B6AA5)
-#define TabColor UIColorFromRGB(0xB2322F)
-#define TabTextColor UIColorFromRGB(0x4A4A4A)
+#define TabColor UIColorFromRGB(0x4A4A4A)
+#define TabTextColor UIColorFromRGB(0xFBC723)
 #define ButtonBorderColor UIColorFromRGB(0xB2322F)
 #define SetBorderColor UIColorFromRGB(0x4A4A4A)
 #define Body_SelectedTextColor UIColorFromRGB(0xB2322F)

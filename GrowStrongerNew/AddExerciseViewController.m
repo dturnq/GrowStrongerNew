@@ -27,6 +27,26 @@
 {
     [super viewDidLoad];
     self.exerciseType = @"Weightlifting";
+    
+    //UIImage *redPixel = [UIImage imageNamed:@"yellowRectangle.png"];
+    //[self.exerciseTypeSegmentControl backgroundImageForState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    
+    NSLog(@"View did load - new? %hhd", self.new);
+    if (!self.new) {
+        NSLog(@"Editing! Exercise: %@", self.exercise);
+        self.nameTextField.text = self.exercise.name;
+        self.exerciseType = self.exercise.exerciseType;
+        int segmentValue = 0;
+        if ([self.exercise.exerciseType isEqual: @"Calisthenics"]) {
+            segmentValue = 1;
+            self.descriptionLabel.text = @"An exercise that uses only your bodyweight as resistance";
+        } else {
+            self.descriptionLabel.text = @"An exercise that uses weights as resistance";
+        }
+        self.exerciseTypeSegmentControl.selectedSegmentIndex = segmentValue;
+        
+    }
+    
     // Do any additional setup after loading the view.
 }
 

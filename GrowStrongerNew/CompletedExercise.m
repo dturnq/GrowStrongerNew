@@ -36,6 +36,8 @@
 
 @dynamic pr;
 
+@dynamic uuid;
+
 @dynamic workout;
 @dynamic exercise;
 

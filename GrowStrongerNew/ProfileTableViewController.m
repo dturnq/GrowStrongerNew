@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "Workout.h"
 #import "User.h"
+#import "ProfileEditViewController.h"
 
 @interface ProfileTableViewController ()
 
@@ -37,6 +38,34 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)unwindToProfileView:(UIStoryboardSegue *)unwindSegue
+{
+    
+    
+    // If the user clicked "Save", then save
+    if ([unwindSegue.identifier  isEqual: @"SaveProfileEdit"]) {
+        
+        User *user = [User currentUser];
+        
+        ProfileEditViewController* addExerciseViewController = unwindSegue.sourceViewController;
+        
+        user.firstname = addExerciseViewController.firstNameTextField.text;
+        user.lastname = addExerciseViewController.lastNameTextField.text;
+        user.locationFacebook = addExerciseViewController.cityTextField.text;
+        if (addExerciseViewController.genderSegmentControl) {
+            user.gender = @"female";
+        } else {
+            user.gender = @"male";
+        }
+        user.email = addExerciseViewController.emailTextField.text;
+        
+        
+    } else if ([unwindSegue.identifier  isEqual: @"CancelProfileEdit"]) {
+        
+    }
+    
 }
 
 #pragma mark - Table view data source

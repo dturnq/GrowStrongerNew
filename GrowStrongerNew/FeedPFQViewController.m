@@ -448,9 +448,11 @@
         NSLog(@"Beginning for loop through sets");
         set.active = @"Complete";
         [set pin];
+        NSLog(@"pinned");
         NSError *error = nil;
         [set save:&error];
         if (!error) {
+            NSLog(@"Saved");
             
         } else {
             NSLog(@"Error saving sets: %@", error);
@@ -460,6 +462,7 @@
             return;
         }
     }
+    NSLog(@"Done with for loop for sets, starting on CEs");
     
     PFQuery *queryCEs = [CompletedExercise query];
     [queryCEs fromLocalDatastore];
@@ -468,14 +471,17 @@
     [queryCEs orderByAscending:@"timestamp"];
     [queryCEs includeKey:@"exercise"];
     NSArray *ceArray = [queryCEs findObjects];
+    NSLog(@"Queried CEs");
     if (ceArray.count > 0) {
         for (CompletedExercise *ce in ceArray) {
             if (ce.pr) {
+                NSLog(@"PR");
                 NSError *error = nil;
                 [ce.exercise save:&error];
                 if (!error) {
-                    
+                    NSLog(@"PR saved");
                 } else {
+                    NSLog(@"Saving error");
                     self.isSaving = NO;
                     return;
                 }
@@ -485,8 +491,9 @@
             NSError *error = nil;
             [ce save:&error];
             if (!error) {
-                
+                NSLog(@"CE saved");
             } else {
+                NSLog(@"No go saving CE :(");
                 ce.active = @"Active";
                 [ce pin];
                 self.isSaving = NO;
@@ -503,6 +510,7 @@
     if (!error) {
         // Nothing to do :)
         NSLog(@"Workout saved :)");
+        [self loadObjects];
     } else {
         workout.active = @"Raw Complete";
         [workout pin];
@@ -510,98 +518,10 @@
     }
 
     self.isSaving = NO;
+    
     NSLog(@"Final save completed and isSaving var updated to bool: %@", [NSNumber numberWithBool:self.isSaving]);
 }
 
-/*
- BEFORE saving the workout, set all workouts, CEs, sets to "Raw Complete"
- 
- Run this whenever the view is viewed
- 1. Lock it so that it cannot be started again
- 2. Find the oldest "Raw Complete" workout
- 3. Look for sets that are "Raw Complete" from that workout
-     - If none, go to PR check step
-     - else go to Process Raw step
- 
- 
- Processing step: Go through all exercises, for each pick the top set; set it to "Pre-processed Best"; remaining sets set to "Fully pre-processed" AND SAVE these sets
-      - Go to calc PR step
- 
- PR check step: Look for sets in the workout that are "Pre-processed best"
-     - If None, go to Save all step
-     - If some, go to Calc PRs step
- 
- 
- Calc PRs step: for each set that is "Pre-processed best" (there should only be one per exercise), use a QueryInBackground to get the previous PR (you must filter for sets that are not "Pre-processed best" to ensure you don't return yourself). When it returns, go back to the secondary thread using GCD.
-     - If fail, then stop and UNLOCK
-     - If success, then determine whether you have a PR, increment CE / workout, then change status to "Complete" AND SAVE set. Go to Final Save
- 
- Final Save: Change status of workout and CEs to "Complete" and save. unlock.
-
- ALTERNATIVE:
- View is opened... run SaveWorkouts
- 
- Initial set search: Lock, then Find all unsaved sets
-    - If none, go to CE search
-    - If some, then saveallinbackground
-        - Would need clientIDs
-        - If it fails, I'm going to need to individually check which items saved properly and which didn't
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- VERSION 2!!!!
- 
- BEFORE saving the workout, set all workouts, CEs, sets to "Raw Complete"
- 
- 
- Run this whenever the view is viewed
- 1. Lock it so that it cannot be started again
- 2. Find the oldest "Raw Complete" workout
- 3. Look for sets that are "Active" from that workout [USED TO BE "RAW COMPLETE"]
- - If none, go to PR check step
- - else go to Process Raw step
- 
- 
- Processing step: Go through all exercises, for each pick the top set; set it to "Pre-processed Best"; remaining sets set to "Fully pre-processed" [NO SAVE] [NOTE: A premiminary protective measure would reorder to rename the others first]
- - Go to calc PR step
- 
- PR check step: Look for sets in the workout that are "Pre-processed best"
- - If None, go to Save all step
- - If some, go to Calc PRs step
- 
- 
- Calc PRs step: for each set that is "Pre-processed best" (there should only be one per exercise), use a QueryInBackground to get the previous PR (you must filter for sets that are not "Pre-processed best" to ensure you don't return yourself). When it returns, go back to the secondary thread using GCD.
- - If fail, then stop and UNLOCK
- - If success, then determine whether you have a PR, increment CE / workout, then change status to "Fully Pre-processed". Go to Final Save [DO NOT SAVE]
- 
- Final Save: Change status of workout and CEs to "Complete" and save. unlock.
- - If fail, UNLOCK
- 
- ALTERNATIVE:
- View is opened... run SaveWorkouts
- 
- Initial set search: Lock, then Find all unsaved sets
- - If none, go to CE search
- - If some, then saveallinbackground
- - Would need clientIDs
- - If it fails, I'm going to need to individually check which items saved properly and which didn't
- 
- 
- 
- 
- 
- 
- 
- */
 
 -(void)saveWorkouts {
     self.isSaving = YES;

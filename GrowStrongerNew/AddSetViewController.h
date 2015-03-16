@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet HorizontalPickerView *horizontalPickerView;
 @property (weak, nonatomic) CompletedExercise *completedExercise;
+@property (weak, nonatomic) NSDate *completedTime;
 @property (weak, nonatomic) IBOutlet UIButton *weight;
 @property (weak, nonatomic) IBOutlet UIButton *reps;
 @property (weak, nonatomic) IBOutlet UITextField *nextWeight;
@@ -62,5 +63,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *setC4R3;
 @property (weak, nonatomic) IBOutlet UILabel *setC4R4;
 @property (weak, nonatomic) IBOutlet UILabel *setC4R5;
+
+
 
 @end

@@ -7,16 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Exercise.h"
+#import "CustomSegmentControl.h"
 
 @interface AddExerciseViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *exerciseTypeSegmentControl;
+@property (weak, nonatomic) IBOutlet CustomSegmentControl *exerciseTypeSegmentControl;
 - (IBAction)exerciseTypeChanged:(UISegmentedControl *)sender;
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @property (strong, nonatomic) NSString *exerciseType;
+
+@property BOOL new;
+@property (strong, nonatomic) Exercise *exercise;
 
 @end

@@ -193,7 +193,7 @@
          PFQuery *query = [Set query];
          [query fromLocalDatastore];
          [query whereKey:@"completedExercise" equalTo:completedExercise];
-         [query addAscendingOrder:@"timeStamp"];
+         [query addAscendingOrder:@"timestamp"];
          [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
              
              /*

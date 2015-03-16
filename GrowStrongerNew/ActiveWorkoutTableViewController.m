@@ -26,6 +26,8 @@
 @property (nonatomic, strong) Stopwatch *stopwatch;
 @property (nonatomic, strong) NSTimer *timer;
 
+@property (nonatomic, strong) NSDate *setBeganAt;
+
 @end
 
 @implementation ActiveWorkoutTableViewController
@@ -35,60 +37,114 @@
 {
     
     if ([unwindSegue.identifier isEqual: @"SelectExercise"]) {
+        NSLog(@"SelectExercise: Unwinding");
         SelectExerciseViewController* selectExerciseViewController = unwindSegue.sourceViewController;
+        
+        self.exerciseLastUpdatedFromServer = selectExerciseViewController.lastUpdatedFromServer;
+        
+        NSLog(@"Last Updated: %@", self.exerciseLastUpdatedFromServer);
+        
         PFUser *user = [PFUser currentUser];
+        NSString *uuidString = [[NSUUID UUID] UUIDString];
+        
         CompletedExercise *completedExercise = [CompletedExercise object];
-        completedExercise.user = user;
         completedExercise.workout = self.activeWorkout;
+        completedExercise.position = self.activeWorkout.totalCompletedExercises;
+        completedExercise.timestamp = self.activeWorkout.beganAt;
+        completedExercise.user = user;
         completedExercise.exercise = selectExerciseViewController.selectedExercise;
         completedExercise.maxWeight = [NSNumber numberWithInt:0];
         completedExercise.totalWeight = [NSNumber numberWithInt:0];
         completedExercise.totalSets = [NSNumber numberWithInt:0];
         completedExercise.totalReps = [NSNumber numberWithInt:0];
         completedExercise.active = @"Active";
-        completedExercise.position = self.activeWorkout.totalCompletedExercises;
-        completedExercise.timestamp = self.activeWorkout.beganAt;
-        [completedExercise pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [self reloadWorkoutData];
-        }];
-        self.activeWorkout.totalCompletedExercises = [NSNumber numberWithInt:[self.activeWorkout.totalCompletedExercises intValue] + 1];
-        [self.activeWorkout pin];
+        completedExercise.uuid = uuidString;
         
+        
+        NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:self.completedExerciseArray];
+        [newArray addObject:completedExercise];
+        self.completedExerciseArray = [newArray copy];
+        [self.tableView reloadData];
+        
+        [completedExercise pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            NSLog(@"SelectExercise: Reloading");
+            //[self reloadWorkoutData];
+            
+        }];
+        
+    
         PFQuery *querySets = [Set query];
-        NSLog(@"Going to find sets for this exercise: %@", completedExercise.exercise);
+        NSLog(@"SelectExercise: Going to find sets for this exercise: %@", completedExercise.exercise);
         [querySets whereKey:@"exercise" equalTo:completedExercise.exercise];
         [querySets includeKey:@"completedExercise"];
         [querySets includeKey:@"workout"];
+        [querySets orderByDescending:@"timestamp"];
         querySets.limit = 50;
         [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            NSLog(@"Found sets from the workout: %lu", (unsigned long)objects.count);
+            NSLog(@"SelectExercise: sets pulled for the exercise");
             [PFObject pinAllInBackground:objects];
         }];
+        
     
     } else if ([unwindSegue.identifier isEqual:@"SaveSet"]) {
         NSLog(@"Set save segue completed - back to the active workout view");
 
-        NSLog(@"Selected index path: %@", self.selectedIndexPath);
-        NSArray *rowsToReload = [NSArray arrayWithObject:self.selectedIndexPath];
-        NSLog(@"Array: %@", rowsToReload);
-        [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationAutomatic];
-        NSLog(@"Should have reloaded the applicable cell");
-    }
+        // Get the previous view controller
+        AddSetViewController *addSetViewController = unwindSegue.sourceViewController;
+        
+        // Set the number formatter
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        
+        // PFUser
+        PFUser *user = [PFUser currentUser];
+        
+        // Timestamp
+        NSDate *now = addSetViewController.completedTime;
+        
+        NSLog(@"Creating the set");
+        Set *newSet = [Set object];
+        newSet.weight = [f numberFromString:addSetViewController.weight.titleLabel.text];
+        newSet.reps = [f numberFromString:addSetViewController.reps.titleLabel.text];
+        newSet.completedExercise = addSetViewController.completedExercise;
+        newSet.timestamp = now;
+        
+        NSLog(@"NSDict start");
+        if (!self.setDictionary[newSet.completedExercise.uuid]) {
+            NSLog(@"No key; using %@", newSet.completedExercise.uuid);
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            NSMutableDictionary *dict = self.setDictionary;
+            dict[newSet.completedExercise.uuid] = array;
+            NSLog(@"Dict ready");
+            self.setDictionary = dict;
+            NSLog(@"NSArray in NSDict created");
+        }
+        [self.setDictionary[newSet.completedExercise.uuid] addObject:newSet];
+        NSLog(@"SetDictionary%@", self.setDictionary[newSet.completedExercise.uuid]);
     
-    //PFUser *user = [PFUser currentUser];
-    
-    // If the user clicked "Save", then save
-    // Adjust this code to work save the set in the cache
-    /*
-    if ([unwindSegue.identifier  isEqual: @"SaveNewExercise"]) {
-        AddExerciseViewController* addExerciseViewController = unwindSegue.sourceViewController;
-        Exercise *exercise = [Exercise object];
-        exercise.name = addExerciseViewController.nameTextField.text;
-        exercise.user = user;
-        exercise.exerciseType = addExerciseViewController.exerciseType;
-        [exercise saveEventually];
+        [self.tableView reloadData];
+        
+        
+        [newSet pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            NSLog(@"Set pinned");
+            NSLog(@"Selected index path: %@", self.selectedIndexPath);
+            NSArray *rowsToReload = [NSArray arrayWithObject:self.selectedIndexPath];
+            NSLog(@"Array: %@", rowsToReload);
+            [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationAutomatic];
+            NSLog(@"Should have reloaded the applicable cell");
+            newSet.user = user;
+            newSet.workout = addSetViewController.completedExercise.workout;
+            newSet.totalWeight = [[NSNumber alloc] initWithInt:(newSet.weight.intValue * newSet.reps.intValue)];
+            newSet.exercise = addSetViewController.completedExercise.exercise;
+            newSet.active = @"Active";
+            [newSet pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"Set pinned again");
+            }];
+        }];
+        
+
     }
-     */
+
     
 }
 
@@ -105,72 +161,45 @@
     [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
     NSLog(@"Setting workout start time: %@", self.activeWorkout.beganAt);
     
+    self.setDictionary = [[NSMutableDictionary alloc] init];
+    
 }
 
 #pragma mark - Background Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"View did load");
+    [self reloadWorkoutData];
     
-    NSLog(@"About to do PFQuery");
-    PFQuery *queryForTime = [Set query];
-    NSLog(@"PFquery created; going to use self.activeworkout: %@", self.activeWorkout);
-    [queryForTime fromLocalDatastore];
-    [queryForTime whereKey:@"workout" equalTo:self.activeWorkout];
-    [queryForTime orderByDescending:@"timestamp"];
-    NSLog(@"PFQuery set up - looking for self.activeworkout: %@", self.activeWorkout);
-    
-    
-    
-    [queryForTime getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        NSLog(@"Query succeeded");
-        //NSLog(@"Last set completed: %@", object);
-        //NSLog(@"Timestamp: %@", [object objectForKey:@"timeStamp"]);
-        if (object == nil) {
-            [self.stopwatch setSetStartTime:self.activeWorkout.beganAt];
-            [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
-        } else {
-            [self.stopwatch setSetStartTime:[object objectForKey:@"timeStamp"]];
-            [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
-        }
+    NSLog(@"View did load: About to do PFQuery for set to obtain time");
+    if (self.setBeganAt == nil) {
+        PFQuery *queryForTime = [Set query];
+        [queryForTime fromLocalDatastore];
+        [queryForTime whereKey:@"workout" equalTo:self.activeWorkout];
+        [queryForTime orderByDescending:@"timestamp"];
         
-    }];
+        
+        [queryForTime getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            NSLog(@"Query for set to obtain time succeeded");
+            //NSLog(@"Last set completed: %@", object);
+            //NSLog(@"Timestamp: %@", [object objectForKey:@"timestamp"]);
+            if (object == nil) {
+                [self.stopwatch setSetStartTime:self.activeWorkout.beganAt];
+                [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
+            } else {
+                [self.stopwatch setSetStartTime:[object objectForKey:@"timestamp"]];
+                [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
+            }
+            
+        }];
+    } else {
+        [self.stopwatch setSetStartTime:self.setBeganAt];
+        [self.stopwatch setWorkoutStartTime:self.activeWorkout.beganAt];
+    }
+    
     
     
     self.timerView.backgroundColor = NavColor;
-    
-    //[self reloadWorkoutData];
-    
-    // TEMP offline hack to allow dev - add a local CE
-    
-    /*
-    PFQuery *query = [CompletedExercise query];
-    [query fromLocalDatastore];
-    [query whereKey:@"workout" equalTo:self.activeWorkout];
-    [query orderByAscending:@"position"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        //if (objects == 0) {
-            Exercise *tempExercise = [Exercise object];
-            tempExercise.name = @"Temporary exercise";
-            tempExercise.exerciseType = @"Weightlifting";
-            [tempExercise pin];
-            
-            CompletedExercise *tempCompletedExercise = [CompletedExercise object];
-            tempCompletedExercise.exercise = tempExercise;
-            tempCompletedExercise.workout = self.activeWorkout;
-            [tempCompletedExercise pin];
-            
-            
-        //}
-        
-        [self reloadWorkoutData];
-        
-    }];
-    */
-    
-    
-    //[self.tableView reloadData];
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -188,6 +217,7 @@
                                                 selector:@selector(updateStopwatchDisplay)
                                                 userInfo:nil
                                                  repeats:YES];
+    NSLog(@"Done with ViewWillAppear");
 }
 
 
@@ -201,12 +231,32 @@
 
 -(void)reloadWorkoutData
 {
+    NSLog(@"reloadWorkoutData: Reload workout data called");
     // Get the CompletedExercises in this workout
     PFQuery *query = [CompletedExercise query];
     [query fromLocalDatastore];
     [query whereKey:@"workout" equalTo:self.activeWorkout];
+    [query includeKey:@"exercise"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         self.completedExerciseArray = objects;
+        [self.tableView reloadData];
+    }];
+    
+    // Get the sets
+    PFQuery *querySets = [Set query];
+    [querySets fromLocalDatastore];
+    [querySets whereKey:@"workout" equalTo:self.activeWorkout];
+    [querySets orderByAscending:@"timestamp"];
+    [querySets includeKey:@"completedExercise"];
+    [querySets findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        for (Set *set in objects) {
+            if (!dict[set.completedExercise]) {
+                [dict setObject:[[NSMutableArray alloc] init] forKey:set.completedExercise.uuid];
+            }
+            [dict[set.completedExercise.uuid] addObject:set];
+        }
+        self.setDictionary = dict;
         [self.tableView reloadData];
     }];
 }
@@ -319,11 +369,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    
+    NSLog(@"Running cellforrowatindexpath");
     
     
     if (indexPath.row + 1 != (self.completedExerciseArray.count + 1)) // Add one to indexPath because it starts at 0; add one to count because we want the "extra" row
     {
+        NSLog(@"CE cell");
         // This is where we put any code related to the actual workout cells
         static NSString *reuseIdentifier = @"WorkoutExercise";
         CompletedExerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -331,6 +382,7 @@
         // THIS MAY BE THE MISSING PIECE
         if (cell == nil) {
             cell = [[CompletedExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+            
         }
         
         // Configure the cell...
@@ -351,10 +403,12 @@
             cell = [[AddExerciseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
         }
         
+        
         cell.TextLabel.layer.borderColor = ButtonBorderColor.CGColor; // [UIColor darkGrayColor].CGColor;
         cell.TextLabel.layer.borderWidth = 1.0;
         cell.TextLabel.layer.cornerRadius = 4.0;
         
+         
         return cell;
     }
 }
@@ -362,28 +416,45 @@
 
 - (void)configureCell:(CompletedExerciseTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Configuring CE cell");
     // Get the specific exercise
     CompletedExercise *completedExercise = [self.completedExerciseArray objectAtIndex:indexPath.row];
     
     // Set the exercise name
+    //NSLog(@"Set the exercise name for CE: %@", completedExercise);
     cell.name.text = [[completedExercise exercise] name];
+    NSLog(@"All set!");
     
+    NSArray *objects = self.setDictionary[completedExercise.uuid];
+
+    NSArray *setLabels = [[NSArray alloc] initWithObjects: cell.set1, cell.set2, cell.set3, cell.set4, nil];
     
+    NSUInteger i = 1;
+    for (UILabel *setLabel in setLabels) {
+        if ((int*)i <= (int*)objects.count) {
+            NSString *labelText = [[[objects objectAtIndex:(i-1)] weight] stringValue];
+            NSString *labelText2 = [labelText stringByAppendingString:@"/"];
+            NSString *labelText3 = [labelText2 stringByAppendingString:[[[objects objectAtIndex:(i-1)] reps] stringValue]];
+            setLabel.text =  labelText3;
+        } else {
+            setLabel.text =  @"/";
+        }
+        
+        setLabel.layer.borderColor = SetBorderColor.CGColor; // [UIColor darkGrayColor].CGColor;
+        setLabel.layer.borderWidth = 1.0;
+        setLabel.layer.cornerRadius = 4.0;
+        
+        i++;
+    }
+    
+    /*
     PFQuery *query = [Set query];
     [query fromLocalDatastore];
     [query whereKey:@"completedExercise" equalTo:completedExercise];
-    [query addAscendingOrder:@"timeStamp"];
+    [query addAscendingOrder:@"timestamp"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-
-        /*
-        if (objects.count == 0) {
-
-            cell.set1.text = @"Tap to record your first set";
-            cell.set2.text = @"";
-            cell.set3.text = @"";
-            cell.set4.text = @"";
-        } else {
-         */
+        NSLog(@"NSERROR: %@", error);
+    
         
             NSArray *setLabels = [[NSArray alloc] initWithObjects: cell.set1, cell.set2, cell.set3, cell.set4, nil];
             
@@ -397,16 +468,19 @@
                 } else {
                     setLabel.text =  @"/";
                 }
+                
                 setLabel.layer.borderColor = SetBorderColor.CGColor; // [UIColor darkGrayColor].CGColor;
                 setLabel.layer.borderWidth = 1.0;
                 setLabel.layer.cornerRadius = 4.0;
+                
                 i++;
             }
             
         //}
+    
     }];
     
-    
+    */
     
 }
 
@@ -516,6 +590,11 @@
         UINavigationController *navController = segue.destinationViewController;
         SaveWorkoutViewController *destinationViewController = (SaveWorkoutViewController *)navController.topViewController;
         destinationViewController.activeWorkout = self.activeWorkout;
+    } else if ([segue.identifier isEqualToString:@"AddNewExercise"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        SelectExerciseViewController *destinationViewController = (SelectExerciseViewController *)navController.topViewController;
+        destinationViewController.lastUpdatedFromServer = self.exerciseLastUpdatedFromServer;
+        NSLog(@"Segueing... %@", self.exerciseLastUpdatedFromServer);
     }
     
     // Get the new view controller using [segue destinationViewController].

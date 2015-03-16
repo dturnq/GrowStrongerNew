@@ -13,6 +13,7 @@
 @property (retain) NSString *firstname;
 @property (retain) NSString *lastname;
 @property (retain) NSString *locationFacebook;
+@property (retain) NSString *gender;
 
 + (User *)user;
 + (BOOL)isLoggedIn;

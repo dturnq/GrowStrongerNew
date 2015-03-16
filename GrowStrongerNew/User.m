@@ -18,6 +18,7 @@
 @dynamic firstname;
 @dynamic lastname;
 @dynamic locationFacebook;
+@dynamic gender;
 
 
 + (User *)user {

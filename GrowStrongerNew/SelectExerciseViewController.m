@@ -53,6 +53,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"View did load. Last Updated from Servier: %@", self.lastUpdatedFromServer);
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -107,6 +109,9 @@
 // Override to customize what kind of query to perform on the class. The default is to query for
 // all objects ordered by createdAt descending.
 - (PFQuery *)queryForTable {
+    
+    NSLog(@"QueryForTable called");
+    
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     // If Pull To Refresh is enabled, query against the network by default.
     //if (self.pullToRefreshEnabled) {
@@ -118,10 +123,48 @@
     //if (self.objects.count == 0) {
     //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     //}
+    
+    [query fromLocalDatastore];
     [query orderByAscending:@"nameLowercase"];
+    
+    if (self.lastUpdatedFromServer == nil | [[NSDate date] timeIntervalSinceDate:self.lastUpdatedFromServer] > 43200) { // Update once every 12 hrs
+        NSLog(@"Time to refresh. self.lastUpdated: %@", self.lastUpdatedFromServer);
+        [self refreshFromServer];
+        //
+    } else {
+        NSLog(@"No refresh needed. self.lastUpdated: %@", self.lastUpdatedFromServer);
+        
+    }
+    
     return query;
 }
 
+-(void)refreshFromServer {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+                   ^{
+                       
+                       PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+                       
+                       [query orderByAscending:@"nameLowercase"];
+                       NSError *error = nil;
+                       NSArray *exeriseArray = [query findObjects:&error];
+                       
+                       NSError *errorUnpinning = nil;
+                       [PFObject unpinAllObjectsWithName:@"ExerciseCache" error:&errorUnpinning];
+                       
+                       NSError *errorPinning = nil;
+                       [PFObject pinAll:exeriseArray withName:@"ExerciseCache" error:&errorPinning];
+                       
+                       self.lastUpdatedFromServer = [NSDate date];
+                       
+                       dispatch_async(dispatch_get_main_queue(),
+                                      ^{
+                                          [self loadObjects];
+                                      });
+                   });
+    
+}
 
 /*
  // Override to customize the look of a cell representing an object. The default is to display

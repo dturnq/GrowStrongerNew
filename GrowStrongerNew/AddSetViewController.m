@@ -54,7 +54,7 @@
     
     [queryLastSet whereKey:@"exercise" equalTo:self.completedExercise.exercise];
     [queryLastSet fromLocalDatastore];
-    [queryLastSet addDescendingOrder:@"timeStamp"];
+    [queryLastSet addDescendingOrder:@"timestamp"];
     queryLastSet.limit = 1;
     [queryLastSet findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         //NSLog(@"Objects: %@", objects);
@@ -183,7 +183,8 @@
 #warning - currently, if a user saves a completed exercise that does not contain any sets, and no other sets are saved for that exercise during that workout, a bug will appear where the current date will show instead of that workout date. Two possible solutions: 1, when workout is completed, remove all completed exercises (or workouts) that do not contain any sets. 2 - update this function to pull in the data; and then the calling piece of code can pull the date from the workout. You will still have an empty workout date, hoever. 3- in the calling code, simply check whether there are any sets, and if not, exclude.
     NSDate *date = [NSDate date];
     if ([setArray count]) {
-        date = [[setArray firstObject] timeStamp];
+        Set *set = [setArray firstObject];
+        date = set.timestamp;
     }
     
     static NSDateFormatter *formatter = nil;
@@ -401,6 +402,8 @@
     if ([segue.identifier isEqual:@"SaveSet"]) {
 #warning This could potentially be optimized by moving this code into the unwind method in the destination view controller. Then the view can close immediately.
         NSLog(@"Attemping to save the set");
+        
+        /*
         // Set up the number formatter FML
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -420,14 +423,17 @@
         newSet.workout = self.completedExercise.workout;
         newSet.completedExercise = self.completedExercise;
         newSet.exercise = self.completedExercise.exercise;
-        newSet.timeStamp = now;
+        newSet.timestamp = now;
         newSet.active = @"Active";
         [newSet pinInBackground];
         NSLog(@"Set pinned");
         
+        */
+        
+        self.completedTime = [NSDate date];
         
         Stopwatch *stopwatch = [[Stopwatch alloc] init];
-        [stopwatch setSetStartTime:now];
+        [stopwatch setSetStartTime:self.completedTime];
         NSLog(@"Time since last set reset");
         //NSLog(@"Part 3: Saved set CE: %@", newSet.completedExercise);
         //NSLog(@"Part 3: Saved set E: %@", newSet.exercise.name);

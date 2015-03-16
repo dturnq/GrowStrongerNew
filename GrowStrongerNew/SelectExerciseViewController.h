@@ -13,5 +13,8 @@
 @interface SelectExerciseViewController : PFQueryTableViewController
 
 @property (weak, nonatomic) Exercise *selectedExercise;
+@property (nonatomic, strong) NSDate *lastUpdatedFromServer;
+
+-(void)refreshFromServer;
 
 @end

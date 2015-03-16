@@ -22,14 +22,30 @@
     PFUser *user = [PFUser currentUser];
     
     // If the user clicked "Save", then save
-    if ([unwindSegue.identifier  isEqual: @"SaveNewExercise"]) {
+    if ([unwindSegue.identifier  isEqual: @"SaveExercise"]) {
+        
         AddExerciseViewController* addExerciseViewController = unwindSegue.sourceViewController;
-        Exercise *exercise = [Exercise object];
-        exercise.name = addExerciseViewController.nameTextField.text;
-        exercise.name = [addExerciseViewController.nameTextField.text lowercaseString];
-        exercise.user = user;
-        exercise.exerciseType = addExerciseViewController.exerciseType;
-        [exercise saveEventually];
+        
+        if (addExerciseViewController.new) {
+            Exercise *exercise = [Exercise object];
+            exercise.name = addExerciseViewController.nameTextField.text;
+            exercise.nameLowercase = [addExerciseViewController.nameTextField.text lowercaseString];
+            exercise.user = user;
+            exercise.exerciseType = addExerciseViewController.exerciseType;
+            [exercise saveEventually:^(BOOL succeeded, NSError *error) {
+                [self loadObjects];
+            }];
+        } else {
+            Exercise *exercise = addExerciseViewController.exercise;
+            exercise.name = addExerciseViewController.nameTextField.text;
+            exercise.nameLowercase = [addExerciseViewController.nameTextField.text lowercaseString];
+            exercise.exerciseType = addExerciseViewController.exerciseType;
+            [exercise saveEventually:^(BOOL succeeded, NSError *error) {
+                [self loadObjects];
+            }];
+        }
+        
+        
     }
     
 }
@@ -125,41 +141,45 @@
  // Override to customize what kind of query to perform on the class. The default is to query for
  // all objects ordered by createdAt descending.
  - (PFQuery *)queryForTable {
+     NSLog(@"QueryForTable called");
+     
      PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
      // If Pull To Refresh is enabled, query against the network by default.
      //if (self.pullToRefreshEnabled) {
-            //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+     //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
      //}
      
      // If no objects are loaded in memory, we look to the cache first to fill the table
      // and then subsequently do a query against the network.
      //if (self.objects.count == 0) {
-            //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+     //query.cachePolicy = kPFCachePolicyCacheThenNetwork;
      //}
+     
      [query orderByAscending:@"nameLowercase"];
+     
      return query;
  }
 
-
-/*
  // Override to customize the look of a cell representing an object. The default is to display
  // a UITableViewCellStyleDefault style cell with the label being the textKey in the object,
  // and the imageView being the imageKey in the object.
+
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
- static NSString *CellIdentifier = @"Cell";
+     static NSString *CellIdentifier = @"ExerciseCell";
  
- PFTableViewCell *cell = (PFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
- if (cell == nil) {
- cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
- }
+     PFTableViewCell *cell = (PFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+     if (cell == nil) {
+         cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+     }
  
- // Configure the cell
- cell.textLabel.text = [object objectForKey:self.textKey];
- cell.imageView.file = [object objectForKey:self.imageKey];
+     // Configure the cell
+     cell.textLabel.text = [object objectForKey:self.textKey];
+     //cell.imageView.file = [object objectForKey:self.imageKey];
  
  return cell;
  }
- */
+
+
 
 /*
  // Override if you need to change the ordering of objects in the table.
@@ -226,6 +246,32 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    NSLog(@"Did select row at index path");
+    self.selectedExercise = [self.objects objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"EditExerciseSegue" sender:self];
 }
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqual: @"EditExerciseSegue"]) {
+        NSLog(@"Segue!");
+        UINavigationController *nav = segue.destinationViewController;
+        AddExerciseViewController *destinationViewController = (AddExerciseViewController *)[nav topViewController];
+        destinationViewController.new = NO;
+        destinationViewController.exercise = self.selectedExercise;
+        
+    } else if ([segue.identifier isEqual: @"NewExerciseSegue"]) {
+        UINavigationController *nav = segue.destinationViewController;
+        AddExerciseViewController *destinationViewController = (AddExerciseViewController *)[nav topViewController];
+        destinationViewController.new = YES;
+    }
+    
+    
+}
+
 
 @end
