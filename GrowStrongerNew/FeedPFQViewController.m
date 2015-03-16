@@ -146,6 +146,10 @@
      
      */
     
+    if (self.isSaving) {
+        NSLog(@"Nothing to save :)");
+        return;
+    }
     
     NSLog(@"beginning saveworkouts2");
     self.isSaving = YES;
@@ -168,7 +172,7 @@
                            PFQuery *querySetCheck = [Set query];
                            [querySetCheck fromLocalDatastore];
                            [querySetCheck whereKey:@"workout" equalTo:activeWorkout];
-                           //[querySetCheck whereKey:@"active" equalTo:@"Active"];
+                           [querySetCheck whereKey:@"active" equalTo:@"Active"];
                            querySetCheck.limit = 1;
                            NSArray *objectsSetsCheck = [querySetCheck findObjects];
                            NSLog(@"DAVID CHECKPOINT: Found %lu sets", (unsigned long)objectsSetsCheck.count);
@@ -210,6 +214,7 @@
     PFQuery *queryCEs = [CompletedExercise query];
     [queryCEs fromLocalDatastore];
     [queryCEs whereKey:@"workout" equalTo:workout];
+    [queryCEs whereKey:@"active" equalTo:@"Active"];
     [queryCEs orderByAscending:@"timestamp"];
     NSArray *objectsCEs2 = [queryCEs findObjects];
     
@@ -275,6 +280,10 @@
             workout.totalWeight = [NSNumber numberWithInt:(workout.totalWeight.intValue + bestSet.totalWeight.intValue)];
             workout.totalSets = [NSNumber numberWithInt:(workout.totalSets.intValue + 1)];
             workout.totalReps = workout.totalReps = [NSNumber numberWithInt:(workout.totalReps.intValue + bestSet.reps.intValue)];
+            
+            workout.totalCompletedExercises = [NSNumber numberWithInt:workout.totalCompletedExercises.intValue + 1];
+            
+            completedExercise.active = @"Fully Pre-processed";
             
             [completedExercise pin];
             [workout pin];
@@ -467,7 +476,7 @@
     PFQuery *queryCEs = [CompletedExercise query];
     [queryCEs fromLocalDatastore];
     [queryCEs whereKey:@"workout" equalTo:workout];
-    [queryCEs whereKey:@"active" equalTo:@"Active"];
+    [queryCEs whereKey:@"active" equalTo:@"Fully Pre-processed"];
     [queryCEs orderByAscending:@"timestamp"];
     [queryCEs includeKey:@"exercise"];
     NSArray *ceArray = [queryCEs findObjects];
@@ -518,141 +527,11 @@
     }
 
     self.isSaving = NO;
-    
+    [self saveWorkouts2];
     NSLog(@"Final save completed and isSaving var updated to bool: %@", [NSNumber numberWithBool:self.isSaving]);
 }
 
 
--(void)saveWorkouts {
-    self.isSaving = YES;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-                   ^{
-                       PFQuery *queryWorkouts = [Workout query];
-                       [queryWorkouts fromLocalDatastore];
-                       [queryWorkouts whereKey:@"active" equalTo:@"Processing"];
-                       [queryWorkouts orderByDescending:@"completedAt"];
-                       NSArray *objectsActiveWorkout = [queryWorkouts findObjects];
-                       
-                       if (objectsActiveWorkout.count > 0) {
-                           NSLog(@"Found workout to save: %@", [objectsActiveWorkout firstObject]);
-                           Workout *activeWorkout = [objectsActiveWorkout firstObject];
-                           
-                           //activeWorkout.active = @"Saving";
-                           //[activeWorkout pin];
-                           
-                           
-                           PFQuery *queryCEs2 = [CompletedExercise query];
-                           [queryCEs2 fromLocalDatastore];
-                           [queryCEs2 whereKey:@"workout" equalTo:activeWorkout];
-                           [queryCEs2 orderByAscending:@"timestamp"];
-                           NSArray *objectsCEs2 = [queryCEs2 findObjects];
-                           
-                           for (CompletedExercise *completedExercise in objectsCEs2) {
-                               
-                               // Get the best set so far
-                               PFQuery *querySetPR = [Set query];
-                               [querySetPR whereKey:@"exercise" equalTo:completedExercise.exercise];
-                               [querySetPR orderByDescending:@"reps"];
-                               [querySetPR orderByDescending:@"weight"];
-                               querySetPR.limit = 1;
-                               
-                               // We would need error logic here to unlock and give up in the case of failure
-                               NSArray *array = [querySetPR findObjects];
-                               
-                               int bestWeight = 0;
-                               int bestReps = 0;
-                               if (array.count > 0) {
-                                   Set *setPR = [array firstObject];
-                                   bestWeight = setPR.weight.intValue;
-                                   bestReps = setPR.reps.intValue;
-                               }
-                               
-                               
-                               PFQuery *querySets = [Set query];
-                               [querySets fromLocalDatastore];
-                               [querySets whereKey:@"workout" equalTo:activeWorkout];
-                               [querySets whereKey:@"exercise" equalTo:completedExercise.exercise];
-                               [querySets orderByAscending:@"timestamp"];
-                               [querySets orderByDescending:@"reps"];
-                               [querySets orderByDescending:@"weight"];
-                               [querySets includeKey:@"completedExercise"];
-                               [querySets includeKey:@"workout"];
-                               querySets.limit = 1;
-                               NSArray *objectsSets = [querySets findObjects];
-                               Set *bestSet = [objectsSets firstObject];
-                               if ((bestSet.weight.intValue > bestWeight) | (bestSet.weight.intValue == bestWeight & bestSet.reps.intValue > bestReps)) {
-                                   bestSet.pr = YES;
-                                   bestSet.completedExercise.pr = YES;
-                                   bestSet.workout.prCount = [NSNumber numberWithInt:(bestSet.workout.prCount.intValue + 1)];
-                                   [bestSet pin];
-                                   [bestSet.completedExercise pin];
-                                   [bestSet.workout pin];
-                               }
-                               
-                               
-                           }
-                           
-                           activeWorkout.totalSets = [NSNumber numberWithInt:0];
-                           activeWorkout.totalReps = [NSNumber numberWithInt:0];
-                           activeWorkout.totalWeight = [NSNumber numberWithInt:0];
-                           activeWorkout.totalCompletedExercises = [NSNumber numberWithInt:0];
-                           
-                           
-                           PFQuery *queryCEs = [CompletedExercise query];
-                           [queryCEs fromLocalDatastore];
-                           [queryCEs whereKey:@"workout" equalTo:activeWorkout];
-                           [queryCEs orderByAscending:@"timestamp"];
-                           NSArray *objectsCEs = [queryCEs findObjects];
-                           
-                           for (CompletedExercise *completedExercise in objectsCEs) {
-                               completedExercise.totalReps = [NSNumber numberWithInt:0];
-                               completedExercise.totalSets = [NSNumber numberWithInt:0];
-                               completedExercise.totalWeight = [NSNumber numberWithInt:0];
-                               completedExercise.maxWeight = [NSNumber numberWithInt:0];
-                               completedExercise.repsInMaxWeight = [NSNumber numberWithInt:0];
-                               PFQuery *querySets = [Set query];
-                               [querySets fromLocalDatastore];
-                               [querySets whereKey:@"workout" equalTo:activeWorkout];
-                               [querySets whereKey:@"completedExercise" equalTo:completedExercise];
-                               [querySets orderByAscending:@"timestamp"];
-                               NSArray *objectsSets = [querySets findObjects];
-                               
-                               for (Set *set in objectsSets) {
-                                   completedExercise.totalReps = [NSNumber numberWithInt:(completedExercise.totalReps.intValue + set.reps.intValue)];
-                                   completedExercise.totalWeight = [NSNumber numberWithInt:(completedExercise.totalWeight.intValue + set.weight.intValue)];
-                                   completedExercise.totalSets = [NSNumber numberWithInt:(completedExercise.totalSets.intValue + 1)];
-                                   if (set.weight > completedExercise.maxWeight) {completedExercise.maxWeight = set.weight;};
-                                   if (set.weight == completedExercise.maxWeight & set.reps > completedExercise.repsInMaxWeight) {completedExercise.repsInMaxWeight = set.reps;};
-                                   [set pin];
-                                   [set saveEventually];
-                               }
-                               activeWorkout.totalCompletedExercises = [NSNumber numberWithInt:(activeWorkout.totalCompletedExercises.intValue + 1)];
-                               activeWorkout.totalSets = [NSNumber numberWithInt:(activeWorkout.totalSets.intValue + completedExercise.totalSets.intValue)];
-                               activeWorkout.totalWeight = [NSNumber numberWithInt:(activeWorkout.totalWeight.intValue + completedExercise.totalWeight.intValue)];
-                               activeWorkout.totalReps = [NSNumber numberWithInt:(activeWorkout.totalReps.intValue + completedExercise.totalReps.intValue)];
-                               [completedExercise pin];
-                               [completedExercise saveEventually];
-                               
-                           }
-                           activeWorkout.active = @"Saved";
-                           [activeWorkout pin];
-                           [activeWorkout saveEventually];
-                       } else {
-                           
-                       }
-                       
-                       
-                       
-                       
-                       dispatch_async(dispatch_get_main_queue(),
-                                      ^{
-                                          self.isSaving = NO;
-                                          [self.tableView reloadData];
-                                      });
-                   });
-    
-}
 
 
 #pragma mark - PFQueryTableViewController
