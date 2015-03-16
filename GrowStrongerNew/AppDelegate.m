@@ -15,6 +15,11 @@
 #import "ExerciseListViewController.h"
 #import "GlobalHeader.h"
 
+NSString *const BFTaskMultipleExceptionsException = @"BFMultipleExceptionsException";
+
+@interface AppDelegate ()
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
